@@ -23,6 +23,26 @@ import {
 export default function Page() {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
   const [started, setStarted] = useState(false);
+  const logos = [
+  "3m.png",
+  "abbot.png",
+  "atlas.png",
+  "cola.png",
+  "ecl.png",
+  "Freeport.png",
+  "Freesius.png",
+  "Fusheng.png",
+  "gmk.png",
+  "intertek.png",
+  "mtu.png",
+  "pz.png",
+  "redpath.png",
+  "rr.png",
+  "Sunindo.png",
+  "technip.png"
+];
+
+const [index, setIndex] = useState(0);
   const [counts, setCounts] = useState({
     industries: 0,
     clients: 0,
@@ -58,7 +78,7 @@ export default function Page() {
   }, []);
 
   // 🔥 COUNTING ANIMATION
-  useEffect(() => {
+useEffect(() => {
   let start = 0;
 
   const interval = setInterval(() => {
@@ -73,6 +93,16 @@ export default function Page() {
 
     if (start >= 500) clearInterval(interval);
   }, 30);
+
+  return () => clearInterval(interval);
+}, []); // ✅ properly closed
+
+
+// 🔥 LOGO CAROUSEL (SEPARATE EFFECT)
+useEffect(() => {
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % logos.length);
+  }, 2000);
 
   return () => clearInterval(interval);
 }, []);
@@ -216,7 +246,7 @@ export default function Page() {
   {/* LEFT TEXT */}
   <div>
     <h1 style={{ fontSize: "48px", lineHeight: "1.2" }}>
-      Hire the Right Talent — Not Just Available Talent
+      Hire the Right Talent, Not Just Available Talent
     </h1>
 
     <p style={{ marginTop: "20px", color: "#94a3b8" }}>
@@ -270,6 +300,10 @@ export default function Page() {
       <p style={{ color: "#94a3b8", lineHeight: "1.7" }}>
         VD Fokus is a talent and business solution partner specializing in employee placement, outsourcing, psychological assessment
       </p>
+      
+      <p style={{ color: "#7c8aa0", marginTop: "10px", fontSize: "14px" }}>
+         Founded in 2003, over two decades of real hiring experience
+        </p>
 
       <p style={{ color: "#94a3b8", marginTop: "14px", lineHeight: "1.7" }}>
         We help companies identify, evaluate, and place high-quality talent while reducing hiring risks and improving long-term performance.
@@ -455,6 +489,46 @@ export default function Page() {
 })}
         </div>
       </section>
+      {/* TRUSTED BY LOGOS */}
+
+  <section
+  style={{
+    padding: "60px 20px",
+    textAlign: "center",
+    background: "#0B1220",
+    overflow: "hidden"
+  }}
+>
+  <p style={{ color: "#64748b", marginBottom: "30px" }}>
+    Trusted by professionals from companies including
+  </p>
+
+  {/* CAROUSEL */}
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "40px"
+    }}
+  >
+    {[0, 1, 2].map((offset) => {
+      const logoIndex = (index + offset) % logos.length;
+      return (
+        <img
+          key={offset}
+          src={`/${logos[logoIndex]}`}
+          alt="logo"
+          style={{
+            height: "60px", // 🔥 BIGGER
+            objectFit: "contain",
+            transition: "all 0.5s ease"
+          }}
+        />
+      );
+    })}
+  </div>
+</section>
       {/* IDUSTRY SECTION */}
 <section id="industry"
   style={{

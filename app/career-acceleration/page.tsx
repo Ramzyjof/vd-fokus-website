@@ -8,6 +8,28 @@ export default function Page() {
   const [pressed, setPressed] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuItems: { name: string; id: string }[] = [
+  { name: "Home", id: "cas-hero" },
+  { name: "Problem", id: "cas-problem" },
+  { name: "Why Us", id: "cas-why" },
+  { name: "Process", id: "cas-process" },
+  { name: "Package", id: "cas-package" },
+  { name: "Visit", id: "cas-visit" }
+];
+
+const scrollToSection = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    const yOffset = -100;
+    const y =
+      el.getBoundingClientRect().top +
+      window.pageYOffset +
+      yOffset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+};
 
 useEffect(() => {
   const handleResize = () => {
@@ -25,178 +47,203 @@ useEffect(() => {
       setVisible(true);
     }, 300);
   }, []);
+  const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 50);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+  
+  
+}, []);
 
   return (
     <main
-      style={{
-        fontFamily: "Inter, sans-serif",
-        background: "radial-gradient(circle at top, #1e293b, #0f172a)",
-        color: "#fff",
-        minHeight: "100vh"
-      }}
-    ><style>
-{`
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(34,197,94, 0.6); }
-  70% { box-shadow: 0 0 0 15px rgba(34,197,94, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(34,197,94, 0); }
-}
-`}
-</style>
-<div
   style={{
-    borderBottom: "1px solid rgba(255,255,255,0.08)",
-    marginBottom: "20px"
+    position: "relative", // 🔥 added
+    overflow: "hidden",   // 🔥 added
+    fontFamily: "Inter, sans-serif",
+    background: "radial-gradient(circle at top, #1e293b, #0f172a)",
+    color: "#fff",
+    minHeight: "100vh"
+    
   }}
-/>
-{/* NAVBAR */}
+>
 <header
   style={{
-    position: "sticky",
+    position: "fixed",
     top: 0,
+    width: "100%",
     zIndex: 1000,
-    background: "rgba(11,18,32,0.9)",
+    background: "rgba(11,18,32,0.95)",
     backdropFilter: "blur(10px)",
-    borderBottom: "1px solid rgba(127,29,29,0.2)"
+    borderBottom: "1px solid rgba(127,29,29,0.2)",
+    transition: "all 0.3s ease",
+    padding: scrolled ? "10px 0" : "16px 0"
   }}
 >
   <div
     style={{
       maxWidth: "1100px",
       margin: "auto",
-      padding: "10px 20px",
+      padding: "0 20px",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center"
     }}
   >
-
     {/* LOGO */}
-    <a
-  href="/"
+    <div
   style={{
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    gap: "10px",
+    cursor: "pointer"
   }}
+  onClick={() => {
+  window.location.href = "https://vdfokus.co.id/";
+}}
 >
-  <div
+  <Image
+    src="/logo.png"
+    alt="VD Fokus"
+    width={32}
+    height={32}
     style={{
-      padding: "8px 14px", // 🔥 bigger box
-      borderRadius: "12px",
-
-      // 🔥 MORE WHITE (contrast boost)
-      background: "rgba(255,255,255,0.08)",
-
-      border: "1px solid rgba(255,255,255,0.15)",
-
-      display: "flex",
-      alignItems: "center"
+      objectFit: "contain"
     }}
-  >
-    <Image
-      src="/logo.png"
-      alt="VD Fokus"
-      width={180}
-      height={60}
+  />
+
+  <span style={{ fontWeight: 600 }}>
+    VD Fokus
+  </span>
+</div>
+
+    {/* DESKTOP MENU */}
+    <nav
       style={{
-        height: "60px", // 🔥 BIGGER LOGO
-        width: "auto",
-        objectFit: "contain",
-
-        // 🔥 subtle pop
-        filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.5))"
+        display: isMobile ? "none" : "flex",
+        gap: "18px",
+        fontSize: scrolled ? "13px" : "14px"
       }}
-    />
-  </div>
-</a>
-
-    {/* MENU */}
-    <nav style={{ display: "flex", gap: "30px", alignItems: "center" }}>
-      {[
-        { name: "Home", link: "/" },
-        { name: "Career Acceleration", link: "/career-acceleration" },
-        { name: "About", link: "/about" },
-        { name: "Contact", link: "/contact" }
-      ].map((item, i) => (
-        <a
+    >
+      {menuItems.map((item, i) => (
+        <span
           key={i}
-          href={item.link}
-          style={{
-            color: "#94a3b8",
-            textDecoration: "none",
-            transition: "0.3s"
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#fff";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#94a3b8";
-          }}
+          onClick={() => scrollToSection(item.id)}
+          style={{ cursor: "pointer", color: "#94a3b8" }}
         >
           {item.name}
-        </a>
+        </span>
       ))}
-
-      {/* CTA */}
-      <a
-        href="https://wa.me/6281212940797"
-        style={{
-          padding: "10px 18px",
-          borderRadius: "999px",
-          background: "#3B82F6",
-          border: "1px solid #7F1D1D",
-          color: "#fff",
-          textDecoration: "none",
-          fontSize: "14px",
-          transition: "0.3s"
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = "#7F1D1D";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = "#3B82F6";
-        }}
-      >
-        Talk to Us
-      </a>
     </nav>
+
+    {/* HAMBURGER */}
+    <div
+      onClick={() => setMenuOpen(!menuOpen)}
+      style={{
+        display: isMobile ? "block" : "none",
+        cursor: "pointer",
+        fontSize: "20px"
+      }}
+    >
+      ☰
+    </div>
   </div>
 
-  {/* RED ACCENT LINE */}
+  {/* MOBILE DROPDOWN */}
+  <div
+    style={{
+      maxHeight: menuOpen ? "300px" : "0px",
+      overflow: "hidden",
+      transition: "all 0.3s ease",
+      background: "rgba(11,18,32,0.98)",
+      borderTop: "1px solid rgba(127,29,29,0.2)"
+    }}
+  >
+    {menuItems.map((item, i) => (
+      <div
+        key={i}
+        onClick={() => {
+          scrollToSection(item.id);
+          setMenuOpen(false);
+        }}
+        style={{
+          padding: "14px 20px",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+          cursor: "pointer",
+          color: "#94a3b8"
+        }}
+      >
+        {item.name}
+      </div>
+    ))}
+  </div>
+
+  {/* RED ACCENT */}
   <div
     style={{
       height: "2px",
-      background: "linear-gradient(to right, transparent, #7F1D1D, transparent)",
+      background:
+        "linear-gradient(to right, transparent, #7F1D1D, transparent)",
       opacity: 0.6
     }}
   />
 </header>
-
       {/* HERO */}
       <section
-        style={{
-          textAlign: "center",
-          padding: isMobile ? "50px 16px" :"80px 20px",
-          opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(40px)",
-          transition: "all 1s ease"
-        }}
-      >
-        <h1 style={{ fontSize: isMobile ? "26px" : "48px", fontWeight: 600, letterSpacing: "-1px" }}>
-          Get Selected — Not Just Interviewed
-        </h1>
+  id="cas-hero"
+  style={{
+    position: "relative", // REQUIRED for watermark
+    textAlign: "center",
+    paddingTop: isMobile ? "140px" : "180px",
+    paddingBottom: isMobile ? "60px" : "80px",
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0)" : "translateY(40px)",
+    transition: "all 1s ease"
+  }}
+>
 
-        <p style={{ marginTop: "16px", color: "#94a3b8", fontSize: "18px" }}>
-          We help professionals pass HR screening and interviews using real hiring insights.
-        </p>
-      </section>
+  {/* TITLE */}
+  <h1
+    style={{
+      position: "relative",
+      zIndex: 1,
+      fontSize: isMobile ? "26px" : "48px",
+      fontWeight: 600,
+      letterSpacing: "-1px"
+    }}
+  >
+    Get Selected — Not Just Interviewed
+  </h1>
+
+  {/* SUBTITLE */}
+  <p
+    style={{
+      position: "relative",
+      zIndex: 1,
+      marginTop: "16px",
+      color: "#94a3b8",
+      fontSize: "18px"
+    }}
+  >
+    We help professionals pass HR screening and interviews using real hiring insights.
+  </p>
+
+</section>
 
       {/* DIVIDER */}
       <div
         style={{
           width: "60%",
           margin: "0 auto 40px",
-          borderTop: "1px solid rgba(255,255,255,0.1)"
+          borderTop: "1px solid rgba(127,29,29,0.2)",
+          borderBottom: "1px solid rgba(127,29,29,0.2)"
         }}
       />
 
@@ -212,8 +259,8 @@ useEffect(() => {
         }}
       >
         {/* WHY FAIL */}
-        <div style={{ marginBottom: "50px" }}>
-          <h2 style={{ fontSize: "22px", marginBottom: "12px" }}>
+        <div id="cas-problem" style={{ marginBottom: "50px" }}>
+          <h2 style={{ fontSize: "22px", marginBottom: "12px", scrollMarginTop: "100px" }}>
             Why You Keep Failing Interviews
           </h2>
 
@@ -229,12 +276,13 @@ useEffect(() => {
         </div>
         
 {/* WHY VD FOKUS */}
-<div
+<div id="cas-why"
   style={{
     marginBottom: "60px",
     opacity: visible ? 1 : 0,
     transform: visible ? "translateY(0)" : "translateY(60px)",
-    transition: "all 1s ease 0.3s"
+    transition: "all 1s ease 0.3s",
+    scrollMarginTop: "100px"
   }}
 >
   <h2 style={{ fontSize: "22px", marginBottom: "12px" }}>
@@ -253,8 +301,8 @@ useEffect(() => {
   </ul>
 </div>
 {/* TESTIMONIALS */}
-<div style={{ marginBottom: "60px" }}>
-  <h2 style={{ fontSize: "22px", marginBottom: "20px" }}>
+<div id="cas-testimonials" style={{ marginBottom: "60px" }}>
+  <h2 style={{ fontSize: "22px", marginBottom: "20px", scrollMarginTop: "100px" }}>
     What Professionals Say
   </h2>
 
@@ -287,18 +335,18 @@ useEffect(() => {
         style={{
           padding: "20px",
           borderRadius: "16px",
-          background: "rgba(255,255,255,0.04)",
-          border: "1px solid rgba(255,255,255,0.08)",
+          background: "#1F2937",
+          border: "1px solid rgba(127,29,29,0.25)",
           transition: "all 0.3s ease"
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-5px)";
-          e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-        }}
+  e.currentTarget.style.transform = "translateY(-5px)";
+  e.currentTarget.style.background = "#2A1A1A";
+}}
+onMouseLeave={(e) => {
+  e.currentTarget.style.transform = "translateY(0)";
+  e.currentTarget.style.background = "#1F2937";
+}}
       >
         <p style={{ color: "#e2e8f0", marginBottom: "12px", lineHeight: "1.6" }}>
           “{t.text}”
@@ -311,24 +359,87 @@ useEffect(() => {
     ))}
   </div>
 </div>
-<div style={{ marginBottom: "60px" }}>
-  <h2 style={{ fontSize: "22px", marginBottom: "16px" }}>
+<div
+  id="cas-process"
+  style={{
+    marginBottom: "80px",
+    scrollMarginTop: "100px"
+  }}
+>
+  <h2 style={{ fontSize: "24px", marginBottom: "30px" }}>
     How It Works
   </h2>
 
-  {[
-    "Book via WhatsApp",
-    "Fill short form",
-    "Join session & improve"
-  ].map((step, i) => (
-    <div key={i} style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
-      <span>👉</span>
-      <span>{step}</span>
-    </div>
-  ))}
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(220px,1fr))",
+      gap: "20px"
+    }}
+  >
+    {[
+      {
+        step: "01",
+        title: "Book Your Session",
+        desc: "Contact us via WhatsApp to secure your slot. Limited sessions available each week."
+      },
+      {
+        step: "02",
+        title: "Get Personalized Strategy",
+        desc: "We review your CV, experience, and target role to identify what’s holding you back."
+      },
+      {
+        step: "03",
+        title: "Practice & Improve",
+        desc: "Go through mock interviews, structured answers, and real feedback to boost your performance."
+      }
+    ].map((item, i) => (
+      <div
+        key={i}
+        style={{
+          padding: "24px",
+          borderRadius: "16px",
+          background: "#1F2937",
+          border: "1px solid rgba(127,29,29,0.25)",
+          transition: "all 0.3s ease",
+          position: "relative"
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-6px)";
+          e.currentTarget.style.background = "#2A1A1A";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.background = "#1F2937";
+        }}
+      >
+        {/* STEP NUMBER */}
+        <div
+          style={{
+            fontSize: "12px",
+            fontWeight: 600,
+            color: "#7F1D1D",
+            marginBottom: "8px"
+          }}
+        >
+          STEP {item.step}
+        </div>
+
+        {/* TITLE */}
+        <h3 style={{ marginBottom: "10px" }}>
+          {item.title}
+        </h3>
+
+        {/* DESC */}
+        <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.6" }}>
+          {item.desc}
+        </p>
+      </div>
+    ))}
+  </div>
 </div>
        {/* PACKAGE */}
-<div
+<div id="cas-package"
   tabIndex={0}
   style={{
     padding: isMobile ? "20px" : "32px",
@@ -339,7 +450,8 @@ useEffect(() => {
     transition: "all 0.3s ease",
     outline: "none",
     marginTop: "40px",
-    boxShadow: "0 30px 80px rgba(0,0,0,0.6)"
+    boxShadow: "0 30px 80px rgba(0,0,0,0.6)",
+    scrollMarginTop: "100px"
   }}
 
   // 🖱 HOVER
@@ -402,7 +514,8 @@ useEffect(() => {
 
   <div
     style={{
-      borderTop: "1px solid rgba(255,255,255,0.1)",
+      borderTop: "1px solid rgba(127,29,29,0.2)",
+      borderBottom: "1px solid rgba(127,29,29,0.2)",
       margin: "20px 0"
     }}
   />
@@ -469,8 +582,8 @@ useEffect(() => {
         maxHeight: showDetails ? (isMobile ? "1500px" : "1200px") : "0px",
         padding: isMobile ? "14px" : "16px",
         borderRadius: "12px",
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        background: "#1F2937",
+        border: "1px solid rgba(127,29,29,0.25)",
         transition: "all 0.3s ease"
       }}
       onMouseEnter={(e) => {
@@ -561,27 +674,148 @@ useEffect(() => {
 width: isMobile ? "100%" : "auto",
 textAlign: "center",
   borderRadius: "999px",
-  background: "#22c55e",
+  background: "#3B82F6",
+  border: "1px solid #7F1D1D",
   color: "#fff",
   textDecoration: "none",
   fontWeight: 500,
   animation: "pulse 1.5s"
+  
 }}
 
   onMouseEnter={(e) => {
     e.currentTarget.style.transform = "scale(1.08)";
     e.currentTarget.style.boxShadow = "0 0 25px rgba(34,197,94,0.8)";
+    e.currentTarget.style.background = "#7F1D1D";
   }}
 
   onMouseLeave={(e) => {
     e.currentTarget.style.transform = "scale(1)";
     e.currentTarget.style.boxShadow = "0 10px 20px rgba(34,197,94,0.3)";
+    e.currentTarget.style.background = "#3B82F6";
   }}
+  
 >
   Book via WhatsApp
 </a>
 </div>
-      </div>
-    </main>
+<section
+  id="cas-contact"
+  style={{
+    padding: "100px 20px",
+    background: "rgba(255,255,255,0.02)",
+    borderTop: "1px solid rgba(127,29,29,0.2)",
+    borderBottom: "1px solid rgba(127,29,29,0.2)",
+    textAlign: "center",
+    scrollMarginTop: "100px"
+  }}
+>
+  <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+    
+    {/* TITLE */}
+    <div id="cas-visit" style={{ marginBottom: "20px" }}>
+      <h2
+        style={{
+          fontSize: "32px",
+          fontWeight: 600,
+          color: "#e5e7eb"
+        }}
+      >
+        Visit Us
+      </h2>
+    </div>
+
+    {/* SUBTITLE */}
+    <p
+      style={{
+        color: "#94a3b8",
+        marginBottom: "30px",
+        fontSize: "16px"
+      }}
+    >
+      Come visit our office in West Java
+    </p>
+
+    {/* LOGO (REPLACES COMPANY NAME) */}
+    <div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "20px"
+  }}
+>
+  <Image
+    src="/logo.png"
+    alt="VD Fokus"
+    width={80}
+    height={80}
+    style={{
+      filter: "drop-shadow(0 0 10px rgba(127,29,29,0.6))"
+    }}
+  />
+</div>
+
+    {/* ADDRESS */}
+    <p
+      style={{
+        fontSize: "15px",
+        color: "#94a3b8",
+        marginBottom: "30px",
+        lineHeight: "1.6"
+      }}
+    >
+      Jl. Raya Bogor KM 30, Cimanggis, Depok, West Java, Indonesia
+    </p>
+
+    {/* BUTTON */}
+    <a
+      href="https://www.google.com/maps?q=-6.3836475,106.9248334"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: "inline-block",
+        marginBottom: "40px",
+        padding: "12px 24px",
+        borderRadius: "999px",
+        background: "#3B82F6",
+        border: "1px solid #7F1D1D",
+        color: "#fff",
+        fontSize: "14px",
+        fontWeight: 500,
+        textDecoration: "none",
+        boxShadow: "0 0 20px rgba(127,29,29,0.4)",
+        transition: "all 0.3s ease"
+      }}
+      onMouseOver={(e) =>
+        (e.currentTarget.style.transform = "scale(1.05)")
+      }
+      onMouseOut={(e) =>
+        (e.currentTarget.style.transform = "scale(1)")
+      }
+    >
+      Get Directions →
+    </a>
+
+    {/* MAP */}
+    <div
+      style={{
+        borderRadius: "16px",
+        overflow: "hidden",
+        border: "1px solid rgba(127,29,29,0.25)"
+      }}
+    >
+      <iframe
+        src="https://www.google.com/maps?q=-6.3836475,106.9248334&z=15&output=embed"
+        width="100%"
+        height="350"
+        style={{ border: 0 }}
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>
+      </div> 
+</main>
   );
 }
