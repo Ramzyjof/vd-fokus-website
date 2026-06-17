@@ -1219,8 +1219,14 @@ onMouseLeave={(e) => {
 <div
   style={{
     textAlign: "center",
-    marginBottom: isMobile ? "40px" : "70px",
-    paddingTop: isMobile ? "40px" : "0",
+
+    paddingTop: isMobile
+      ? "70px"
+      : "120px",
+
+    marginBottom: isMobile
+      ? "40px"
+      : "70px",
   }}
 >
   <div
