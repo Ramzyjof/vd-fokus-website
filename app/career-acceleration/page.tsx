@@ -233,9 +233,8 @@ useEffect(() => {
     maxWidth: "540px",
 
     padding: isMobile
-      ? "40px 28px"
-      : "140px 60px 60px",
-
+      ? "90px 28px 40px"
+      : "160px 60px 60px",
   }}
 >
   
