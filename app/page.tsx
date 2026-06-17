@@ -328,35 +328,38 @@ useEffect(() => {
   {
     title: "Employee Placement",
     desc: "We source and place high-quality candidates tailored to your business needs.",
-    icon: Briefcase // 🔥 better than Building2
+    icon: Briefcase,
+    link: "/services/placement",
   },
   {
     title: "Outsourcing",
     desc: "Flexible workforce solutions to support your operations efficiently.",
-    icon: Users // ✅ keep (fits well)
+    icon: Users,
   },
   {
     title: "Psychological Assesment",
     desc: "Professional psychological consulting, aptitude interest testing, and candidate assessment services.",
+    icon: Brain,
     type: "highlight",
-    icon: Brain // 🔥 MUCH better
+    link: "/services/psychological-test",
   },
   {
     title: "Risk Management",
     desc: "Identify hiring risks and improve decision-making.",
-    icon: ShieldCheck // 🔥 clearer meaning
+    icon: ShieldCheck,
   },
   {
     title: "SOP Development",
     desc: "Design clear and scalable standard procedures.",
-    icon: ClipboardList // 🔥 more accurate
+    icon: ClipboardList,
   },
   {
     title: "Career Acceleration Service",
     desc: "CV optimization, Interview preparation, & Mock Interview",
-    icon: Rocket, // 🔥 stronger, more aspirational
-    type: "highlight"
-  }
+    icon: Rocket,
+    type: "highlight",
+    link: "/career-acceleration",
+  },
 ];
 
   return (
