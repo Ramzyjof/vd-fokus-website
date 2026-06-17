@@ -3,44 +3,239 @@ type Dot = {
   top: string;
   left: string;
 };
+
+import { useLanguage } from "./context/LanguageContext";
+import { translations } from "./translations";
 import { useEffect, useState } from "react";
 import {
   Building2,
   Users,
+  UserCheck,
+  Crown,
+  Gem,
+  Package,
+  Search,
   FileText,
   Target,
-  Factory,
   ShoppingCart,
   Laptop,
   Truck,
   HeartPulse,
   Landmark,
-  Hotel,
   Building,
-  Zap
+  Zap,
+  Brain,
+  ShieldCheck,
+  ClipboardList,
+  Rocket,
+  MessageCircle,
+  ArrowRight,
+  Factory,
+  ShoppingBag,
+  Store,
+  Hammer,
+  Car,
+  Hotel,
+  GraduationCap,
+  Briefcase,
+   MessageSquare,
+  TrendingUp,
+  Clock3,
+  Phone,
+  MapPin,
 } from "lucide-react";
 
 export default function Page() {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
   const [started, setStarted] = useState(false);
-  const logos = [
-  "3m.png",
-  "abbot.png",
-  "atlas.png",
-  "cola.png",
-  "ecl.png",
-  "Freeport.png",
-  "Freesius.png",
-  "Fusheng.png",
-  "gmk.png",
-  "intertek.png",
-  "mtu.png",
-  "pz.png",
-  "redpath.png",
-  "rr.png",
-  "Sunindo.png",
-  "technip.png"
+  const [startCounting, setStartCounting] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  const industries = [
+  {
+    name: "Manufacturing",
+    icon: Factory,
+  },
+  {
+    name: "FMCG",
+    icon: ShoppingBag,
+  },
+  {
+    name: "Retail",
+    icon: Store,
+  },
+  {
+    name: "Technology",
+    icon: Laptop,
+  },
+  {
+    name: "Healthcare",
+    icon: HeartPulse,
+  },
+  {
+    name: "Logistics",
+    icon: Truck,
+  },
+  {
+    name: "Construction",
+    icon: Hammer,
+  },
+  {
+    name: "Financial Services",
+    icon: Landmark,
+  },
+  {
+    name: "Automotive",
+    icon: Car,
+  },
+  {
+    name: "Hospitality",
+    icon: Hotel,
+  },
+  {
+    name: "Education",
+    icon: GraduationCap,
+  },
+  {
+    name: "Professional Services",
+    icon: Briefcase,
+  },
 ];
+{industries.map((industry) => {
+  const Icon = industry.icon;
+
+  return (
+    <div
+      key={industry.name}
+      style={{
+        background:
+          "linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))",
+
+        border:
+          "1px solid rgba(255,255,255,.08)",
+
+        backdropFilter: "blur(16px)",
+
+        borderRadius: isMobile ? "16px" : "20px",
+
+        padding: isMobile ? "18px" : "24px",
+
+        display: "flex",
+        alignItems: "center",
+        gap: "12px",
+
+        transition: "all .3s ease",
+      }}
+    >
+      <div
+        style={{
+          width: isMobile ? "38px" : "46px",
+          height: isMobile ? "38px" : "46px",
+
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+
+          borderRadius: "12px",
+
+          background:
+            "rgba(96,165,250,.12)",
+
+          flexShrink: 0,
+        }}
+      >
+        <Icon
+          size={isMobile ? 18 : 22}
+          color="#60A5FA"
+        />
+      </div>
+
+      <span
+        style={{
+          color: "#E2E8F0",
+
+          fontSize: isMobile
+            ? "13px"
+            : "15px",
+
+          fontWeight: 600,
+
+          lineHeight: 1.4,
+        }}
+      >
+        {industry.name}
+      </span>
+    </div>
+  );
+})}
+  const logos = [
+  "/logos/3m.png",
+  "/logos/abbot.png",
+  "/logos/atlas.png",
+  "/logos/cola.png",
+  "/logos/ecl.png",
+  "/logos/freeport.png",
+  "/logos/freesius.png",
+  "/logos/fusheng.png",
+  "/logos/gmk.png",
+  "/logos/intertek.png",
+  "/logos/mtu.png",
+  "/logos/pz.png",
+  "/logos/redpath.png",
+  "/logos/rr.png",
+  "/logos/sunindo.png",
+];
+const positions = [
+  "HR Manager",
+  "Recruitment Specialist",
+  "HR Business Partner",
+  "Finance Manager",
+  "Accounting Staff",
+  "Sales Manager",
+  "Business Development",
+  "Marketing Manager",
+  "Digital Marketing",
+  "Operations Manager",
+  "Supply Chain Manager",
+  "Procurement Specialist",
+  "Production Supervisor",
+  "Plant Manager",
+  "Quality Assurance",
+  "Warehouse Manager",
+  "IT Support",
+  "Software Engineer",
+  "Project Manager",
+  "General Manager",
+];
+const careerInsights = [
+  {
+    title: "Interview Preparation",
+    description:
+      "Master common interview questions and improve your confidence through structured preparation.",
+    icon: MessageSquare,
+  },
+  {
+    title: "CV Optimization",
+    description:
+      "Learn how recruiters evaluate resumes and make your profile stand out.",
+    icon: FileText,
+  },
+  {
+    title: "Career Development",
+    description:
+      "Build long-term career strategies and position yourself for future opportunities.",
+    icon: TrendingUp,
+  },
+];
+const { language } = useLanguage();
+
+const t =
+  translations[
+    language as keyof typeof translations
+  ];
+  console.log("language =", language);
+console.log("t =", t);
+console.log("t.who =", t?.who);
 
 const [index, setIndex] = useState(0);
   const [counts, setCounts] = useState({
@@ -76,26 +271,37 @@ const [index, setIndex] = useState(0);
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
-
-  // 🔥 COUNTING ANIMATION
 useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  handleResize(); // run once on load
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+  
+useEffect(() => {
+  if (!startCounting) return;
+
   let start = 0;
 
   const interval = setInterval(() => {
-    start += 20;
+    start += 5; // 🔥 slower increment
 
     setCounts({
-      industries: Math.min(Math.floor(start / 50), 20),
+      industries: Math.min(Math.floor(start / 25), 20),
       clients: Math.min(start, 500),
       cv: Math.min(start * 200, 100000),
       talents: Math.min(start * 100, 50000)
     });
 
     if (start >= 500) clearInterval(interval);
-  }, 30);
+  }, 40); // 🔥 slightly slower interval
 
   return () => clearInterval(interval);
-}, []); // ✅ properly closed
+}, [startCounting]);
 
 
 // 🔥 LOGO CAROUSEL (SEPARATE EFFECT)
@@ -108,580 +314,1411 @@ useEffect(() => {
 }, []);
 
   // ✅ SERVICES DATA (FIXED POSITION)
-  const services = [
-    {
-      title: "Employee Placement",
-      desc: "We source and place high-quality candidates tailored to your business needs."
-    },
-    {
-      title: "Outsourcing",
-      desc: "Flexible workforce solutions to support your operations efficiently."
-    },
-    {
-      title: "Psychological Test",
-      desc: "Assess candidate personality, cognitive ability, and job fit with structured evaluation."
-    },
-    {
-      title: "Risk Management",
-      desc: "Identify hiring risks and ensure better decision-making in recruitment and operations."
-    },
-    {
-      title: "SOP Development",
-      desc: "Design clear and scalable standard operating procedures for your organization."
-    },
-    {
-      title: "Career Acceleration Service",
-      desc: "Personalized CV optimization, interview preparation, and coaching to help professionals get selected faster.",
-      type: "highlight"
-    }
-  ];
+  type Service = {
+  title: string;
+  desc: string;
+  icon: any;
+
+  features?: string[];
+
+  link?: string;
+  type?: string;
+};
+ const services: Service[] = [
+  {
+    title: "Employee Placement",
+    desc: "We source and place high-quality candidates tailored to your business needs.",
+    icon: Briefcase // 🔥 better than Building2
+  },
+  {
+    title: "Outsourcing",
+    desc: "Flexible workforce solutions to support your operations efficiently.",
+    icon: Users // ✅ keep (fits well)
+  },
+  {
+    title: "Psychological Assesment",
+    desc: "Professional psychological consulting, aptitude interest testing, and candidate assessment services.",
+    type: "highlight",
+    icon: Brain // 🔥 MUCH better
+  },
+  {
+    title: "Risk Management",
+    desc: "Identify hiring risks and improve decision-making.",
+    icon: ShieldCheck // 🔥 clearer meaning
+  },
+  {
+    title: "SOP Development",
+    desc: "Design clear and scalable standard procedures.",
+    icon: ClipboardList // 🔥 more accurate
+  },
+  {
+    title: "Career Acceleration Service",
+    desc: "CV optimization, Interview preparation, & Mock Interview",
+    icon: Rocket, // 🔥 stronger, more aspirational
+    type: "highlight"
+  }
+];
 
   return (
-    <main style={{ fontFamily: "Inter, sans-serif", background: "#0f172a", color: "#F1F5F9" }}>
-{/* NAVBAR */}
-<header
-  style={{
-    position: "sticky",
-    top: 0,
-    zIndex: 1000,
-    background: "rgba(11,18,32,0.9)",
-    backdropFilter: "blur(10px)",
-    borderBottom: "1px solid rgba(127,29,29,0.2)"
-  }}
->
-  <div
+  <main
     style={{
-      maxWidth: "1100px",
-      margin: "auto",
-      padding: "16px 20px",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center"
+      position: "relative",
+
+      width: "100%",
+      maxWidth: "100vw",
+
+      overflowX: "hidden",
+      overflowY: "visible",
+
+      fontFamily: "Inter, sans-serif",
+
+      background:
+        "radial-gradient(circle at top, #1e293b, #0f172a)",
+
+      color: "#fff",
+
+      minHeight: "100vh",
     }}
   >
-
-    {/* LOGO */}
-    <div style={{ fontWeight: 600, fontSize: "18px" }}>
-      VD Fokus
-    </div>
-
-    {/* MENU */}
-    <nav style={{ display: "flex", gap: "30px", alignItems: "center" }}>
-      {[
-        { name: "Home", id: "hero" },
-        { name: "Services", id: "services" },
-        { name: "Industries", id: "industry" },
-        { name: "Positions", id: "positions" },
-        { name: "Visit", id: "visit" }
-      ].map((item, i) => (
-        <span
-          key={i}
-          onClick={() => {
-            document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-          }}
-          style={{
-            cursor: "pointer",
-            color: "#94a3b8",
-            transition: "0.3s",
-            position: "relative"
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#F1F5F9";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#94a3b8";
-          }}
-        >
-          {item.name}
-        </span>
-      ))}
-
-      {/* CTA BUTTON */}
-      <a
-        href="https://wa.me/6281212940797"
-        style={{
-          padding: "10px 18px",
-          borderRadius: "999px",
-          background: "#3B82F6",
-          border: "1px solid #7F1D1D",
-          color: "#fff",
-          textDecoration: "none",
-          fontSize: "14px",
-          transition: "0.3s"
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = "#7F1D1D";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = "#3B82F6";
-        }}
-      >
-        Talk to Us
-      </a>
-    </nav>
-  </div>
-
-  {/* 🔥 RED ACCENT LINE */}
-  <div
-    style={{
-      height: "2px",
-      background: "linear-gradient(to right, transparent, #7F1D1D, transparent)",
-      opacity: 0.6
-    }}
-  />
-</header>
       {/* HERO */}
-      <section id="hero"
-  style={{
-    maxWidth: "1100px",
-    margin: "auto",
-    padding: "100px 20px",
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "40px",
-    alignItems: "center"
-    
-  }}
->
-  {/* LEFT TEXT */}
-  <div>
-    <h1 style={{ fontSize: "48px", lineHeight: "1.2" }}>
-      Hire the Right Talent, Not Just Available Talent
-    </h1>
-
-    <p style={{ marginTop: "20px", color: "#94a3b8" }}>
-      We help companies find, evaluate, and place high-quality candidates using real hiring insight.
-    </p>
-  </div>
-
-  {/* RIGHT IMAGE */}
-  <div
-    style={{
-      borderRadius: "20px",
-      overflow: "hidden",
-      border: "1px solid rgba(255,255,255,0.1)"
-    }}
-  >
-    <img
-      src="/hero.jpg"
-      alt="Business meeting"
-      style={{ width: "100%", display: "block", height:"auto" }}
-    />
-  </div>
-</section>
-{/* WHO WE ARE */}
 <section
-  data-animate="who"
+  id="home-hero"
   style={{
-    ...getAnimation("who"),
-    padding: "100px 20px",
-    background: "#111827",
-    borderTop: "1px solid rgba(255,255,255,0.06)",
-    borderBottom: "1px solid rgba(255,255,255,0.06)"
+    position: "relative",
+    minHeight: isMobile ? "92vh" : "800px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
   }}
 >
-  <div
-    style={{
-      maxWidth: "1100px",
-      margin: "auto",
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(300px,1fr))",
-      gap: "60px",
-      alignItems: "center"
-    }}
-  >
+  {/* Background Image */}
+  <img
+    src={
+      isMobile
+        ? "hero-mobile.png"
+        : "hero.png"
+    }
+    alt="VD Fokus"
+     style={{
+    position: "absolute",
+    inset: 0,
 
-    {/* LEFT */}
-    <div>
-      <h2 style={{ fontSize: "34px", marginBottom: "20px" }}>
-        Who We Are
-      </h2>
+    width: "100%",
+    height: "100%",
 
-      <p style={{ color: "#94a3b8", lineHeight: "1.7" }}>
-        VD Fokus is a talent and business solution partner specializing in employee placement, outsourcing, psychological assessment
-      </p>
-      
-      <p style={{ color: "#7c8aa0", marginTop: "10px", fontSize: "14px" }}>
-         Founded in 2003, over two decades of real hiring experience
-        </p>
+    objectFit: isMobile
+      ? "contain"
+      : "cover",
 
-      <p style={{ color: "#94a3b8", marginTop: "14px", lineHeight: "1.7" }}>
-        We help companies identify, evaluate, and place high-quality talent while reducing hiring risks and improving long-term performance.
-      </p>
+    objectPosition: isMobile
+      ? "center top"
+      : "center 15%",
 
-      <p style={{ color: "#64748b", marginTop: "16px" }}>
-        Built on real hiring experience, we focus on delivering results — not just process.
-      </p>
-      <a
-  href="/about"
-  style={{
-    display: "inline-block",
-    marginTop: "24px",
-    padding: "12px 20px",
-    borderRadius: "999px",
-
-    // 🔥 THEME MATCH
-    background: "#3B82F6",
-    border: "1px solid #7F1D1D",
-
-    color: "#fff",
-    textDecoration: "none",
-    fontSize: "14px",
-    fontWeight: 500,
-
-    transition: "all 0.3s ease"
+    background: "#020617",
   }}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.background = "#7F1D1D";
-    e.currentTarget.style.transform = "translateY(-2px)";
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.background = "#3B82F6";
-    e.currentTarget.style.transform = "translateY(0)";
-  }}
->
-  Learn More About Us →
-</a>
-    </div>
+/>
 
-    {/* RIGHT */}
-    <div
-      style={{
-        padding: "30px",
-        borderRadius: "20px",
-        background: "#1F2937",
-        border: "1px solid rgba(127,29,29,0.25)",
-        boxShadow: "0 0 40px rgba(127,29,29,0.15)",
-        transition: "all 0.3s ease"
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-6px)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-      }}
-    >
-      <h3 style={{ marginBottom: "16px" }}>
-        What Makes Us Different
-      </h3>
-
-      {[
-        "Real hiring & executive search experience",
-        "Structured evaluation approach",
-        "Quality over quantity",
-        "Outcome-driven solutions"
-      ].map((item, i) => (
-        <div key={i} style={{ marginBottom: "10px", color: "#cbd5f5" }}>
-          ✔ {item}
-        </div>
-      ))}
-    </div>
-
-  </div>
-  
-</section>
-      {/* SERVICES */}
-      <section id="services"
-        data-animate="services"
-        style={{
-          ...getAnimation("services"),
-          padding: "100px 20px",
-          background: "#0B1220"
-        }}
-      >
-        <h2 style={{ fontSize: "28px", marginBottom: "30px" }}>
-          Our Services
-        </h2>
-
-        <div
-          style={{
-            display: "grid",
-            gap: "20px",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))"
-          }}
-        >
-          {services.map((service, i) => {
-  const isCAS = service.title === "Career Acceleration Service";
-
-  return (
-    <div
-      key={i}
-      onClick={() => {
-        if (isCAS) {
-          window.location.href = "/career-acceleration";
-        }
-      }}
-      style={{
-        padding: "24px",
-        borderRadius: "16px",
-        position: "relative",
-
-        background:
-          service.type === "highlight"
-            ? "linear-gradient(135deg, #7F1D1D, #450A0A)"
-            : "#1F2937",
-
-        boxShadow:
-          service.type === "highlight"
-          ? "0 0 30px rgba(127,29,29,0.5)"
-          : "none",
-
-        border:
-          service.type === "highlight"
-            ? "none"
-            : "1px solid rgba(127,29,29,0.25)",
-
-        cursor: isCAS ? "pointer" : "default",
-        transition: "all 0.3s ease"
-        
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-6px)";
-        e.currentTarget.style.boxShadow = isCAS
-          ? "0 10px 30px rgba(127,29,29,0.4)"
-          : "0 10px 30px rgba(0,0,0,0.3)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
-    >
-      {service.type === "highlight" && (
+  {/* Overlay */}
   <div
     style={{
       position: "absolute",
-      top: "12px",
-      right: "12px",
-      fontSize: "10px",
-      padding: "4px 10px",
-      borderRadius: "999px",
+      inset: 0,
+      background: isMobile
+        ? `
+        linear-gradient(
+          180deg,
+          rgba(2,6,23,.92) 0%,
+          rgba(2,6,23,.82) 50%,
+          rgba(2,6,23,.95) 100%
+        )
+      `
+        : `
+        linear-gradient(
+          90deg,
+          rgba(2,6,23,.92) 0%,
+          rgba(2,6,23,.78) 45%,
+          rgba(2,6,23,.45) 100%
+        )
+      `,
+      zIndex: 1,
+    }}
+  />
 
-      background: "#7F1D1D",
-      color: "#fff",
+  {/* Glow */}
+  <div
+    style={{
+      position: "absolute",
+      width: "500px",
+      height: "500px",
+      borderRadius: "50%",
+      background:
+        "radial-gradient(circle, rgba(59,130,246,.35) 0%, transparent 70%)",
+      filter: "blur(80px)",
+      right: "-150px",
+      top: "-100px",
+      zIndex: 1,
+    }}
+  />
 
-      boxShadow: "0 0 10px rgba(127,29,29,0.8)",
-      animation: "pulseNew 1.5s infinite"
+  {/* Content */}
+  <div
+  style={{
+    position: "relative",
+    zIndex: 2,
+
+    width: "100%",
+    maxWidth: "1400px",
+
+    margin: "0 auto",
+
+    padding: isMobile
+      ? "120px 24px 80px"
+      : "160px 60px",
+
+    boxSizing: "border-box",
+  }}
+>
+    {/* Badge */}
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "10px",
+        padding: "10px 18px",
+        borderRadius: "999px",
+        background:
+          "rgba(255,255,255,.06)",
+        border:
+          "1px solid rgba(255,255,255,.12)",
+        backdropFilter: "blur(12px)",
+        marginBottom: "28px",
+      }}
+    >
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "999px",
+          background: "#3B82F6",
+        }}
+      />
+
+      <span
+        style={{
+          color: "#E2E8F0",
+          fontSize: "13px",
+          fontWeight: 600,
+          letterSpacing: "1px",
+        }}
+      >
+        PROFESSIONAL HR & TALENT SOLUTIONS
+      </span>
+    </div>
+
+    {/* Heading */}
+     <h1
+  style={{
+    fontSize: isMobile ? "38px" : "65px",
+    lineHeight: "0.95",
+    fontWeight: 700,
+    marginBottom: "10px",
+  }}
+>
+  Hire the Right Talent,
+</h1>
+
+<div
+  style={{
+    fontSize: isMobile ? "30px" : "55px",
+    lineHeight: "0.95",
+    fontWeight: 700,
+    background:
+      "linear-gradient(90deg,#5B8CFF,#B08BFF,#FF6B81)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+    display: "inline-block",
+    marginBottom: "24px",
+  }}
+>
+  Not Just
+  <br />
+  Available Talent
+</div>
+
+    {/* Description */}
+   <p
+  style={{
+    maxWidth: "650px",
+    color: "#CBD5E1",
+    fontSize: isMobile ? "16px" : "20px",
+    lineHeight: 1.8,
+    marginBottom: isMobile ? "22px" : "40px",
+  }}
+>
+  We help companies find, evaluate,
+  and place high-quality candidates
+  using real hiring insight.
+</p>
+
+    {/* CTA */}
+<div
+  style={{
+    display: "flex",
+    flexDirection: isMobile ? "column" : "row",
+    gap: isMobile ? "12px" : "16px",
+
+    width: "100%",
+    maxWidth: isMobile ? "100%" : "520px",
+
+    marginTop: "32px",
+    marginBottom: "32px",
+  }}
+>
+  <a
+  href="https://wa.me/628161387821"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    flex: isMobile ? undefined : 1,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    gap: "10px",
+
+    width: "100%",
+
+    height: isMobile ? "58px" : "60px",
+
+    borderRadius: isMobile ? "18px" : "16px",
+
+    background: "#25D366",
+
+    color: "#fff",
+
+    fontSize: isMobile ? "17px" : "16px",
+    fontWeight: 700,
+
+    textDecoration: "none",
+
+    boxShadow:
+      "0 12px 30px rgba(37,211,102,.25)",
+
+    border: "none",
+  }}
+>
+  <MessageCircle size={20} />
+
+  <span>WhatsApp Us</span>
+</a>
+
+  <a
+  href="#services"
+  style={{
+    flex: isMobile ? undefined : 1,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    width: "100%",
+
+    height: isMobile ? "52px" : "60px",
+
+    borderRadius: isMobile ? "18px" : "16px",
+
+    background:
+      "rgba(255,255,255,.04)",
+
+    border:
+      "1px solid rgba(255,255,255,.1)",
+
+    backdropFilter: "blur(12px)",
+
+    color: "#fff",
+
+    fontSize: isMobile ? "16px" : "16px",
+    fontWeight: 600,
+
+    textDecoration: "none",
+  }}
+>
+  Explore Services →
+</a>
+</div>
+
+   {/* TRUST METRICS */}
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: isMobile
+      ? "repeat(2,1fr)"
+      : "repeat(4,1fr)",
+
+    gap: isMobile ? "12px" : "20px",
+
+    maxWidth: "1100px",
+
+    marginTop: isMobile ? "24px" : "48px",
+  }}
+>
+  {[
+    {
+      value: "20+",
+      label: "Years Experience",
+    },
+    {
+      value: "500+",
+      label: "Successful Placements",
+    },
+    {
+      value: "1000+",
+      label: "Candidates Evaluated",
+    },
+    {
+      value: "30+",
+      label: "Industries Served",
+    },
+  ].map((item) => (
+    <div
+      key={item.label}
+      style={{
+        background:
+          "rgba(10,20,40,.75)",
+
+        border:
+          "1px solid rgba(255,255,255,.08)",
+
+        backdropFilter: "blur(12px)",
+
+        borderRadius: "20px",
+
+        padding: isMobile
+          ? "10px"
+          : "28px",
+
+        minHeight: isMobile
+          ? "70px"
+          : "140px",
+
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+
+        transition:
+          "all .3s ease",
+      }}
+    >
+      <div
+        style={{
+          fontSize: isMobile
+            ? "28px"
+            : "44px",
+
+          fontWeight: 700,
+
+          color: "#60A5FA",
+
+          lineHeight: 1,
+
+          marginBottom: "10px",
+          background:
+          "linear-gradient(90deg,#60A5FA,#A78BFA,#F472B6)",
+
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        }}
+      >
+        {item.value}
+      </div>
+
+      <div
+        style={{
+          color: "#CBD5E1",
+
+          fontSize: isMobile
+            ? "12px"
+            : "15px",
+
+          fontWeight: 500,
+
+          lineHeight: 1.4,
+        }}
+      >
+        {item.label}
+      </div>
+    </div>
+  ))}
+</div>
+  </div>
+</section>
+     
+ {/* SERVICES */}
+<section
+  id="services"
+  data-animate="services"
+  style={{
+    ...getAnimation("services"),
+    padding: isMobile ? "60px 20px" : "90px 40px",
+    position: "relative",
+  }}
+>
+  <div
+    style={{
+      maxWidth: "1400px",
+      margin: "0 auto",
     }}
   >
-    NEW
-  </div>
-)}
-      <h3 style={{ marginBottom: "10px" }}>
-        {service.title}
-      </h3>
+    {/* HEADER */}
+    <div
+      style={{
+        textAlign: "center",
+        marginBottom: isMobile ? "30px" : "50px"
+      }}
+    >
+      <div
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "10px",
+          padding: "10px 18px",
+          borderRadius: "999px",
+          background: "rgba(255,255,255,.04)",
+          border: "1px solid rgba(255,255,255,.08)",
+          marginBottom: "24px",
+        }}
+      >
+        <Building2 size={16} color="#60A5FA" />
 
-      <p style={{ color: "#94a3b8" }}>
-        {service.desc}
+        <span
+          style={{
+            color: "#CBD5E1",
+            fontSize: "13px",
+            fontWeight: 600,
+            letterSpacing: "1px",
+          }}
+        >
+          OUR SERVICES
+        </span>
+      </div>
+
+      <h2
+        style={{
+          fontSize: isMobile ? "38px" : "64px",
+          fontWeight: 700,
+          lineHeight: 1,
+          marginBottom: "20px",
+        }}
+      >
+        Talent Solutions
+        <br />
+
+        <span
+          style={{
+            background:
+              "linear-gradient(90deg,#60A5FA,#A78BFA,#F472B6)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Built For Growth
+        </span>
+      </h2>
+
+      <p
+        style={{
+          maxWidth: "760px",
+          margin: "0 auto",
+          color: "#94A3B8",
+          lineHeight: 1.8,
+          fontSize: isMobile ? "15px" : "18px",
+        }}
+      >
+        Comprehensive recruitment, assessment,
+        outsourcing, and business solutions
+        designed to help organizations scale
+        with confidence.
       </p>
-
-      {/* 🔥 ONLY FOR CAS */}
-      {isCAS && (
-        <p style={{
-          marginTop: "12px",
-          fontWeight: 600,
-          color: "#fff"
-        }}>
-          Learn More →
-        </p>
-      )}
     </div>
-  );
-})}
-        </div>
-      </section>
-      {/* TRUSTED BY LOGOS */}
 
-  <section
+    {/* CARDS */}
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns:
+        isMobile
+          ? "repeat(2,minmax(0,1fr))"
+          : "repeat(3,minmax(0,1fr))",
+        gap: isMobile ? "16px" : "24px",
+      }}
+    >
+      {services.map((service, i) => {
+        const Icon = service.icon;
+
+        const isCAS =
+          service.title ===
+          "Career Acceleration Service";
+
+        return (
+          <div
+            key={i}
+            onClick={() => {
+              if (service.link) {
+                window.location.href =
+                  service.link;
+              }
+            }}
+            style={{
+              position: "relative",
+
+             padding:
+              isMobile
+                ? "18px"
+                : "32px",
+
+              borderRadius:
+                isMobile
+                  ? "16px"
+                  : "24px",
+
+              background: isCAS
+                ? `
+                  linear-gradient(
+                  180deg,
+                  rgba(59,130,246,.18),
+                  rgba(167,139,250,.12)
+                  )
+                `
+                : `
+                  linear-gradient(
+                  180deg,
+                  rgba(255,255,255,.05),
+                  rgba(255,255,255,.02)
+                  )
+                `,
+
+              border: isCAS
+                ? "1px solid rgba(96,165,250,.25)"
+                : "1px solid rgba(255,255,255,.08)",
+
+              backdropFilter:
+                "blur(18px)",
+
+              cursor: service.link
+                ? "pointer"
+                : "default",
+
+              transition:
+                "all .3s ease",
+
+              overflow: "hidden",
+            }}
+            onMouseEnter={(e) => {
+              if (!isMobile) {
+                e.currentTarget.style.transform =
+                  "translateY(-8px)";
+
+                e.currentTarget.style.boxShadow =
+                  "0 25px 50px rgba(0,0,0,.35)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(0)";
+
+              e.currentTarget.style.boxShadow =
+                "none";
+            }}
+          >
+            {isCAS && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "18px",
+                  right: "18px",
+
+                  padding: "6px 12px",
+
+                  borderRadius: "999px",
+
+                  background:
+                    "linear-gradient(135deg,#60A5FA,#A78BFA)",
+
+                  color: "#fff",
+
+                  fontSize: "11px",
+                  fontWeight: 700,
+                }}
+              >
+                FEATURED
+              </div>
+            )}
+
+            {/* ICON */}
+            <div
+              style={{
+               width: isMobile ? "48px" : "64px",
+              height: isMobile ? "48px" : "64px",
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+
+                borderRadius: "18px",
+
+                background:
+                  "rgba(96,165,250,.12)",
+
+                marginBottom: "22px",
+              }}
+            >
+              <Icon
+              size={isMobile ? 22 : 30}
+              color="#60A5FA"
+            />
+            </div>
+
+            {/* TITLE */}
+            <h3
+              style={{
+                fontSize: isMobile
+                ? "18px"
+                : "24px",
+                fontWeight: 700,
+                marginBottom: "14px",
+              }}
+            >
+              {service.title}
+            </h3>
+
+            {/* DESC */}
+            <p
+              style={{
+                color: "#94A3B8",
+
+                fontSize: isMobile
+                  ? "13px"
+                  : "16px",
+
+                lineHeight: 1.6,
+
+                marginBottom:
+                  isMobile
+                    ? "16px"
+                    : "24px",
+              }}
+>
+              {service.desc}
+            </p>
+
+            {/* FEATURES */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              {service.features?.map(
+                (feature, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      alignItems:
+                        "center",
+                      gap: isMobile
+                      ? "6px"
+                      : "10px",
+                      color: "#CBD5E1",
+                      fontSize: isMobile
+                      ? "12px"
+                      : "14px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "6px",
+                        height: "6px",
+                        borderRadius:
+                          "999px",
+                        background:
+                          "#60A5FA",
+                      }}
+                    />
+
+                    {feature}
+                  </div>
+                )
+              )}
+            </div>
+
+            {service.link && (
+              <div
+                style={{
+                  marginTop: "24px",
+
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+
+                  color: "#60A5FA",
+
+                  fontWeight: 600,
+                }}
+              >
+                Learn More
+
+                <ArrowRight
+                  size={16}
+                />
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+      {/* CLIENT LOGOS */}
+<section
   style={{
-    padding: "60px 20px",
-    textAlign: "center",
+    padding: "100px 20px",
     background: "#0B1220",
+
+    // 🔥 SECTION SEPARATION
+    borderTop: "1px solid rgba(127,29,29,0.3)",
+    borderBottom: "1px solid rgba(127,29,29,0.3)",
+
+    // 🔥 DEPTH
+    boxShadow: "0 0 80px rgba(127,29,29,0.1) inset",
+
+    textAlign: "center",
     overflow: "hidden"
   }}
 >
-  <p style={{ color: "#64748b", marginBottom: "30px" }}>
-    Trusted by professionals from companies including
+  {/* 🔥 TITLE */}
+  <h2
+    style={{
+      fontSize: "28px", // 🔥 bigger
+      fontWeight: 600,
+      color: "#e5e7eb",
+      marginBottom: "10px"
+    }}
+  >
+    Trusted by Professionals from Leading Companies
+  </h2>
+
+  {/* SUBTEXT */}
+  <p
+    style={{
+      color: "#64748b",
+      marginBottom: "50px",
+      fontSize: "16px"
+    }}
+  >
+    Built on over 20 years of real hiring experience
   </p>
 
-  {/* CAROUSEL */}
+  {/* CAROUSEL CONTAINER */}
+  <div
+  style={{
+    overflow: "hidden",
+    width: "100%",
+    position: "relative"
+  }}
+>
   <div
     style={{
       display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      gap: "40px"
+      width: "max-content",
+      gap: "24px",
+      animation:
+        "scrollLogos 40s linear infinite",
     }}
   >
-    {[0, 1, 2].map((offset) => {
-      const logoIndex = (index + offset) % logos.length;
-      return (
-        <img
-          key={offset}
-          src={`/${logos[logoIndex]}`}
-          alt="logo"
-          style={{
-            height: "60px", // 🔥 BIGGER
-            objectFit: "contain",
-            transition: "all 0.5s ease"
-          }}
-        />
-      );
-    })}
-  </div>
-</section>
-      {/* IDUSTRY SECTION */}
-<section id="industry"
-  style={{
-    padding: "100px 20px",
-    background: "#111827",
-    borderTop: "1px solid rgba(255,255,255,0.06)",
-    borderBottom: "1px solid rgba(255,255,255,0.06)",
-    textAlign: "center",
-    boxShadow: "0 0 60px rgba(127,29,29,0.1)"
-  }}
->
-  <h2 style={{ marginBottom: "10px" }}>
-    Industries We Serve
-  </h2>
-
-  <p style={{ color: "#94a3b8", marginBottom: "40px" }}>
-    Supporting diverse sectors with tailored talent solutions
-  </p>
-
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-      gap: "20px",
-      maxWidth: "900px",
-      margin: "auto"
-    }}
-  >
-    {[
-  { name: "Manufacturing", icon: Factory },
-  { name: "Retail & FMCG", icon: ShoppingCart },
-  { name: "Technology", icon: Laptop },
-  { name: "Logistics & Supply Chain", icon: Truck },
-  { name: "Healthcare", icon: HeartPulse },
-  { name: "Financial Services", icon: Landmark },
-  { name: "Hospitality", icon: Hotel },
-  { name: "Construction", icon: Building },
-  { name: "Energy & Utilities", icon: Zap }
-].map((item, i) => {
-  const Icon = item.icon;
-
-  return (
-    <div
-      key={i}
-      style={{
-        padding: "20px",
-        borderRadius: "12px",
-        background: "#1F2937",
-        border: "1px solid rgba(127,29,29,0.25)",
-        transition: "0.3s",
-        textAlign: "center"
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
-        e.currentTarget.style.background = "#273449";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.background = "#1F2937";
-      }}
-    >
-      {/* ICON */}
-      <div style={{ marginBottom: "10px" }}>
-        <Icon size={28} color={i % 2 === 0 ? "#3B82F6" : "#7F1D1D"} />
-      </div>
-
-      {/* TEXT */}
-      <div style={{ fontSize: "14px" }}>
-        {item.name}
-      </div>
-    </div>
-  );
-})}
-  </div>
-</section>
-{/* POSITION SECTION */}
-<section id="positions"
-  style={{
-    padding: "100px 20px",
-    background: "#0B1220",
-    textAlign: "center"
-  }}
->
-  <h2 style={{ marginBottom: "10px" }}>
-    Positions We Support
-  </h2>
-
-  <p style={{ color: "#94a3b8", marginBottom: "40px" }}>
-    From operational roles to leadership positions
-  </p>
-
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-      gap: "20px",
-      maxWidth: "1000px",
-      margin: "auto"
-    }}
-  >
-    {[
-      {
-        title: "Operational Roles",
-        items: ["Admin", "Customer Service", "Technicians", "Operators"]
-      },
-      {
-        title: "Professional Roles",
-        items: ["HR", "Finance", "Marketing", "IT"]
-      },
-      {
-        title: "Specialized Roles",
-        items: ["Engineers", "Data Analysts", "Supply Chain", "QA/QC"]
-      },
-      {
-        title: "Leadership Roles",
-        items: ["Supervisors", "Managers", "Directors", "Executives"]
-      }
-    ].map((group, i) => (
+    {[...logos, ...logos].map((logo, i) => (
       <div
         key={i}
         style={{
-          padding: "24px",
-          borderRadius: "16px",
-          background: "#1F2937",
-          border: "1px solid rgba(127,29,29,0.25)",
-          textAlign: "left",
-          transition: "0.3s"
+          padding: "14px 24px",
+          borderRadius: "18px",
+          background:
+            "rgba(255,255,255,0.03)",
+          border:
+            "1px solid rgba(255,255,255,0.05)",
+          minWidth: "110px",
+          height: "110px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transition: "all 0.25s ease",
+          backdropFilter: "blur(10px)"
+          
         }}
         onMouseEnter={(e) => {
-         e.currentTarget.style.transform = "translateY(-6px)";
-          e.currentTarget.style.background = "#2A1A1A";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.background = "#1F2937";
-        }}
-      >
-        <h3 style={{ marginBottom: "12px" }}>
-          {group.title}
-        </h3>
+  e.currentTarget.style.transform =
+    "scale(1.08) translateY(-4px)";
 
-        {group.items.map((item, idx) => (
-          <p key={idx} style={{ color: "#94a3b8", marginBottom: "6px" }}>
-            • {item}
-          </p>
-        ))}
+  e.currentTarget.style.boxShadow =
+    "0 0 30px rgba(59,130,246,0.25)";
+
+  e.currentTarget.style.border =
+    "1px solid rgba(59,130,246,0.3)";
+}}
+
+onMouseLeave={(e) => {
+  e.currentTarget.style.transform =
+    "scale(1) translateY(0px)";
+
+  e.currentTarget.style.boxShadow =
+    "none";
+
+  e.currentTarget.style.border =
+    "1px solid rgba(255,255,255,0.05)";
+}}
+      >
+        <img
+          src={logo}
+          alt="logo"
+          style={{
+            height: "58px",
+            width: "auto",
+            maxWidth: "85%",
+            objectFit: "contain",
+            opacity: 1,
+            transition: "all 0.3s ease",
+            filter: "none"
+          }}
+        />
       </div>
     ))}
   </div>
+</div>
+
+  {/* ANIMATION */}
+  <style jsx>{`
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  `}</style>
+  
 </section>
+      
+{/* INDUSTRIES WE SERVE */}
+{/* HEADER */}
+
+<div
+  style={{
+    textAlign: "center",
+    marginBottom: isMobile ? "40px" : "70px",
+    paddingTop: isMobile ? "40px" : "0",
+  }}
+>
+  <div
+    style={{
+      color: "#6EA8FF",
+      fontSize: isMobile ? "13px" : "14px",
+      letterSpacing: "3px",
+      fontWeight: 600,
+      marginBottom: "14px",
+    }}
+  >
+    INDUSTRIES WE SERVE
+  </div>
+
+  <h2
+    style={{
+      fontSize: isMobile ? "42px" : "72px",
+      fontWeight: 700,
+      lineHeight: 1,
+      margin: 0,
+    }}
+  >
+    Experience Across
+    <br />
+    <span
+      style={{
+        background:
+          "linear-gradient(90deg,#5B8CFF,#B08BFF,#FF6B81)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      }}
+    >
+      Diverse Industries
+    </span>
+  </h2>
+
+  <p
+    style={{
+      color: "#94A3B8",
+      maxWidth: "850px",
+      margin: "24px auto 0",
+      lineHeight: 1.8,
+      fontSize: isMobile ? "15px" : "18px",
+    }}
+  >
+    Our recruitment and consulting experience spans
+    multiple sectors, enabling us to understand the
+    unique talent challenges of each industry.
+  </p>
+</div>
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: isMobile
+      ? "repeat(3,1fr)"
+      : "repeat(4,minmax(0,1fr))",
+    gap: isMobile ? "12px" : "20px",
+  }}
+>
+  {[
+    {
+      title: "Manufacturing",
+      icon: Factory,
+      color: "#60A5FA",
+    },
+    {
+      title: "FMCG",
+      icon: Package,
+      color: "#34D399",
+    },
+    {
+      title: "Retail",
+      icon: Store,
+      color: "#FBBF24",
+    },
+    {
+      title: "Technology",
+      icon: Laptop,
+      color: "#A78BFA",
+    },
+    {
+      title: "Healthcare",
+      icon: HeartPulse,
+      color: "#FB7185",
+    },
+    {
+      title: "Logistics",
+      icon: Truck,
+      color: "#38BDF8",
+    },
+    {
+      title: "Construction",
+      icon: Hammer,
+      color: "#FB923C",
+    },
+    {
+      title: "Finance",
+      icon: Landmark,
+      color: "#10B981",
+    },
+    {
+      title: "Automotive",
+      icon: Car,
+      color: "#818CF8",
+    },
+    {
+      title: "Hospitality",
+      icon: Hotel,
+      color: "#F472B6",
+    },
+    {
+      title: "Education",
+      icon: GraduationCap,
+      color: "#22C55E",
+    },
+    {
+      title: "Professional",
+      icon: Briefcase,
+      color: "#6EA8FF",
+    },
+  ].map((industry) => {
+    const Icon = industry.icon;
+
+    return (
+      <div
+        key={industry.title}
+        style={{
+          position: "relative",
+          overflow: "hidden",
+
+          background:
+            "linear-gradient(180deg,#0B1736,#050D1F)",
+
+          border: `1px solid ${industry.color}22`,
+
+          borderRadius: isMobile
+            ? "16px"
+            : "22px",
+
+          minHeight: isMobile
+            ? "80px"
+            : "100px",
+
+          padding: isMobile
+            ? "8px"
+            : "14px",
+
+          boxShadow:
+            "0 10px 40px rgba(0,0,0,.25)",
+        }}
+      >
+        {/* Glow */}
+        <div
+          style={{
+            position: "absolute",
+            right: "-40px",
+            bottom: "-40px",
+
+            width: "100px",
+            height: "100px",
+
+            background: industry.color,
+
+            opacity: 0.15,
+
+            filter: "blur(40px)",
+
+            borderRadius: "50%",
+          }}
+        />
+
+        {/* Icon */}
+        <div
+          style={{
+            width: isMobile
+              ? "38px"
+              : "50px",
+
+            height: isMobile
+              ? "38px"
+              : "50px",
+
+            borderRadius: "14px",
+
+            background: `${industry.color}15`,
+
+            border: `1px solid ${industry.color}33`,
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+
+            marginBottom: isMobile
+              ? "8px"
+              : "12px",
+
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          <Icon
+            size={isMobile ? 18 : 24}
+            color={industry.color}
+          />
+        </div>
+
+        {/* Title */}
+        <h3
+          style={{
+            margin: 0,
+
+            color: "#fff",
+
+            fontWeight: 700,
+
+            fontSize: isMobile
+              ? "11px"
+              : "16px",
+
+            lineHeight: 1.25,
+
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          {industry.title}
+        </h3>
+      </div>
+    );
+  })}
+</div>
+{/* POSITIONS WE SUPPORT */}
+
+<div
+  style={{
+    marginTop: isMobile ? "80px" : "140px",
+  }}
+>
+  {/* HEADER */}
+
+  <div
+    style={{
+      textAlign: "center",
+      marginBottom: isMobile ? "40px" : "70px",
+    }}
+  >
+    <div
+      style={{
+        color: "#6EA8FF",
+        fontSize: isMobile ? "13px" : "14px",
+        letterSpacing: "3px",
+        fontWeight: 600,
+        marginBottom: "14px",
+      }}
+    >
+      POSITIONS WE SUPPORT
+    </div>
+
+    <h2
+      style={{
+        fontSize: isMobile ? "42px" : "72px",
+        fontWeight: 700,
+        lineHeight: 1,
+        margin: 0,
+      }}
+    >
+      Talent Across
+      <br />
+      <span
+        style={{
+          background:
+            "linear-gradient(90deg,#5B8CFF,#B08BFF,#FF6B81)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        Every Career Stage
+      </span>
+    </h2>
+
+    <p
+      style={{
+        color: "#94A3B8",
+        maxWidth: "800px",
+        margin: "24px auto 0",
+        lineHeight: 1.8,
+        fontSize: isMobile ? "15px" : "18px",
+      }}
+    >
+      From fresh graduates to executive leaders,
+      we support recruitment across all levels
+      of organizational leadership.
+    </p>
+  </div>
+
+  {/* GRID */}
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: isMobile
+        ? "repeat(3,1fr)"
+        : "repeat(4,minmax(0,1fr))",
+      gap: isMobile ? "14px" : "24px",
+    }}
+  >
+    {[
+      {
+        title: "Intern",
+        icon: GraduationCap,
+        color: "#38BDF8",
+      },
+      {
+        title: "Staff",
+        icon: Briefcase,
+        color: "#60A5FA",
+      },
+      {
+        title: "Senior Staff",
+        icon: Briefcase,
+        color: "#818CF8",
+      },
+      {
+        title: "Supervisor",
+        icon: UserCheck,
+        color: "#A78BFA",
+      },
+      {
+        title: "Asst. Manager",
+        icon: Users,
+        color: "#C084FC",
+      },
+      {
+        title: "Manager",
+        icon: Building2,
+        color: "#F472B6",
+      },
+      {
+        title: "Sr. Manager",
+        icon: ShieldCheck,
+        color: "#FB7185",
+      },
+      {
+        title: "General Manager",
+        icon: Landmark,
+        color: "#FB923C",
+      },
+      {
+        title: "Director",
+        icon: Landmark,
+        color: "#FBBF24",
+      },
+      {
+        title: "VP",
+        icon: TrendingUp,
+        color: "#34D399",
+      },
+      {
+        title: "SVP",
+        icon: Crown,
+        color: "#2DD4BF",
+      },
+      {
+        title: "C-Level",
+        icon: Gem,
+        color: "#FFD700",
+      },
+    ].map((item, index) => {
+      const Icon = item.icon;
+
+      return (
+        <div
+          key={item.title}
+          style={{
+            position: "relative",
+            overflow: "hidden",
+
+            background:
+              "linear-gradient(180deg,#0B1736,#050D1F)",
+
+            border: `1px solid ${item.color}22`,
+
+            borderRadius: isMobile
+              ? "18px"
+              : "24px",
+
+            minHeight: isMobile
+              ? "90px"
+              : "130px",
+
+            padding: isMobile
+              ? "10px"
+              : "18px",
+
+            boxShadow:
+              "0 10px 40px rgba(0,0,0,.25)",
+          }}
+        >
+          {/* GLOW */}
+
+          <div
+            style={{
+              position: "absolute",
+              right: "-40px",
+              bottom: "-40px",
+
+              width: "120px",
+              height: "120px",
+
+              background: item.color,
+
+              opacity: 0.18,
+
+              filter: "blur(45px)",
+
+              borderRadius: "50%",
+            }}
+          />
+
+          {/* ICON */}
+
+          <div
+            style={{
+              width: isMobile
+                ? "46px"
+                : "60px",
+
+              height: isMobile
+                ? "46px"
+                : "60px",
+
+              borderRadius: "16px",
+
+              background: `${item.color}15`,
+
+              border: `1px solid ${item.color}33`,
+
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+
+              marginBottom: "16px",
+
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
+            <Icon
+              size={isMobile ? 22 : 30}
+              color={item.color}
+            />
+          </div>
+
+          {/* TITLE */}
+
+          <h3
+            style={{
+              margin: 0,
+
+              color: "#fff",
+
+              fontWeight: 700,
+
+              fontSize: isMobile
+                ? "13px"
+                : "22px",
+
+              lineHeight: 1.25,
+
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
+            {item.title}
+          </h3>
+        </div>
+      );
+    })}
+  </div>
+</div>
       {/* STATS SECTION */}
 <section
   data-animate="stats"
+  id="track-record"
+  ref={(el) => {
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStartCounting(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+  }}
   style={{
     ...getAnimation("stats"),
     padding: "100px 20px",
@@ -759,121 +1796,608 @@ useEffect(() => {
 
   </div>
 </section>
-    
-{/* VISIT US */}
-<section id="visit"
-  data-animate="visit"
+   {/* CAREER INSIGHTS */}
+<section
+  id="career-insights"
   style={{
-    ...getAnimation("visit"),
-    padding: "100px 20px",
-    background: "#111827",
-    borderTop: "1px solid rgba(127,29,29,0.2)",
-    borderBottom: "1px solid rgba(127,29,29,0.2)",
-    
+    padding: isMobile ? "60px 20px" : "90px 40px",
+    position: "relative",
   }}
 >
   <div
     style={{
-      maxWidth: "1100px",
-      margin: "auto",
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(320px,1fr))",
-      gap: "50px",
-      alignItems: "center"
+      maxWidth: "1400px",
+      margin: "0 auto",
     }}
   >
-
-    {/* LEFT — TEXT */}
-    <div>
-      <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
-        Visit Us
-      </h2>
-
-      <p style={{ color: "#94a3b8", marginTop: "16px", lineHeight: "1.7" }}>
-        PT Vera Diana Fokus
-      </p>
-
-      <p style={{ color: "#94a3b8", lineHeight: "1.7" }}>
-       City Walk 07, Citra Gran Jl. Alternatif Cibubur No.12, Jatikarya, Kec. Jatisampurna, Kota Bks, Jawa Barat 17435
-      </p>
-
-      <p style={{ color: "#64748b", marginTop: "12px" }}>
-        Serving clients across Indonesia
-      </p>
-
-      <a
-        href="https://www.google.com/maps/place/PT+Vera+Diana+Fokus/@-6.3836475,106.9222585,17z"
-        target="_blank"
+    {/* HEADER */}
+    <div
+      style={{
+        textAlign: "center",
+        marginBottom: isMobile ? "30px" : "50px"
+      }}
+    >
+      <div
         style={{
-          display: "inline-block",
-          marginTop: "20px",
-          color: "#22c55e",
-          textDecoration: "none",
-          fontWeight: 600
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "10px",
+          padding: "10px 18px",
+          borderRadius: "999px",
+          background: "rgba(255,255,255,.04)",
+          border: "1px solid rgba(255,255,255,.08)",
+          marginBottom: "20px",
         }}
       >
-        Open in Google Maps →
-      </a>
-    </div>
+        <TrendingUp
+          size={16}
+          color="#60A5FA"
+        />
 
-    {/* RIGHT — MAP */}
-    <div
-  style={{
-    borderRadius: "20px",
-    overflow: "hidden",
-    border: "1px solid rgba(127,29,29,0.3)",
-    transition: "all 0.3s ease"
-  }}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.transform = "scale(1.02)";
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.transform = "scale(1)";
-  }}
->
-      <iframe
-        src="https://www.google.com/maps?q=-6.3836475,106.9248334&z=17&output=embed"
-        width="100%"
-        height="350"
-        style={{ border: 0 }}
-        loading="lazy"
-      ></iframe>
-    </div>
-
-  </div>
-</section>
-      {/* CTA */}
-      <section style={{ textAlign: "center", padding: "100px 20px" }}>
-        <h2 style={{ fontSize: "32px" }}>
-          Build Your Team With Confidence
-        </h2>
-
-        <a
-          href="https://wa.me/6281212940797"
+        <span
           style={{
-            display: "inline-block",
-            marginTop: "20px",
-            padding: "16px 28px",
-            borderRadius: "999px",
-            background: "#3bf641",
-            border: "1px solid #7F1D1D",
-            color: "#fff",
-            textDecoration: "none"
+            color: "#CBD5E1",
+            fontSize: "13px",
+            fontWeight: 600,
+            letterSpacing: "1px",
           }}
         >
-          👉 Talk to Us
-        </a>
-      </section>
+          CAREER INSIGHTS
+        </span>
+      </div>
 
-      {/* FOOTER */}
-      <footer style={{
-        padding: "40px",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
-        textAlign: "center",
-        color: "#64748b"
-      }}>
-        VD Fokus — Talent & Career Solutions
-      </footer>
+      <h2
+        style={{
+          fontSize: isMobile ? "34px" : "58px",
+          fontWeight: 700,
+          lineHeight: 1.05,
+          marginBottom: "16px",
+        }}
+      >
+        Insights For
+        <br />
+
+        <span
+          style={{
+            background:
+              "linear-gradient(90deg,#60A5FA,#A78BFA,#F472B6)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Career Growth
+        </span>
+      </h2>
+
+      <p
+        style={{
+          maxWidth: "720px",
+          margin: "0 auto",
+          color: "#94A3B8",
+          fontSize: isMobile ? "14px" : "18px",
+          lineHeight: 1.8,
+        }}
+      >
+        Practical career advice, interview
+        strategies, and professional development
+        resources to help you move forward.
+      </p>
+    </div>
+
+    {/* INSIGHT CARDS */}
+    <div
+      style={{
+        display: "grid",
+
+        gridTemplateColumns: isMobile
+          ? "1fr"
+          : "repeat(3,minmax(0,1fr))",
+
+        gap: isMobile ? "16px" : "24px",
+      }}
+    >
+      {careerInsights.map((item) => {
+        const Icon = item.icon;
+
+        return (
+          <div
+            key={item.title}
+            style={{
+              background:
+                "linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))",
+
+              border:
+                "1px solid rgba(255,255,255,.08)",
+
+              backdropFilter: "blur(16px)",
+
+              borderRadius:
+                isMobile ? "18px" : "24px",
+
+              padding:
+                isMobile ? "22px" : "32px",
+
+              transition:
+                "all .3s ease",
+            }}
+          >
+            <div
+              style={{
+                width:
+                  isMobile ? "52px" : "64px",
+
+                height:
+                  isMobile ? "52px" : "64px",
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+
+                borderRadius: "16px",
+
+                background:
+                  "rgba(96,165,250,.12)",
+
+                marginBottom: "20px",
+              }}
+            >
+              <Icon
+                size={isMobile ? 24 : 30}
+                color="#60A5FA"
+              />
+            </div>
+
+            <h3
+              style={{
+                fontSize:
+                  isMobile ? "18px" : "24px",
+
+                fontWeight: 700,
+
+                marginBottom: "12px",
+              }}
+            >
+              {item.title}
+            </h3>
+
+            <p
+              style={{
+                color: "#94A3B8",
+
+                fontSize:
+                  isMobile ? "13px" : "16px",
+
+                lineHeight: 1.7,
+
+                marginBottom: "20px",
+              }}
+            >
+              {item.description}
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+
+                color: "#60A5FA",
+
+                fontSize: "14px",
+                fontWeight: 600,
+              }}
+            >
+              Read More
+
+              <ArrowRight size={16} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+{/* VISIT US */}
+<section
+  id="visit-us"
+  style={{
+    marginTop: isMobile ? "60px" : "100px",
+    padding: isMobile ? "30px 20px" : "70px",
+    borderRadius: isMobile ? "24px" : "36px",
+
+    background:
+      "linear-gradient(135deg,#0B1D4A 0%, #061127 100%)",
+
+    border:
+      "1px solid rgba(96,165,250,.25)",
+
+    boxShadow:
+      "0 0 80px rgba(37,99,235,.12)",
+
+    overflow: "hidden",
+  }}
+>
+  {/* BADGE */}
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      marginBottom: isMobile ? "30px" : "50px",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "999px",
+        background:
+          "rgba(79,141,255,.15)",
+
+        color: "#6EA8FF",
+
+        fontWeight: 700,
+
+        padding:
+          isMobile
+            ? "7px 12px"
+            : "10px 18px",
+
+        fontSize:
+          isMobile
+            ? "11px"
+            : "14px",
+      }}
+    >
+      📍 VISIT US
+    </div>
+  </div>
+
+  {/* MAIN CONTENT */}
+  <div
+    style={{
+      display: "grid",
+
+      gridTemplateColumns:
+        isMobile
+          ? "1fr"
+          : "0.9fr 1.1fr",
+
+      gap:
+        isMobile
+          ? "36px"
+          : "60px",
+
+      alignItems: "center",
+    }}
+  >
+    {/* LEFT SIDE */}
+    <div>
+      <h2
+        style={{
+          fontSize:
+            isMobile
+              ? "36px"
+              : "58px",
+
+          lineHeight: "0.95",
+
+          fontWeight: 800,
+
+          margin: "0 0 20px 0",
+
+          letterSpacing:
+            isMobile
+              ? "-1px"
+              : "-2px",
+        }}
+      >
+        Let’s Work
+        <br />
+
+        <span
+          style={{
+            color: "#6EA8FF",
+          }}
+        >
+          Together
+        </span>
+      </h2>
+
+      <p
+        style={{
+          fontSize:
+            isMobile
+              ? "15px"
+              : "20px",
+
+          lineHeight: 1.7,
+
+          color: "#94A3B8",
+
+          marginBottom:
+            isMobile
+              ? "28px"
+              : "40px",
+        }}
+      >
+        Visit our office to discuss recruitment,
+        assessment, outsourcing, and HR consulting
+        solutions tailored to your organization.
+      </p>
+
+      {/* INFO ITEMS */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap:
+            isMobile
+              ? "16px"
+              : "25px",
+        }}
+      >
+        {/* OFFICE */}
+        <div
+          style={{
+            display: "flex",
+            gap: "14px",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              width:
+                isMobile
+                  ? "44px"
+                  : "56px",
+
+              height:
+                isMobile
+                  ? "44px"
+                  : "56px",
+
+              borderRadius: "50%",
+
+              background:
+                "rgba(79,141,255,.15)",
+
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Building2
+              size={24}
+              color="#6EA8FF"
+            />
+          </div>
+
+          <div>
+            <div
+              style={{
+                fontWeight: 700,
+                fontSize:
+                  isMobile
+                    ? "16px"
+                    : "20px",
+              }}
+            >
+              VD Fokus
+            </div>
+
+            <div
+              style={{
+                color: "#94A3B8",
+                fontSize:
+                  isMobile
+                    ? "13px"
+                    : "16px",
+
+                lineHeight: 1.5,
+              }}
+            >
+              PT Vera Diana Fokus
+              <br/>
+              City Walk 07, Citra Gran Cibubur
+              <br/>
+              Jl. Alternatif Cibubur No.12
+              <br/>
+              Bekasi, West Java
+            </div>
+          </div>
+        </div>
+
+        {/* PHONE */}
+        <div
+          style={{
+            display: "flex",
+            gap: "14px",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              width:
+                isMobile
+                  ? "44px"
+                  : "56px",
+
+              height:
+                isMobile
+                  ? "44px"
+                  : "56px",
+
+              borderRadius: "50%",
+
+              background:
+                "rgba(79,141,255,.15)",
+
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Phone
+              size={24}
+              color="#6EA8FF"
+            />
+          </div>
+
+          <div>
+            <div
+              style={{
+                fontWeight: 700,
+              }}
+            >
+              WhatsApp
+            </div>
+
+            <div
+              style={{
+                color: "#94A3B8",
+              }}
+            >
+              +62 816-1387-821
+            </div>
+          </div>
+        </div>
+
+        {/* HOURS */}
+        <div
+          style={{
+            display: "flex",
+            gap: "14px",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              width:
+                isMobile
+                  ? "44px"
+                  : "56px",
+
+              height:
+                isMobile
+                  ? "44px"
+                  : "56px",
+
+              borderRadius: "50%",
+
+              background:
+                "rgba(79,141,255,.15)",
+
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Clock3
+              size={24}
+              color="#6EA8FF"
+            />
+          </div>
+
+          <div>
+            <div
+              style={{
+                fontWeight: 700,
+              }}
+            >
+              Business Hours
+            </div>
+
+            <div
+              style={{
+                color: "#94A3B8",
+              }}
+            >
+              Mon - Fri, 09:00 - 17:00
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* RIGHT SIDE MAP */}
+    <div>
+  <div
+    style={{
+      borderRadius:
+        isMobile
+          ? "20px"
+          : "28px",
+
+      overflow: "hidden",
+
+      border:
+        "1px solid rgba(96,165,250,.2)",
+
+      height:
+        isMobile
+          ? "260px"
+          : "420px",
+    }}
+  >
+    <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.0802198288106!2d106.9222584752398!3d-6.383647493606722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eca6f3044d57%3A0xc450d917c4dc0083!2sPT%20Vera%20Diana%20Fokus!5e0!3m2!1sen!2sid!4v1781247224592!5m2!1sen!2sid"
+  width="100%"
+  height="100%"
+  style={{
+    border: 0,
+  }}
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+/>
+  </div>
+
+  {/* DIRECTIONS BUTTON */}
+  <a
+    href="google.com/maps?q=PT+Vera+Diana+Fokus"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "10px",
+
+      marginTop: "18px",
+
+      height: isMobile
+        ? "52px"
+        : "60px",
+
+      borderRadius: "999px",
+
+      background:
+        "linear-gradient(135deg,#2563EB,#60A5FA)",
+
+      color: "#fff",
+
+      textDecoration: "none",
+
+      fontWeight: 700,
+
+      fontSize: isMobile
+        ? "14px"
+        : "16px",
+
+      boxShadow:
+        "0 10px 30px rgba(37,99,235,.25)",
+
+      transition: "all .3s ease",
+    }}
+  >
+    <MapPin size={18} />
+
+    Get Directions
+  </a>
+</div>
+  </div>
+</section>
+
+      
     </main>
   );
 }
