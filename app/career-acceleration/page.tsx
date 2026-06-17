@@ -1739,19 +1739,67 @@ height={isMobile ? 32 : 50}
       </div>
 
       {/* OFFER */}
-      <div
+<div
+  style={{
+    marginTop: "24px",
+    color: "#FACC15",
+    fontSize: isMobile ? "14px" : "18px",
+    fontWeight: 600,
+  }}
+>
+  🚀 This week Offer (Only 5 slots available)
+</div>
+
+{/* PACKAGE BENEFITS */}
+<div
+  style={{
+    marginTop: "28px",
+    marginBottom: "34px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+  }}
+>
+  {[
+    "CV Optimization",
+    "Interview Preparation",
+    "Mock Interview Session + Feedback",
+    "🎁 Free follow-up interview preparation when you receive your first interview call",
+    "⏱ Optional extension: +IDR 100K / hour",
+  ].map((item, index) => (
+    <div
+      key={index}
+      style={{
+        display: "flex",
+        alignItems: "flex-start",
+        gap: "12px",
+      }}
+    >
+      <span
         style={{
-          marginTop: "24px",
-          color: "#FACC15",
-          fontSize: isMobile ? "14px" : "18px",
-          fontWeight: 600,
+          color: "#5DD46B",
+          fontSize: isMobile ? "20px" : "24px",
+          lineHeight: 1,
         }}
       >
-        🚀 This week Offer (Only 5 slots available)
-      </div>
+        ✓
+      </span>
 
-      {/* BUTTONS */}
-      <div
+      <span
+        style={{
+          color: "#CBD5E1",
+          fontSize: isMobile ? "15px" : "18px",
+          lineHeight: 1.5,
+        }}
+      >
+        {item}
+      </span>
+    </div>
+  ))}
+</div>
+
+{/* BUTTONS */}
+<div
         style={{
           display: "flex",
           gap: "16px",
