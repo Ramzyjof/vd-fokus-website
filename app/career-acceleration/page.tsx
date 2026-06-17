@@ -297,9 +297,12 @@ useEffect(() => {
    <div
   style={{
     display: "flex",
-    gap: "8px",
-    marginBottom: "10px",
-    flexWrap: "nowrap",
+    gap: "12px",
+    flexWrap: "wrap",
+
+    marginBottom: isMobile
+      ? "32px"
+      : "40px",
   }}
 >
   {[
