@@ -1646,20 +1646,37 @@ height={isMobile ? 32 : 50}
   }}
 >
   <div
-    style={{
-      background:
-        "linear-gradient(180deg,#03143B,#020617)",
-      border: "1px solid rgba(79,141,255,.15)",
-      borderRadius: isMobile ? "20px" : "28px",
-      overflow: "hidden",
-      boxShadow:
-        "0 0 40px rgba(79,141,255,.08)",
-    }}
-  >
+  style={{
+    background:
+      "linear-gradient(180deg,#03143B,#020617)",
+    border: "1px solid rgba(79,141,255,.15)",
+    borderRadius: isMobile ? "20px" : "28px",
+    overflow: "hidden",
+    boxShadow:
+      "0 0 40px rgba(79,141,255,.08)",
+
+    width: isMobile
+      ? "100%"
+      : showDetails
+      ? "100%"
+      : "720px",
+
+    margin: isMobile
+      ? "0"
+      : "0 auto",
+
+    transition: "all .4s ease",
+  }}
+>
     {/* HEADER */}
     <div
       style={{
-        padding: isMobile ? "24px 18px" : "60px",
+        padding:
+  isMobile
+    ? "24px 18px"
+    : showDetails
+    ? "60px"
+    : "50px 60px",
       }}
     >
       <div
@@ -1698,7 +1715,12 @@ height={isMobile ? 32 : 50}
           color: "#94A3B8",
           fontSize: isMobile ? "14px" : "20px",
           marginTop: isMobile ? "14px" : "24px",
-          maxWidth: "700px",
+          maxWidth:
+  isMobile
+    ? "100%"
+    : showDetails
+    ? "700px"
+    : "560px",
           lineHeight: 1.7,
         }}
       >
