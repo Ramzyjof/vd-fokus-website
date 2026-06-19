@@ -274,62 +274,91 @@ const body = isMobile
 
    {/* BUTTONS */}
 
+{/* BUTTONS */}
+
 <div
   style={{
     display: "flex",
-    flexDirection: isMobile ? "column" : "row",
-    gap: isMobile ? "12px" : "16px",
 
-    marginTop: isMobile ? "30px" : "40px",
+    flexDirection: isMobile
+      ? "row"
+      : "row",
 
-    width: "100%",
-    maxWidth: isMobile ? "380px" : "unset",
+    gap: isMobile
+      ? "10px"
+      : "16px",
+
+    marginTop: isMobile
+      ? "28px"
+      : "40px",
+
+    width: isMobile
+      ? "100%"
+      : "auto",
+
+    maxWidth: isMobile
+      ? "380px"
+      : "620px",
   }}
 >
+  {/* PRIMARY CTA */}
+
   <a
     href="https://wa.me/628161387821"
     target="_blank"
     style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      flex: 1,
 
-      width: isMobile ? "100%" : "320px",
-
-      height: isMobile ? "56px" : "70px",
+      height: isMobile
+        ? "54px"
+        : "68px",
 
       borderRadius: "999px",
 
-      background:
-        "linear-gradient(90deg,#16A34A,#22C55E)",
-
-      color: "#fff",
-
-      fontSize: isMobile ? "16px" : "20px",
-
-      fontWeight: 700,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
 
       textDecoration: "none",
 
+      background:
+        "linear-gradient(90deg,#3B82F6,#60A5FA)",
+
+      color: "#fff",
+
+      fontWeight: 700,
+
+      fontSize: isMobile
+        ? "14px"
+        : "18px",
+
       boxShadow:
-        "0 10px 30px rgba(34,197,94,.25)",
+        "0 15px 40px rgba(59,130,246,.25)",
     }}
   >
-    💬 Discuss Hiring Needs
+    {isMobile
+      ? "Contact Us"
+      : "💬 Discuss Hiring Needs"}
   </a>
 
+  {/* SECONDARY CTA */}
+
   <a
-    href="#why-us"
+    href="#why"
     style={{
+      flex: 1,
+
+      height: isMobile
+        ? "54px"
+        : "68px",
+
+      borderRadius: "999px",
+
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
 
-      width: isMobile ? "100%" : "280px",
-
-      height: isMobile ? "56px" : "70px",
-
-      borderRadius: "999px",
+      textDecoration: "none",
 
       border:
         "1px solid rgba(255,255,255,.12)",
@@ -341,14 +370,16 @@ const body = isMobile
 
       color: "#fff",
 
-      fontSize: isMobile ? "16px" : "20px",
-
       fontWeight: 600,
 
-      textDecoration: "none",
+      fontSize: isMobile
+        ? "14px"
+        : "18px",
     }}
   >
-    Why VD Fokus →
+    {isMobile
+      ? "Why Us"
+      : "Why VD Fokus →"}
   </a>
 </div>
 
