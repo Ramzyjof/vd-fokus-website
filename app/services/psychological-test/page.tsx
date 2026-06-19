@@ -987,7 +987,7 @@ gap: isMobile
     textAlign: "center",
 
     fontSize: isMobile
-      ? "30px"
+      ? "28px"
       : "48px",
 
     fontWeight: 800,
