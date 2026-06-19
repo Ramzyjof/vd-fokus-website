@@ -136,7 +136,7 @@ useEffect(() => {
     }}
   >
     <Image
-      src="/psy-hero-mobile.png"
+      src="/hero-psy.png"
       alt="Psychological Assessment"
       fill
       priority
