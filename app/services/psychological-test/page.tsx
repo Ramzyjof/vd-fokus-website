@@ -983,15 +983,22 @@ gap: isMobile
           }}
         >
           <h2
-            style={{
-              textAlign: "center",
-              fontSize: "42px",
-              marginBottom: "20px"
-            }}
-          >
-            Why Companies Use
-            Our Assessment
-          </h2>
+  style={{
+    textAlign: "center",
+
+    fontSize: isMobile
+      ? "30px"
+      : "48px",
+
+    fontWeight: 800,
+
+    marginBottom: "20px",
+  }}
+>
+  Why Organizations Choose
+  <br />
+  Our Assessment Services
+</h2>
 
           <p
             style={{
@@ -1009,76 +1016,147 @@ gap: isMobile
           </p>
 
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(280px,1fr))",
+  style={{
+    display: "grid",
 
-              gap: "24px"
-            }}
-          >
-            {[
-              "More accurate hiring decisions",
-              "Reduce employee turnover risk",
-              "Understand personality & work style",
-              "Identify leadership potential",
-              "Measure aptitude & cognitive ability",
-              "Improve team compatibility"
-            ].map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: "22px",
-                  borderRadius: "18px",
+    gridTemplateColumns: isMobile
+      ? "1fr"
+      : "repeat(3,minmax(0,1fr))",
 
-                  background:
-                    "#111827",
+    gap: isMobile
+      ? "16px"
+      : "24px",
+  }}
+>
+  {[
+    {
+      icon: "🎯",
+      title: "Better Hiring Decisions",
+      desc: "Reduce guesswork and make more informed recruitment decisions."
+    },
+    {
+      icon: "📉",
+      title: "Lower Turnover Risk",
+      desc: "Identify candidates who are more likely to succeed long-term."
+    },
+    {
+      icon: "🧠",
+      title: "Deeper Candidate Insight",
+      desc: "Understand personality, motivation, and work behavior."
+    },
+    {
+      icon: "🚀",
+      title: "Leadership Potential",
+      desc: "Identify future leaders and high-potential talent."
+    },
+    {
+      icon: "📊",
+      title: "Aptitude Evaluation",
+      desc: "Measure cognitive ability and learning capability."
+    },
+    {
+      icon: "🤝",
+      title: "Team Compatibility",
+      desc: "Improve team fit and workplace collaboration."
+    },
+  ].map((item, i) => (
+    <div
+      key={i}
+      style={{
+        padding: isMobile
+          ? "22px"
+          : "28px",
 
-                  border:
-                    "1px solid rgba(127,29,29,0.25)",
+        borderRadius: "24px",
 
-                  display: "flex",
-                  gap: "14px",
-                  alignItems: "center",
+        background:
+          "rgba(255,255,255,0.04)",
 
-                  transition:
-                    "all 0.3s ease"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform =
-                    "translateY(-5px)";
+        border:
+          "1px solid rgba(255,255,255,0.08)",
 
-                  e.currentTarget.style.background =
-                    "#1F2937";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform =
-                    "translateY(0)";
+        backdropFilter: "blur(16px)",
 
-                  e.currentTarget.style.background =
-                    "#111827";
-                }}
-              >
-                <span
-                  style={{
-                    color: "#22c55e",
-                    fontSize: "22px"
-                  }}
-                >
-                  ✔
-                </span>
+        transition: "all .3s ease",
+      }}
+      onMouseEnter={(e) => {
+        if (!isMobile) {
+          e.currentTarget.style.transform =
+            "translateY(-6px)";
 
-                <span
-                  style={{
-                    color: "#e2e8f0"
-                  }}
-                >
-                  {item}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+          e.currentTarget.style.border =
+            "1px solid rgba(74,222,128,.25)";
+
+          e.currentTarget.style.boxShadow =
+            "0 20px 40px rgba(74,222,128,.08)";
+        }
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform =
+          "translateY(0px)";
+
+        e.currentTarget.style.border =
+          "1px solid rgba(255,255,255,0.08)";
+
+        e.currentTarget.style.boxShadow =
+          "none";
+      }}
+    >
+      <div
+        style={{
+          width: "56px",
+          height: "56px",
+
+          borderRadius: "16px",
+
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+
+          fontSize: "28px",
+
+          background:
+            "rgba(74,222,128,.10)",
+
+          marginBottom: "18px",
+        }}
+      >
+        {item.icon}
+      </div>
+
+      <h3
+        style={{
+          fontSize: isMobile
+            ? "18px"
+            : "20px",
+
+          fontWeight: 700,
+
+          marginBottom: "10px",
+
+          color: "#fff",
+        }}
+      >
+        {item.title}
+      </h3>
+
+      <p
+        style={{
+          color: "#94A3B8",
+
+          lineHeight: 1.7,
+
+          fontSize: isMobile
+            ? "14px"
+            : "15px",
+        }}
+      >
+        {item.desc}
+      </p>
+    </div>
+  ))}
+</div>
+</div>
       </section>
 
       {/* PACKAGE */}
