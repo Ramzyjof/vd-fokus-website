@@ -77,34 +77,34 @@ useEffect(() => {
   />
 )}
   {/* OVERLAY */}
-  <div
-    style={{
-      position: "absolute",
-      inset: 0,
-      zIndex: 2,
+<div
+  style={{
+    position: "absolute",
+    inset: 0,
+    zIndex: 2,
 
-      background: isMobile
-  ? `
-    linear-gradient(
-      180deg,
-      rgba(2,6,23,.20) 0%,
-      rgba(2,6,23,.45) 35%,
-      rgba(2,6,23,.75) 60%,
-      rgba(2,6,23,.92) 80%,
-      rgba(2,6,23,1) 100%
-    )
-  `
-        : `
-          linear-gradient(
-            90deg,
-            rgba(2,6,23,.95) 0%,
-            rgba(2,6,23,.82) 35%,
-            rgba(2,6,23,.55) 65%,
-            rgba(2,6,23,.25) 100%
-          )
-        `,
-    }}
-  />
+    background: isMobile
+      ? `
+        linear-gradient(
+          180deg,
+          rgba(2,6,23,.03) 0%,
+          rgba(2,6,23,.12) 30%,
+          rgba(2,6,23,.35) 55%,
+          rgba(2,6,23,.65) 80%,
+          rgba(2,6,23,.92) 100%
+        )
+      `
+      : `
+        linear-gradient(
+          90deg,
+          rgba(2,6,23,.82) 0%,
+          rgba(2,6,23,.65) 30%,
+          rgba(2,6,23,.35) 60%,
+          rgba(2,6,23,.10) 100%
+        )
+      `,
+  }}
+/>
 
   {/* GREEN GLOW */}
   <div
@@ -324,12 +324,9 @@ useEffect(() => {
       : "32px",
   }}
 >
-  Structured psychological evaluation,
-  aptitude testing, and professional
-  consulting services designed to help
-  organizations reduce hiring risks and
-  understand candidate potential more
-  deeply.
+Psychological assessment and aptitude
+ testing designed to improve hiring 
+ decisions and reduce recruitment risks.
 </p>
 
       {/* FEATURE CHIPS */}
