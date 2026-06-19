@@ -988,9 +988,13 @@ gap: isMobile
 
     fontSize: isMobile
       ? "28px"
-      : "48px",
+      : "34px",
+
+    lineHeight: 1.05,
 
     fontWeight: 800,
+
+    color: "#fff",
 
     marginBottom: "20px",
   }}
