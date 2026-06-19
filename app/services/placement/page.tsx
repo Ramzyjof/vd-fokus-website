@@ -255,7 +255,10 @@ const body = isMobile
         maxWidth: "760px",
 
         marginTop: "30px",
-
+        marginBottom: isMobile
+      ? "40px"
+      : "50px",
+      
         color: "#CBD5E1",
 
         lineHeight: 1.8,
