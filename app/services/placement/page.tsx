@@ -110,12 +110,12 @@ const body = isMobile
 <section
   style={{
     position: "relative",
-    minHeight: isMobile ? "780px" : "800px",
+    minHeight: isMobile ? "700px" : "800px",
 
     display: "flex",
     alignItems: "center",
 
-    paddingTop: isMobile ? "40px" : "90px",
+    paddingTop: isMobile ? "20px" : "90px",
     paddingBottom: isMobile ? "30px" : "50px",
 
     overflow: "hidden",
@@ -357,11 +357,17 @@ const body = isMobile
 
         maxWidth: "820px",
 
-        background:
-          "rgba(2,6,23,.55)",
-
+        background: `
+  linear-gradient(
+    180deg,
+    rgba(15,23,42,.85),
+    rgba(15,23,42,.65)
+  )
+`,
+        boxShadow:
+        "0 25px 60px rgba(0,0,0,.35)",
         backdropFilter: "blur(30px)",
-
+          
         border:
           "1px solid rgba(255,255,255,.08)",
 
