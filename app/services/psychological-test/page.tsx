@@ -551,17 +551,85 @@ useEffect(() => {
 <section
   style={{
     maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "0 20px 100px"
+
+    margin: isMobile
+      ? "80px auto 0"
+      : "140px auto 0",
+
+    padding: isMobile
+      ? "0 16px 80px"
+      : "0 20px 120px",
+  }}
+>
+  <div
+  style={{
+    textAlign: "center",
+    marginBottom: isMobile
+      ? "40px"
+      : "70px",
   }}
 >
   <div
     style={{
-      display: "grid",
-      gridTemplateColumns:
-        "repeat(auto-fit,minmax(320px,1fr))",
+      color: "#4ADE80",
+      fontSize: "13px",
+      letterSpacing: "3px",
+      fontWeight: 700,
+      marginBottom: "14px",
+    }}
+  >
+    ASSESSMENT SERVICES
+  </div>
 
-      gap: "28px"
+  <h2
+    style={{
+      fontSize: isMobile
+        ? "34px"
+        : "56px",
+
+      lineHeight: 1.05,
+
+      fontWeight: 800,
+
+      marginBottom: "20px",
+    }}
+  >
+    Assessment Packages
+  </h2>
+
+  <p
+    style={{
+      color: "#94A3B8",
+
+      maxWidth: "700px",
+
+      margin: "0 auto",
+
+      fontSize: isMobile
+        ? "14px"
+        : "18px",
+
+      lineHeight: 1.8,
+    }}
+  >
+    Professional psychological and aptitude
+    assessments designed to improve hiring
+    decisions, identify potential, and reduce
+    recruitment risks.
+  </p>
+</div>
+  <div
+    style={{
+      display: "grid",
+
+gridTemplateColumns:
+  isMobile
+    ? "1fr"
+    : "repeat(2,minmax(0,1fr))",
+
+gap: isMobile
+  ? "18px"
+  : "28px",
     }}
   >
 
@@ -602,8 +670,7 @@ useEffect(() => {
       {/* ICON */}
       <div
         style={{
-          width: "60px",
-          height: "60px",
+         
           borderRadius: "18px",
 
           background:
@@ -613,7 +680,12 @@ useEffect(() => {
           alignItems: "center",
           justifyContent: "center",
 
-          fontSize: "28px",
+          width: isMobile ? "52px" : "64px",
+          height: isMobile ? "52px" : "64px",
+
+          fontSize: isMobile
+            ? "22px"
+            : "28px",
 
           marginBottom: "24px"
         }}
@@ -634,7 +706,9 @@ useEffect(() => {
             "rgba(34,197,94,0.12)",
 
           color: "#86efac",
-          fontSize: "12px"
+                fontSize: isMobile
+          ? "11px"
+          : "12px",
         }}
       >
         Psychological Consulting
@@ -642,7 +716,9 @@ useEffect(() => {
 
       <h2
         style={{
-          fontSize: "30px",
+          fontSize: isMobile
+  ? "24px"
+  : "32px",
           marginBottom: "16px"
         }}
       >
@@ -652,7 +728,10 @@ useEffect(() => {
       <p
         style={{
           color: "#94a3b8",
-          lineHeight: "1.8",
+        fontSize: isMobile
+        ? "14px"
+        : "16px",
+        lineHeight: 1.7,
           marginBottom: "28px"
         }}
       >
@@ -676,14 +755,20 @@ useEffect(() => {
           style={{
             display: "flex",
             gap: "12px",
-            marginBottom: "14px"
+            marginBottom: isMobile
+            ? "10px"
+            : "14px"
           }}
         >
-          <span style={{ color: "#22c55e" }}>
+          <span style={{ color: "#CBD5E1", fontSize: isMobile
+              ? "14px"
+              : "16px", }}>
             ✔
           </span>
 
-          <span style={{ color: "#e2e8f0" }}>
+          <span style={{ color: "#CBD5E1", fontSize: isMobile
+              ? "14px"
+              : "16px",}}>
             {item}
           </span>
         </div>
@@ -701,7 +786,9 @@ useEffect(() => {
       >
         <div
           style={{
-            fontSize: "38px",
+            fontSize: isMobile
+            ? "30px"
+            : "42px",
             fontWeight: 700
           }}
         >
