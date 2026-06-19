@@ -47,10 +47,10 @@ useEffect(() => {
   style={{
     position: "relative",
    minHeight: isMobile
-  ? "1450px"
+  ? "1150px"
   : "900px",
     display: "flex",
-    alignItems: isMobile ? "flex-end" : "center",
+    alignItems: isMobile ? "flex-start" : "center",
     overflow: "hidden",
   }}
 >
@@ -135,7 +135,7 @@ useEffect(() => {
     margin: "0 auto",
 
    padding: isMobile
-  ? "90px 24px 40px"
+  ? "20px 24px 40px"
   : "0 60px",
 
     display: "flex",
@@ -178,7 +178,7 @@ useEffect(() => {
 
           border:
             "1px solid rgba(74,222,128,.25)",
-          marginTop: isMobile ? "0" : "140px",
+          marginTop: isMobile ? "12px" : "140px",
           marginBottom: isMobile
             ? "28px"
             : "36px",
