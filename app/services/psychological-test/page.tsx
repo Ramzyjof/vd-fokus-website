@@ -121,28 +121,44 @@ useEffect(() => {
   <div
     style={{
       position: "absolute",
-      top: "110px",
-      left: "50%",
-      transform: "translateX(-50%)",
+      top: "100px",
+      left: 0,
 
       width: "100%",
-      maxWidth: "430px",
-
-      height: "520px",
+      height: "auto",
 
       zIndex: 1,
-
-      pointerEvents: "none",
     }}
   >
-    <Image
+    <img
       src="/psy-hero-mobile.png"
       alt="Psychological Assessment"
-      fill
-      priority
       style={{
-        objectFit: "contain",
-        objectPosition: "top center",
+        width: "100%",
+        height: "auto",
+        display: "block",
+      }}
+    />
+
+    {/* Fade Bottom */}
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: 0,
+
+        height: "180px",
+
+        background: `
+          linear-gradient(
+            to bottom,
+            rgba(2,6,23,0) 0%,
+            rgba(2,6,23,.6) 40%,
+            rgba(2,6,23,.95) 80%,
+            rgba(2,6,23,1) 100%
+          )
+        `,
       }}
     />
   </div>
@@ -160,7 +176,7 @@ useEffect(() => {
     margin: "0 auto",
 
   padding: isMobile
-  ? "520px 24px 40px"
+  ? "650px 24px 40px"
   : "0 60px",
 
     display: "flex",
