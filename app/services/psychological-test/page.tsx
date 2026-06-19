@@ -987,8 +987,8 @@ gap: isMobile
     textAlign: "center",
 
     fontSize: isMobile
-      ? "28px"
-      : "34px",
+      ? "34px"
+      : "52px",
 
     lineHeight: 1.05,
 
@@ -999,9 +999,7 @@ gap: isMobile
     marginBottom: "20px",
   }}
 >
-  Why Organizations Choose
-  <br />
-  Our Assessment Services
+  Why Us?
 </h2>
 
           <p
