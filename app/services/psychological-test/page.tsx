@@ -121,23 +121,18 @@ useEffect(() => {
   <div
     style={{
       position: "absolute",
-      top: "100px",
+      top: "110px",
       left: "50%",
       transform: "translateX(-50%)",
 
       width: "100%",
-      maxWidth: "420px",
+      maxWidth: "430px",
 
-      height: "420px",
+      height: "520px",
 
       zIndex: 1,
 
-      overflow: "hidden",
-
-      maskImage:
-        "linear-gradient(to bottom, black 70%, transparent 100%)",
-      WebkitMaskImage:
-        "linear-gradient(to bottom, black 70%, transparent 100%)",
+      pointerEvents: "none",
     }}
   >
     <Image
@@ -146,11 +141,11 @@ useEffect(() => {
       fill
       priority
       style={{
-        objectFit: "cover",
+        objectFit: "contain",
+        objectPosition: "top center",
       }}
     />
   </div>
-
 )}
   {/* CONTENT */}
   <div
