@@ -32,7 +32,9 @@ useEffect(() => {
   return (
     <main
       style={{
-        minHeight: "100vh",
+      minHeight: isMobile
+        ? "1450px"
+        : "900px",        
         background:
           "radial-gradient(circle at top,#1e293b,#0f172a)",
         color: "#fff",
@@ -133,7 +135,7 @@ useEffect(() => {
     margin: "0 auto",
 
    padding: isMobile
-  ? "140px 24px 40px"
+  ? "90px 24px 40px"
   : "0 60px",
 
     display: "flex",
@@ -154,7 +156,7 @@ useEffect(() => {
           : "680px",
 
         marginTop: isMobile
-  ? "60px"
+  ? "0"
   : "0",
       }}
     >
