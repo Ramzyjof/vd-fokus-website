@@ -120,11 +120,14 @@ const body = isMobile
 
     overflow: "hidden",
 
-    backgroundImage:
-      "url('/hero.png')",
+    backgroundImage: isMobile
+  ? "url('/hero-mobile.png')"
+  : "url('/hero.png')",
 
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: isMobile
+  ? "center top"
+  : "center center",
   }}
 >
   {/* DARK OVERLAY */}
@@ -357,15 +360,9 @@ const body = isMobile
 
         maxWidth: "820px",
 
-        background: `
-  linear-gradient(
-    180deg,
-    rgba(15,23,42,.85),
-    rgba(15,23,42,.65)
-  )
-`,
-        boxShadow:
-        "0 25px 60px rgba(0,0,0,.35)",
+        background:
+          "rgba(2,6,23,.55)",
+
         backdropFilter: "blur(30px)",
           
         border:
