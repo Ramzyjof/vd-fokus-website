@@ -47,7 +47,7 @@ useEffect(() => {
   style={{
     position: "relative",
    minHeight: isMobile
-  ? "1150px"
+  ? "1350px"
   : "900px",
     display: "flex",
     alignItems: isMobile ? "flex-start" : "center",
@@ -55,22 +55,18 @@ useEffect(() => {
   }}
 >
   {/* BACKGROUND IMAGE */}
+  {!isMobile && (
   <Image
-  src={
-    isMobile
-      ? "/psy-hero-mobile.png"
-      : "/hero-psy.png"
-  }
-  alt="Psychological Assessment"
-  fill
-  priority
-  style={{
-    objectFit: "cover",
-    objectPosition: isMobile
-  ? "70% 12%"
-  : "center center",
-  }}
-/>
+    src="/hero-psy.png"
+    alt="Psychological Assessment"
+    fill
+    priority
+    style={{
+      objectFit: "cover",
+      objectPosition: "center center",
+    }}
+  />
+)}
   {/* OVERLAY */}
   <div
     style={{
@@ -79,16 +75,13 @@ useEffect(() => {
       zIndex: 2,
 
       background: isMobile
-        ? `
-          linear-gradient(
-            180deg,
-            rgba(2,6,23,.20) 0%,
-            rgba(2,6,23,.45) 35%,
-            rgba(2,6,23,.75) 60%,
-            rgba(2,6,23,.92) 80%,
-            rgba(2,6,23,1) 100%
-          )
-        `
+  ? `
+    linear-gradient(
+      180deg,
+      rgba(2,6,23,.85) 0%,
+      rgba(2,6,23,.95) 100%
+    )
+  `
         : `
           linear-gradient(
             90deg,
@@ -121,7 +114,36 @@ useEffect(() => {
       zIndex: 2,
     }}
   />
+{isMobile && (
+  <div
+    style={{
+      position: "absolute",
+      top: "110px",
+      left: "50%",
+      transform: "translateX(-50%)",
 
+      width: "100%",
+      maxWidth: "420px",
+
+      height: "420px",
+
+      zIndex: 1,
+
+      pointerEvents: "none",
+    }}
+  >
+    <Image
+      src="/psy-hero-mobile.png"
+      alt="Psychological Assessment"
+      fill
+      priority
+      style={{
+        objectFit: "contain",
+        objectPosition: "top center",
+      }}
+    />
+  </div>
+)}
   {/* CONTENT */}
   <div
   style={{
@@ -134,8 +156,8 @@ useEffect(() => {
 
     margin: "0 auto",
 
-   padding: isMobile
-  ? "20px 24px 40px"
+  padding: isMobile
+  ? "520px 24px 40px"
   : "0 60px",
 
     display: "flex",
