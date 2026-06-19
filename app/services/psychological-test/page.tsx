@@ -121,7 +121,7 @@ useEffect(() => {
   <div
     style={{
       position: "absolute",
-      top: "110px",
+      top: "100px",
       left: "50%",
       transform: "translateX(-50%)",
 
