@@ -74,6 +74,26 @@ useEffect(() => {
       inset: 0,
       zIndex: 2,
 
+      background: isMobile
+  ? `
+    linear-gradient(
+      180deg,
+      rgba(2,6,23,.20) 0%,
+      rgba(2,6,23,.45) 35%,
+      rgba(2,6,23,.75) 60%,
+      rgba(2,6,23,.92) 80%,
+      rgba(2,6,23,1) 100%
+    )
+  `
+        : `
+          linear-gradient(
+            90deg,
+            rgba(2,6,23,.95) 0%,
+            rgba(2,6,23,.82) 35%,
+            rgba(2,6,23,.55) 65%,
+            rgba(2,6,23,.25) 100%
+          )
+        `,
     }}
   />
 
