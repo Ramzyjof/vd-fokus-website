@@ -45,7 +45,7 @@ useEffect(() => {
   style={{
     position: "relative",
    minHeight: isMobile
-  ? "1200px"
+  ? "1450px"
   : "900px",
     display: "flex",
     alignItems: isMobile ? "flex-end" : "center",
@@ -65,8 +65,8 @@ useEffect(() => {
   style={{
     objectFit: "cover",
     objectPosition: isMobile
-      ? "center top"
-      : "center center",
+  ? "70% 12%"
+  : "center center",
   }}
 />
   {/* OVERLAY */}
@@ -80,10 +80,10 @@ useEffect(() => {
         ? `
           linear-gradient(
             180deg,
-            rgba(2,6,23,.10) 0%,
-            rgba(2,6,23,.45) 25%,
-            rgba(2,6,23,.85) 55%,
-            rgba(2,6,23,.98) 75%,
+            rgba(2,6,23,.20) 0%,
+            rgba(2,6,23,.45) 35%,
+            rgba(2,6,23,.75) 60%,
+            rgba(2,6,23,.92) 80%,
             rgba(2,6,23,1) 100%
           )
         `
@@ -133,7 +133,7 @@ useEffect(() => {
     margin: "0 auto",
 
    padding: isMobile
-  ? "190px 24px 32px"
+  ? "140px 24px 40px"
   : "0 60px",
 
     display: "flex",
@@ -154,8 +154,8 @@ useEffect(() => {
           : "680px",
 
         marginTop: isMobile
-          ? "160px"
-          : "0",
+  ? "60px"
+  : "0",
       }}
     >
       {/* BADGE */}
@@ -288,14 +288,17 @@ useEffect(() => {
     display: "grid",
 
     gridTemplateColumns:
-      isMobile
-        ? "1fr"
-        : "repeat(3,auto)",
+  isMobile
+    ? "repeat(2,1fr)"
+    : "repeat(3,auto)",
 
     gap: "10px",
 
     marginBottom: "24px",
-
+    height: isMobile ? "110px" : "auto",
+    justifyContent: "center",
+    textAlign: "center",
+    flexDirection: "column",
     maxWidth: isMobile
       ? "340px"
       : "100%",
