@@ -421,7 +421,7 @@ useEffect(() => {
     background: "#020617",
 
     filter: isMobile
-      ? "brightness(1.35) contrast(1.08)"
+      ? "brightness(1.25) contrast(1.05)"
       : "none",
   }}
 />
@@ -435,9 +435,9 @@ useEffect(() => {
   ? `
     linear-gradient(
       180deg,
-      rgba(2,6,23,.50) 0%,
-      rgba(2,6,23,.40) 45%,
-      rgba(2,6,23,.75) 100%
+      rgba(2,6,23,.55) 0%,
+      rgba(2,6,23,.45) 45%,
+      rgba(2,6,23,.80) 100%
     )
   `
         : `
