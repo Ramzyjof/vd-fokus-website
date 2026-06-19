@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Page() {
   const [visible, setVisible] = useState(false);
@@ -47,7 +48,7 @@ useEffect(() => {
   style={{
     position: "relative",
    minHeight: isMobile
-  ? "1350px"
+  ? "auto"
   : "900px",
     display: "flex",
     alignItems: isMobile ? "flex-start" : "center",
@@ -176,7 +177,7 @@ useEffect(() => {
     margin: "0 auto",
 
   padding: isMobile
-  ? "100px 24px 40px"
+  ? "90px 24px 20px"
   : "0 60px",
 
     display: "flex",
@@ -186,8 +187,8 @@ useEffect(() => {
       : "center",
 
     minHeight: isMobile
-      ? "100vh"
-      : "900px",
+  ? "auto"
+  : "900px",
   }}
 >
     <div
@@ -329,60 +330,58 @@ useEffect(() => {
       <div
   style={{
     display: "grid",
+    gridTemplateColumns: isMobile
+      ? "1fr"
+      : "repeat(3,auto)",
 
-    gridTemplateColumns:
-  isMobile
-    ? "repeat(2,1fr)"
-    : "repeat(3,auto)",
+    gap: "12px",
 
-    gap: "10px",
-
-    marginBottom: "24px",
-    height: isMobile ? "110px" : "auto",
-    justifyContent: "center",
-    textAlign: "center",
-    flexDirection: "column",
+    marginBottom: "16px",
     maxWidth: isMobile
-      ? "340px"
+      ? "320px"
       : "100%",
   }}
 >
-        {[
-          "Personality Test",
-          "Aptitude Assessment",
-          "Hiring Recommendation",
-        ].map((item) => (
-          <div
-            key={item}
-            style={{
-              display: "flex",
-              alignItems: "center",
+  {[
+    "Personality Test",
+    "Aptitude Assessment",
+    "Hiring Recommendation",
+  ].map((item) => (
+    <div
+      key={item}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
 
-              gap: "8px",
+        padding: "12px 16px",
 
-              padding: isMobile
-                ? "12px 14px"
-                : "14px 18px",
+        borderRadius: "14px",
 
-              borderRadius: "18px",
+        background:
+          "rgba(255,255,255,.04)",
 
-              background:
-                "rgba(255,255,255,.05)",
+        border:
+          "1px solid rgba(74,222,128,.12)",
 
-              border:
-                "1px solid rgba(255,255,255,.08)",
+        color: "#E2E8F0",
 
-              color: "#fff",
+        fontSize: isMobile
+          ? "14px"
+          : "15px",
 
-              fontSize: isMobile
-                ? "14px"
-                : "15px",
-            }}
-          >
-            ✅ {item}
-          </div>
-        ))}
-      </div>
+        fontWeight: 500,
+      }}
+    >
+      <CheckCircle2
+        size={18}
+        color="#4ADE80"
+      />
+
+      <span>{item}</span>
+    </div>
+  ))}
+</div>
 
       {/* BUTTONS */}
       <div
