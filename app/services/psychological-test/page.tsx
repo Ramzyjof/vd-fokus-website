@@ -176,7 +176,7 @@ useEffect(() => {
     margin: "0 auto",
 
   padding: isMobile
-  ? "650px 24px 40px"
+  ? "100px 24px 40px"
   : "0 60px",
 
     display: "flex",
