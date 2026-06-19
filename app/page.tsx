@@ -397,13 +397,13 @@ useEffect(() => {
 >
   {/* Background Image */}
   <img
-    src={
-      isMobile
-        ? "hero-mobile.png"
-        : "hero.png"
-    }
-    alt="VD Fokus"
-     style={{
+  src={
+    isMobile
+      ? "hero-mobile.png"
+      : "hero.png"
+  }
+  alt="VD Fokus"
+  style={{
     position: "absolute",
     inset: 0,
 
@@ -419,6 +419,10 @@ useEffect(() => {
       : "center 15%",
 
     background: "#020617",
+
+    filter: isMobile
+      ? "brightness(1.35) contrast(1.08)"
+      : "none",
   }}
 />
 
@@ -428,14 +432,14 @@ useEffect(() => {
       position: "absolute",
       inset: 0,
       background: isMobile
-        ? `
-        linear-gradient(
-          180deg,
-          rgba(2,6,23,.92) 0%,
-          rgba(2,6,23,.82) 50%,
-          rgba(2,6,23,.95) 100%
-        )
-      `
+  ? `
+    linear-gradient(
+      180deg,
+      rgba(2,6,23,.50) 0%,
+      rgba(2,6,23,.40) 45%,
+      rgba(2,6,23,.75) 100%
+    )
+  `
         : `
         linear-gradient(
           90deg,
