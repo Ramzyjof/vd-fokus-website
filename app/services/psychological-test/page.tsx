@@ -222,7 +222,7 @@ useEffect(() => {
             "1px solid rgba(74,222,128,.25)",
           marginTop: isMobile ? "12px" : "140px",
           marginBottom: isMobile
-            ? "28px"
+            ? "16px"
             : "36px",
         }}
       >
@@ -336,7 +336,8 @@ useEffect(() => {
 
     gap: "12px",
 
-    marginBottom: "16px",
+    marginBottom: "28px",
+
     maxWidth: isMobile
       ? "320px"
       : "100%",
