@@ -276,28 +276,25 @@ const body = isMobile
     </p>
 
    {/* BUTTONS */}
-
-{/* BUTTONS */}
-
 <div
   style={{
     display: "flex",
 
-    flexDirection: isMobile
-      ? "row"
-      : "row",
+    flexDirection: "row",
 
     gap: isMobile
       ? "10px"
       : "16px",
 
     marginTop: isMobile
+      ? "42px"
+      : "56px",
+
+    marginBottom: isMobile
       ? "28px"
       : "40px",
 
-    width: isMobile
-      ? "100%"
-      : "auto",
+    width: "100%",
 
     maxWidth: isMobile
       ? "380px"
@@ -305,10 +302,10 @@ const body = isMobile
   }}
 >
   {/* PRIMARY CTA */}
-
   <a
-    href="https://wa.me/628161387821"
+    href="https://wa.me/6285121305329"
     target="_blank"
+    rel="noopener noreferrer"
     style={{
       flex: 1,
 
@@ -325,7 +322,7 @@ const body = isMobile
       textDecoration: "none",
 
       background:
-        "linear-gradient(90deg,#3B82F6,#60A5FA)",
+        "linear-gradient(135deg,#2563EB,#60A5FA)",
 
       color: "#fff",
 
@@ -336,7 +333,19 @@ const body = isMobile
         : "18px",
 
       boxShadow:
-        "0 15px 40px rgba(59,130,246,.25)",
+        "0 15px 40px rgba(37,99,235,.35)",
+
+      transition: "all .25s ease",
+    }}
+    onMouseEnter={(e) => {
+      if (!isMobile) {
+        e.currentTarget.style.transform =
+          "translateY(-2px)";
+      }
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform =
+        "translateY(0)";
     }}
   >
     {isMobile
@@ -345,9 +354,8 @@ const body = isMobile
   </a>
 
   {/* SECONDARY CTA */}
-
   <a
-    href="#why"
+    href="#services"
     style={{
       flex: 1,
 
@@ -363,11 +371,13 @@ const body = isMobile
 
       textDecoration: "none",
 
-      
+      background:
+        "rgba(255,255,255,.04)",
 
-      background: "rgba(255,255,255,.04)",
       backdropFilter: "blur(20px)",
-      border: "1px solid rgba(255,255,255,.12)",
+
+      border:
+        "1px solid rgba(255,255,255,.12)",
 
       color: "#fff",
 
@@ -376,11 +386,23 @@ const body = isMobile
       fontSize: isMobile
         ? "14px"
         : "18px",
+
+      transition: "all .25s ease",
+    }}
+    onMouseEnter={(e) => {
+      if (!isMobile) {
+        e.currentTarget.style.background =
+          "rgba(255,255,255,.08)";
+      }
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.background =
+        "rgba(255,255,255,.04)";
     }}
   >
     {isMobile
-      ? "Why Us"
-      : "Why VD Fokus →"}
+      ? "Learn More"
+      : "Explore Services →"}
   </a>
 </div>
 
