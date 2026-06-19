@@ -390,13 +390,17 @@ Psychological assessment and aptitude
   style={{
     display: "flex",
 
-    flexDirection: "column",
+flexDirection: isMobile
+  ? "row"
+  : "column",
 
-    gap: "12px",
+gap: isMobile
+  ? "10px"
+  : "12px",
 
-    width: isMobile
-      ? "100%"
-      : "520px",
+width: isMobile
+  ? "100%"
+  : "520px",
 
     marginBottom: "24px",
   }}
@@ -405,8 +409,6 @@ Psychological assessment and aptitude
           href="https://wa.me/6285121305329"
           target="_blank"
           style={{
-            height: "68px",
-
             borderRadius: "999px",
 
             display: "flex",
@@ -422,8 +424,16 @@ Psychological assessment and aptitude
 
             fontWeight: 700,
 
-            fontSize: isMobile
-            ? "18px"
+            height: isMobile
+            ? "52px"
+            : "68px",
+
+          width: isMobile
+            ? "50%"
+            : "100%",
+
+          fontSize: isMobile
+            ? "14px"
             : "18px",
 
             boxShadow:
@@ -437,9 +447,17 @@ Psychological assessment and aptitude
           href="#services"
           style={{
           
-            height: isMobile ? "60px" : "68px",
-            fontSize: isMobile ? "18px" : "18px",
-            width: "100%",
+            height: isMobile
+            ? "52px"
+            : "68px",
+
+          width: isMobile
+            ? "50%"
+            : "100%",
+
+          fontSize: isMobile
+            ? "14px"
+            : "18px",
             borderRadius: "999px",
 
             display: "flex",
