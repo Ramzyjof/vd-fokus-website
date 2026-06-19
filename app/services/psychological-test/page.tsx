@@ -5,9 +5,17 @@ import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 
 export default function Page() {
+  
   const [visible, setVisible] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const headingXL = isMobile ? "42px" : "72px";
+  const headingL = isMobile ? "30px" : "56px";
+  const headingM = isMobile ? "24px" : "40px";
+
+  const bodyLarge = isMobile ? "16px" : "20px";
+  const body = isMobile ? "14px" : "18px";
+  const bodySmall = isMobile ? "13px" : "15px";
  
 
   useEffect(() => {
@@ -262,7 +270,7 @@ useEffect(() => {
 
       fontWeight: 800,
 
-      fontSize: isMobile ? "42px" : "72px",
+      fontSize: headingXL,
       lineHeight: isMobile ? "0.95" : "0.92",
       letterSpacing: isMobile ? "-1px" : "-3px",
 
@@ -303,9 +311,7 @@ useEffect(() => {
 
     lineHeight: 1.75,
 
-    fontSize: isMobile
-      ? "15px"
-      : "21px",
+    fontSize: bodyLarge,
 
     maxWidth: isMobile
       ? "300px"
@@ -367,9 +373,7 @@ useEffect(() => {
 
         color: "#E2E8F0",
 
-        fontSize: isMobile
-          ? "14px"
-          : "15px",
+        fontSize: bodySmall,
 
         fontWeight: 500,
       }}
@@ -422,8 +426,8 @@ useEffect(() => {
             fontWeight: 700,
 
             fontSize: isMobile
-              ? "20px"
-              : "18px",
+            ? "18px"
+            : "18px",
 
             boxShadow:
               "0 15px 40px rgba(34,197,94,.25)",
@@ -583,9 +587,7 @@ useEffect(() => {
 
   <h2
     style={{
-      fontSize: isMobile
-        ? "34px"
-        : "56px",
+     fontSize: headingL,
 
       lineHeight: 1.05,
 
@@ -605,9 +607,7 @@ useEffect(() => {
 
       margin: "0 auto",
 
-      fontSize: isMobile
-        ? "14px"
-        : "18px",
+      fontSize: body,
 
       lineHeight: 1.8,
     }}
@@ -787,7 +787,7 @@ gap: isMobile
         <div
           style={{
             fontSize: isMobile
-            ? "30px"
+            ? "28px"
             : "42px",
             fontWeight: 700
           }}
@@ -942,7 +942,9 @@ gap: isMobile
       >
         <div
           style={{
-            fontSize: "38px",
+            fontSize: isMobile
+            ? "28px"
+            : "32px",
             fontWeight: 700
           }}
         >
@@ -1130,7 +1132,7 @@ gap: isMobile
 
           <h2
             style={{
-              fontSize: "36px",
+              fontSize: "28px",
               marginBottom: "14px"
             }}
           >
@@ -1158,7 +1160,9 @@ gap: isMobile
           >
             <span
               style={{
-                fontSize: "48px",
+                fontSize: isMobile
+                ? "28px"
+                : "36px",
                 fontWeight: 700
               }}
             >
