@@ -58,7 +58,7 @@ useEffect(() => {
   <Image
   src={
     isMobile
-      ? "/psy-hero-mobile.png"
+      ? "/hero-psy.png"
       : "/hero-psy.png"
   }
   alt="Psychological Assessment"
