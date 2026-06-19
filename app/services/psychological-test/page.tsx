@@ -1220,7 +1220,21 @@ gap: isMobile
               marginTop: "24px",
               marginBottom: "20px",
 
-              padding: "12px 22px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+
+              height: isMobile ? "50px" : "56px",
+
+              padding: isMobile
+                ? "0 18px"
+                : "0 24px",
+
+              fontSize: isMobile
+                ? "14px"
+                : "15px",
+
+              fontWeight: 600,
 
               borderRadius: "999px",
 
@@ -1303,50 +1317,46 @@ gap: isMobile
 
           {/* CTA */}
           <a
-            href="https://wa.me/6285121305329?text=Hi%20VD%20Fokus,%20I%20am%20interested%20in%20your%20Psychological%20Assessment%20Service."
-            style={{
-              display: "inline-block",
-              height: isMobile ? "60px" : "68px",
-              fontSize: isMobile ? "18px" : "18px",
-              width: "100%",
-              marginTop: "30px",
+  href="https://wa.me/6285121305329?text=Hi%20VD%20Fokus,%20I%20am%20interested%20in%20your%20Psychological%20Assessment%20Service."
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    marginTop: "30px",
 
-              padding: "16px 30px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
 
-              borderRadius: "999px",
+    width: isMobile ? "100%" : "auto",
+    height: isMobile ? "58px" : "68px",
 
-              background:
-                "linear-gradient(135deg,#22c55e,#16a34a)",
+    borderRadius: "999px",
 
-              color: "#fff",
+    background:
+      "linear-gradient(135deg,#22C55E,#16A34A)",
 
-              textDecoration: "none",
+    color: "#fff",
+    textDecoration: "none",
 
-              fontWeight: 600,
+    fontWeight: 700,
+    fontSize: isMobile ? "16px" : "18px",
 
-              boxShadow:
-                "0 0 30px rgba(34,197,94,0.35)",
+    boxShadow:
+      "0 10px 30px rgba(34,197,94,.25)",
 
-              transition:
-                "all 0.3s ease"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform =
-                "scale(1.05)";
-
-              e.currentTarget.style.boxShadow =
-                "0 0 40px rgba(34,197,94,0.7)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform =
-                "scale(1)";
-
-              e.currentTarget.style.boxShadow =
-                "0 0 30px rgba(34,197,94,0.35)";
-            }}
-          >
-            Book Consultation →
-          </a>
+    transition: "all .3s ease",
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform =
+      "translateY(-2px)";
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform =
+      "translateY(0)";
+  }}
+>
+  💬 Book Consultation
+</a>
         </div>
       </section>
     </main>
