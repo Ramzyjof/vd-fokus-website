@@ -478,11 +478,11 @@ useEffect(() => {
           display: "flex",
           
 
-          gap: "16px",
+          gap: "20px",
 
           padding: isMobile
-            ? "18px"
-            : "22px",
+            ? "20px"
+            : "28px",
 
           borderRadius: "24px",
 
