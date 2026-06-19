@@ -360,13 +360,11 @@ const body = isMobile
 
       textDecoration: "none",
 
-      border:
-        "1px solid rgba(255,255,255,.12)",
+      
 
-      background:
-        "rgba(255,255,255,.03)",
-
+      background: "rgba(255,255,255,.04)",
       backdropFilter: "blur(20px)",
+      border: "1px solid rgba(255,255,255,.12)",
 
       color: "#fff",
 
@@ -383,70 +381,143 @@ const body = isMobile
   </a>
 </div>
 
-    {/* STATS */}
+    {/* HIRING PROCESS */}
+<div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
 
+    gap: isMobile ? "8px" : "14px",
+
+    marginTop: "28px",
+    marginBottom: "24px",
+
+    flexWrap: "wrap",
+
+    maxWidth: "650px",
+  }}
+>
+  {[
+    "Requirement",
+    "Assessment",
+    "Placement",
+  ].map((item, index) => (
+    <React.Fragment key={item}>
+      <div
+        style={{
+          padding: isMobile
+            ? "10px 14px"
+            : "14px 22px",
+
+          borderRadius: "999px",
+
+          background:
+            "rgba(255,255,255,.04)",
+
+          border:
+            "1px solid rgba(255,255,255,.08)",
+
+          backdropFilter: "blur(20px)",
+
+          color: "#E2E8F0",
+
+          fontWeight: 600,
+
+          fontSize: isMobile
+            ? "12px"
+            : "15px",
+        }}
+      >
+        {item}
+      </div>
+
+      {index < 2 && (
+        <div
+          style={{
+            color: "#60A5FA",
+
+            fontSize: isMobile
+              ? "16px"
+              : "20px",
+
+            fontWeight: 700,
+          }}
+        >
+          →
+        </div>
+      )}
+    </React.Fragment>
+  ))}
+</div>
+
+{/* TRUST BOX */}
+<div
+  style={{
+    display: "grid",
+
+    gridTemplateColumns: isMobile
+      ? "1fr"
+      : "repeat(2,1fr)",
+
+    gap: "12px",
+
+    maxWidth: "700px",
+
+    padding: isMobile
+      ? "18px"
+      : "24px",
+
+    borderRadius: "28px",
+
+    background:
+      "linear-gradient(180deg, rgba(15,23,42,.85), rgba(15,23,42,.65))",
+
+    border:
+      "1px solid rgba(255,255,255,.08)",
+
+    backdropFilter: "blur(25px)",
+
+    boxShadow:
+      "0 25px 60px rgba(0,0,0,.25)",
+  }}
+>
+  {[
+    "Executive Search Specialist",
+    "20+ Years Recruitment Experience",
+    "Trusted by 500+ Organizations",
+    "30+ Industries Served",
+  ].map((item) => (
     <div
+      key={item}
       style={{
-        marginTop: "40px",
+        display: "flex",
+        alignItems: "center",
 
-        maxWidth: "820px",
+        gap: "10px",
 
-        background:
-          "rgba(2,6,23,.55)",
+        color: "#E2E8F0",
 
-        backdropFilter: "blur(30px)",
-          
-        border:
-          "1px solid rgba(255,255,255,.08)",
+        fontSize: isMobile
+          ? "14px"
+          : "15px",
 
-        borderRadius: "30px",
-
-        padding: isMobile
-          ? "24px"
-          : "32px",
-
-        display: "grid",
-
-        gridTemplateColumns:
-          "repeat(3,1fr)",
-
-        textAlign: "center",
+        fontWeight: 500,
       }}
     >
-      {[
-        ["20+", "Years Experience"],
-        ["500+", "Clients Served"],
-        ["30+", "Industries"],
-      ].map(([value, label]) => (
-        <div key={value}>
-          <div
-            style={{
-              color: "#6EA8FF",
+      <span
+        style={{
+          color: "#60A5FA",
+          fontSize: "18px",
+        }}
+      >
+        ✓
+      </span>
 
-              fontSize: isMobile
-                ? "36px"
-                : "52px",
-
-              fontWeight: 800,
-            }}
-          >
-            {value}
-          </div>
-
-          <div
-            style={{
-              color: "#CBD5E1",
-
-              fontSize: isMobile
-                ? "14px"
-                : "18px",
-            }}
-          >
-            {label}
-          </div>
-        </div>
-      ))}
+      {item}
     </div>
+  ))}
+</div>
   </div>
 </section>
       {/* PROBLEMS*/}
