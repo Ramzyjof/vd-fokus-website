@@ -43,32 +43,36 @@ useEffect(() => {
      {/* HERO */}
 <section
   style={{
-    position: "relative",
-   minHeight: isMobile
-  ? "1450px"
-  : "900px",
-    display: "flex",
-    alignItems: isMobile ? "flex-end" : "center",
-    overflow: "hidden",
-  }}
->
-  {/* BACKGROUND IMAGE */}
+      position: "absolute",
+      top: "80px",
+      left: 0,
+      width: "100%",
+      height: "420px",
+      zIndex: 1,
+    }}
+  >
+    <Image
+      src="/psy-hero-mobile.png"
+      alt="Psychological Assessment"
+      fill
+      priority
+      style={{
+        objectFit: "contain",
+        objectPosition: "top center",
+      }}
+    />
+  ) : (
   <Image
-  src={
-    isMobile
-      ? "/psy-hero-mobile.png"
-      : "/hero-psy.png"
-  }
-  alt="Psychological Assessment"
-  fill
-  priority
-  style={{
-    objectFit: "cover",
-    objectPosition: isMobile
-  ? "70% 12%"
-  : "center center",
-  }}
-/>
+    src="/hero-psy.png"
+    alt="Psychological Assessment"
+    fill
+    priority
+    style={{
+      objectFit: "cover",
+      objectPosition: "center center",
+    }}
+  />
+)
   {/* OVERLAY */}
   <div
     style={{
@@ -129,7 +133,9 @@ useEffect(() => {
     width: "100%",
 
     maxWidth: "1400px",
-
+    marginTop: isMobile
+    ? "260px"
+    : "0",
     margin: "0 auto",
 
    padding: isMobile
