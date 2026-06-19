@@ -132,20 +132,25 @@ useEffect(() => {
 
       zIndex: 1,
 
-      pointerEvents: "none",
+      overflow: "hidden",
+
+      maskImage:
+        "linear-gradient(to bottom, black 70%, transparent 100%)",
+      WebkitMaskImage:
+        "linear-gradient(to bottom, black 70%, transparent 100%)",
     }}
   >
     <Image
-      src="/hero-psy.png"
+      src="/psy-hero-mobile.png"
       alt="Psychological Assessment"
       fill
       priority
       style={{
-        objectFit: "contain",
-        objectPosition: "top center",
+        objectFit: "cover",
       }}
     />
   </div>
+
 )}
   {/* CONTENT */}
   <div
