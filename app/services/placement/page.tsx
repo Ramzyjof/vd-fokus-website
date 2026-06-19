@@ -256,9 +256,9 @@ const body = isMobile
 
         marginTop: "30px",
         marginBottom: isMobile
-      ? "40px"
+      ? "46px"
       : "50px",
-      
+
         color: "#CBD5E1",
 
         lineHeight: 1.8,
