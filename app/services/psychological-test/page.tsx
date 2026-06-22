@@ -1031,7 +1031,7 @@ gap: isMobile
       </div>
 
       <a
-        href="https://wa.me/6285121305329"
+        href="https://wa.me/628161387821?text=Hi%20Im%20interested%20on%20Psychological%20Assessment"
         target="_blank"
         rel="noopener noreferrer"
         style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", boxSizing: "border-box", minHeight: isMobile ? "52px" : "56px", marginTop: "16px", padding: "0 22px", borderRadius: "16px", background: "linear-gradient(135deg,#22c55e,#16a34a)", color: "#fff", textDecoration: "none", fontWeight: 750, boxShadow: "0 12px 30px rgba(34,197,94,0.22)", transition: "transform .3s ease, box-shadow .3s ease" }}
@@ -1191,7 +1191,7 @@ gap: isMobile
       </div>
 
       <a
-        href="https://wa.me/6285121305329"
+        href="https://wa.me/628161387821?text=Hi%20Im%20interested%20on%20Talent%20and%20Career%20Interest%20Assessment"
         target="_blank"
         rel="noopener noreferrer"
         style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", boxSizing: "border-box", minHeight: isMobile ? "52px" : "56px", marginTop: "16px", padding: "0 22px", borderRadius: "16px", background: "linear-gradient(135deg,#22c55e,#16a34a)", color: "#fff", textDecoration: "none", fontWeight: 750, boxShadow: "0 12px 30px rgba(34,197,94,0.22)", transition: "transform .3s ease, box-shadow .3s ease" }}
@@ -1403,7 +1403,7 @@ gap: isMobile
 
           {/* CTA */}
           <a
-  href="https://wa.me/6285121305329"
+  href="https://wa.me/628161387821?text=Hi%20Im%20interested%20on%20Job%20Role%20Suitability%20Assessment"
   target="_blank"
   rel="noopener noreferrer"
   style={{
