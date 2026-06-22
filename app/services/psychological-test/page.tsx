@@ -7,7 +7,9 @@ import { CheckCircle2 } from "lucide-react";
 export default function Page() {
   
   const [visible, setVisible] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
+  const [openDetails, setOpenDetails] = useState<
+    "psychological" | "talent" | "role" | null
+  >(null);
   const [isMobile, setIsMobile] = useState(false);
   const headingXL = isMobile ? "42px" : "72px";
   const headingL = isMobile ? "30px" : "56px";
@@ -773,8 +775,8 @@ width: isMobile
       : "140px auto 0",
 
     padding: isMobile
-      ? "0 16px 80px"
-      : "0 20px 120px",
+      ? "0 16px 36px"
+      : "0 20px 58px",
   }}
 >
   <div
@@ -848,21 +850,22 @@ gap: isMobile
     {/* PSYCHOLOGICAL TEST */}
     <div
       style={{
-        padding: "32px",
-        borderRadius: "28px",
+        padding: isMobile ? "24px" : "32px",
+        minWidth: 0,
+        borderRadius: "30px",
 
         background:
-          "rgba(255,255,255,0.05)",
+          "linear-gradient(145deg,rgba(255,255,255,0.075),rgba(255,255,255,0.025))",
 
         border:
-          "1px solid rgba(34,197,94,0.18)",
+          "1px solid rgba(134,239,172,0.24)",
 
-        backdropFilter: "blur(12px)",
+        backdropFilter: "blur(20px)",
 
         transition: "all 0.35s ease",
 
         boxShadow:
-          "0 25px 60px rgba(0,0,0,0.35)"
+          "0 28px 70px rgba(2,6,23,0.5), inset 0 1px 0 rgba(255,255,255,0.06)"
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform =
@@ -876,7 +879,7 @@ gap: isMobile
           "translateY(0px)";
 
         e.currentTarget.style.boxShadow =
-          "0 25px 60px rgba(0,0,0,0.35)";
+          "0 28px 70px rgba(2,6,23,0.5), inset 0 1px 0 rgba(255,255,255,0.06)";
       }}
     >
       {/* ICON */}
@@ -952,38 +955,6 @@ gap: isMobile
         professional interview and recommendation.
       </p>
 
-      {/* FEATURES */}
-      {[
-        "IQ Assessment",
-        "Personality Assessment",
-        "Work Behavior Analysis",
-        "Professional Interview",
-        "Assessment Recommendation"
-      ].map((item, i) => (
-        <div
-          key={i}
-          style={{
-            display: "flex",
-            gap: "12px",
-            marginBottom: isMobile
-            ? "10px"
-            : "14px"
-          }}
-        >
-          <span style={{ color: "#CBD5E1", fontSize: isMobile
-              ? "14px"
-              : "16px", }}>
-            ✔
-          </span>
-
-          <span style={{ color: "#CBD5E1", fontSize: isMobile
-              ? "14px"
-              : "16px",}}>
-            {item}
-          </span>
-        </div>
-      ))}
-
       {/* PRICE */}
       <div
         style={{
@@ -999,7 +970,9 @@ gap: isMobile
             fontSize: isMobile
             ? "28px"
             : "42px",
-            fontWeight: 700
+            fontWeight: 800,
+            letterSpacing: "-1px",
+            color: "#f8fafc"
           }}
         >
           IDR 500K
@@ -1014,26 +987,78 @@ gap: isMobile
           Per assessment package
         </div>
       </div>
+
+      <button
+        type="button"
+        aria-expanded={openDetails === "psychological"}
+        onClick={() => setOpenDetails(openDetails === "psychological" ? null : "psychological")}
+        style={{
+          width: "100%",
+          boxSizing: "border-box",
+          minHeight: isMobile ? "48px" : "52px",
+          marginTop: "22px",
+          padding: "0 18px",
+          borderRadius: "16px",
+          border: "1px solid rgba(134,239,172,0.2)",
+          background: "rgba(34,197,94,0.07)",
+          color: "#dcfce7",
+          fontSize: isMobile ? "14px" : "15px",
+          fontWeight: 650,
+          cursor: "pointer",
+          transition: "background .3s ease, border-color .3s ease, transform .3s ease"
+        }}
+      >
+        {openDetails === "psychological" ? "Hide Assessment Details" : "See More Details"}
+      </button>
+
+      <div
+        style={{
+          maxHeight: openDetails === "psychological" ? "360px" : "0px",
+          opacity: openDetails === "psychological" ? 1 : 0,
+          overflow: "hidden",
+          transition: "max-height .45s ease, opacity .3s ease, margin .45s ease",
+          marginTop: openDetails === "psychological" ? "14px" : "0px"
+        }}
+      >
+        <div style={{ padding: isMobile ? "18px" : "20px", borderRadius: "18px", background: "rgba(2,6,23,0.42)", border: "1px solid rgba(255,255,255,0.07)" }}>
+          {["IQ Assessment", "Personality Assessment", "Work Behavior Analysis", "Professional Interview", "Assessment Recommendation"].map((item) => (
+            <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "11px", marginBottom: "12px", color: "#cbd5e1", fontSize: isMobile ? "14px" : "15px", lineHeight: 1.5 }}>
+              <CheckCircle2 size={18} color="#4ade80" style={{ flexShrink: 0, marginTop: "2px" }} />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <a
+        href="https://wa.me/6285121305329"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", boxSizing: "border-box", minHeight: isMobile ? "52px" : "56px", marginTop: "16px", padding: "0 22px", borderRadius: "16px", background: "linear-gradient(135deg,#22c55e,#16a34a)", color: "#fff", textDecoration: "none", fontWeight: 750, boxShadow: "0 12px 30px rgba(34,197,94,0.22)", transition: "transform .3s ease, box-shadow .3s ease" }}
+      >
+        Book Assessment
+      </a>
     </div>
 
     {/* APTITUDE TEST */}
     <div
       style={{
-        padding: "32px",
-        borderRadius: "28px",
+        padding: isMobile ? "24px" : "32px",
+        minWidth: 0,
+        borderRadius: "30px",
 
         background:
-          "rgba(255,255,255,0.05)",
+          "linear-gradient(145deg,rgba(255,255,255,0.07),rgba(255,255,255,0.025))",
 
         border:
-          "1px solid rgba(59,130,246,0.2)",
+          "1px solid rgba(147,197,253,0.22)",
 
-        backdropFilter: "blur(12px)",
+        backdropFilter: "blur(20px)",
 
         transition: "all 0.35s ease",
 
         boxShadow:
-          "0 25px 60px rgba(0,0,0,0.35)"
+          "0 28px 70px rgba(2,6,23,0.5), inset 0 1px 0 rgba(255,255,255,0.06)"
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform =
@@ -1047,7 +1072,7 @@ gap: isMobile
           "translateY(0px)";
 
         e.currentTarget.style.boxShadow =
-          "0 25px 60px rgba(0,0,0,0.35)";
+          "0 28px 70px rgba(2,6,23,0.5), inset 0 1px 0 rgba(255,255,255,0.06)";
       }}
     >
       {/* ICON */}
@@ -1112,32 +1137,6 @@ gap: isMobile
         assessment and professional interview.
       </p>
 
-      {/* FEATURES */}
-      {[
-        "Talent & Interest Test",
-        "Personality Assessment",
-        "Leadership Potential Assessment",
-        "Professional Interview",
-        "Assessment Recommendation"
-      ].map((item, i) => (
-        <div
-          key={i}
-          style={{
-            display: "flex",
-            gap: "12px",
-            marginBottom: "14px"
-          }}
-        >
-          <span style={{ color: "#3B82F6" }}>
-            ✔
-          </span>
-
-          <span style={{ color: "#e2e8f0" }}>
-            {item}
-          </span>
-        </div>
-      ))}
-
       {/* PRICE */}
       <div
         style={{
@@ -1153,7 +1152,9 @@ gap: isMobile
             fontSize: isMobile
             ? "28px"
             : "32px",
-            fontWeight: 700
+            fontWeight: 800,
+            letterSpacing: "-1px",
+            color: "#f8fafc"
           }}
         >
           IDR 500K
@@ -1168,6 +1169,35 @@ gap: isMobile
           Per assessment package
         </div>
       </div>
+
+      <button
+        type="button"
+        aria-expanded={openDetails === "talent"}
+        onClick={() => setOpenDetails(openDetails === "talent" ? null : "talent")}
+        style={{ width: "100%", boxSizing: "border-box", minHeight: isMobile ? "48px" : "52px", marginTop: "22px", padding: "0 18px", borderRadius: "16px", border: "1px solid rgba(147,197,253,0.2)", background: "rgba(59,130,246,0.07)", color: "#dbeafe", fontSize: isMobile ? "14px" : "15px", fontWeight: 650, cursor: "pointer", transition: "background .3s ease, border-color .3s ease, transform .3s ease" }}
+      >
+        {openDetails === "talent" ? "Hide Assessment Details" : "See More Details"}
+      </button>
+
+      <div style={{ maxHeight: openDetails === "talent" ? "360px" : "0px", opacity: openDetails === "talent" ? 1 : 0, overflow: "hidden", transition: "max-height .45s ease, opacity .3s ease, margin .45s ease", marginTop: openDetails === "talent" ? "14px" : "0px" }}>
+        <div style={{ padding: isMobile ? "18px" : "20px", borderRadius: "18px", background: "rgba(2,6,23,0.42)", border: "1px solid rgba(255,255,255,0.07)" }}>
+          {["Talent & Interest Test", "Personality Assessment", "Leadership Potential Assessment", "Professional Interview", "Assessment Recommendation"].map((item) => (
+            <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "11px", marginBottom: "12px", color: "#cbd5e1", fontSize: isMobile ? "14px" : "15px", lineHeight: 1.5 }}>
+              <CheckCircle2 size={18} color="#60a5fa" style={{ flexShrink: 0, marginTop: "2px" }} />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <a
+        href="https://wa.me/6285121305329"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", boxSizing: "border-box", minHeight: isMobile ? "52px" : "56px", marginTop: "16px", padding: "0 22px", borderRadius: "16px", background: "linear-gradient(135deg,#22c55e,#16a34a)", color: "#fff", textDecoration: "none", fontWeight: 750, boxShadow: "0 12px 30px rgba(34,197,94,0.22)", transition: "transform .3s ease, box-shadow .3s ease" }}
+      >
+        Book Assessment
+      </a>
     </div>
 
   </div>
@@ -1178,7 +1208,7 @@ gap: isMobile
       {/* PACKAGE */}
       <section
         style={{
-          padding: "100px 20px"
+          padding: isMobile ? "22px 16px 80px" : "36px 20px 100px"
         }}
       >
         <div
@@ -1186,20 +1216,20 @@ gap: isMobile
             maxWidth: "850px",
             margin: "0 auto",
 
-            padding: "40px",
+            padding: isMobile ? "24px" : "40px",
 
-            borderRadius: "28px",
+            borderRadius: "30px",
 
             background:
-              "rgba(255,255,255,0.05)",
+              "linear-gradient(145deg,rgba(255,255,255,0.075),rgba(255,255,255,0.025))",
 
             border:
-              "1px solid rgba(255,255,255,0.08)",
+              "1px solid rgba(134,239,172,0.2)",
 
-            backdropFilter: "blur(12px)",
+            backdropFilter: "blur(20px)",
 
             boxShadow:
-              "0 30px 80px rgba(0,0,0,0.5)"
+              "0 32px 85px rgba(2,6,23,0.52), inset 0 1px 0 rgba(255,255,255,0.06)"
           }}
         >
           <div
@@ -1263,62 +1293,30 @@ gap: isMobile
                 style={{
                   padding: isMobile ? "18px" : "22px",
                   borderRadius: "20px",
-                  background: "rgba(15,23,42,0.55)",
-                  border: "1px solid rgba(255,255,255,0.08)"
+                  background: "linear-gradient(145deg,rgba(15,23,42,0.72),rgba(15,23,42,0.45))",
+                  border: "1px solid rgba(134,239,172,0.12)",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)"
                 }}
               >
                 <div style={{ color: "#94a3b8", marginBottom: "8px" }}>
                   {role}
                 </div>
-                <div style={{ fontSize: isMobile ? "24px" : "27px", fontWeight: 700 }}>
+                <div style={{ fontSize: isMobile ? "24px" : "27px", fontWeight: 800, letterSpacing: "-0.7px" }}>
                   {price}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* FEATURES */}
-          {[
-            "Professional Interview",
-            "Psychogram Analysis",
-            "Work Endurance Assessment",
-            "Personality Assessment",
-            "Assessment Recommendation"
-          ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                display: "flex",
-                gap: "12px",
-                marginBottom: "14px"
-              }}
-            >
-              <span
-                style={{
-                  color: "#22c55e"
-                }}
-              >
-                ✔
-              </span>
-
-              <span
-                style={{
-                  color: "#cbd5e1"
-                }}
-              >
-                {item}
-              </span>
-            </div>
-          ))}
-
           {/* DETAILS */}
           <button
-            onClick={() =>
-              setShowDetails(!showDetails)
-            }
+            type="button"
+            aria-expanded={openDetails === "role"}
+            onClick={() => setOpenDetails(openDetails === "role" ? null : "role")}
             style={{
-              marginTop: "24px",
-              marginBottom: "20px",
+              width: "100%",
+              boxSizing: "border-box",
+              marginTop: "4px",
 
               display: "flex",
               alignItems: "center",
@@ -1336,12 +1334,12 @@ gap: isMobile
 
               fontWeight: 600,
 
-              borderRadius: "999px",
+              borderRadius: "16px",
 
-              background: "transparent",
+              background: "rgba(34,197,94,0.07)",
 
               border:
-                "1px solid rgba(255,255,255,0.15)",
+                "1px solid rgba(134,239,172,0.2)",
 
               color: "#fff",
 
@@ -1351,22 +1349,24 @@ gap: isMobile
                 "all 0.3s ease"
             }}
           >
-            {showDetails
+            {openDetails === "role"
               ? "Hide Assessment Details"
-              : "See Assessment Details"}
+              : "See More Details"}
           </button>
 
           <div
             style={{
               maxHeight:
-                showDetails
-                  ? "1200px"
+                openDetails === "role"
+                  ? "360px"
                   : "0px",
 
               overflow: "hidden",
 
               opacity:
-                showDetails ? 1 : 0,
+                openDetails === "role" ? 1 : 0,
+
+              marginTop: openDetails === "role" ? "14px" : "0px",
 
               transition:
                 "all 0.5s ease"
@@ -1374,14 +1374,14 @@ gap: isMobile
           >
             <div
               style={{
-                padding: "24px",
+                padding: isMobile ? "18px" : "20px",
                 borderRadius: "18px",
 
                 background:
-                  "#111827",
+                  "rgba(2,6,23,0.42)",
 
                 border:
-                  "1px solid rgba(127,29,29,0.25)"
+                  "1px solid rgba(255,255,255,0.07)"
               }}
             >
               <h3
@@ -1392,22 +1392,12 @@ gap: isMobile
                 Assessment Includes
               </h3>
 
-              <p
-                style={{
-                  color: "#94a3b8",
-                  lineHeight: "1.9"
-                }}
-              >
-                • Professional Interview
-                <br />
-                • Psychogram Analysis
-                <br />
-                • Work Endurance Assessment
-                <br />
-                • Personality Assessment
-                <br />
-                • Assessment Recommendation
-              </p>
+              {["Professional Interview", "Psychogram Analysis", "Work Endurance Assessment", "Personality Assessment", "Assessment Recommendation"].map((item) => (
+                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "11px", marginBottom: "12px", color: "#cbd5e1", fontSize: isMobile ? "14px" : "15px", lineHeight: 1.5 }}>
+                  <CheckCircle2 size={18} color="#4ade80" style={{ flexShrink: 0, marginTop: "2px" }} />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -1451,7 +1441,7 @@ gap: isMobile
       "translateY(0)";
   }}
 >
-  💬 Book Consultation
+  Book Assessment
 </a>
         </div>
       </section>
