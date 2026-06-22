@@ -10,6 +10,10 @@ import { useEffect, useState } from "react";
 import {
   Building2,
   Users,
+  Fuel,
+  Pill,
+  Lightbulb,
+  Users2,
   UserCheck,
   Crown,
   Gem,
@@ -27,6 +31,7 @@ import {
   Brain,
   ShieldCheck,
   ClipboardList,
+  BadgeDollarSign,
   Rocket,
   MessageCircle,
   ArrowRight,
@@ -1354,6 +1359,36 @@ onMouseLeave={(e) => {
       icon: Briefcase,
       color: "#6EA8FF",
     },
+    {
+  title: "Oil & Gas",
+  icon: Fuel,
+  color: "#F97316",
+},
+{
+  title: "Pharmaceutical",
+  icon: Pill,
+  color: "#14B8A6",
+},
+{
+  title: "Finance & Insurance",
+  icon: BadgeDollarSign,
+  color: "#22C55E",
+},
+{
+  title: "Consulting",
+  icon: Lightbulb,
+  color: "#8B5CF6",
+},
+{
+  title: "Property",
+  icon: Building2,
+  color: "#F59E0B",
+},
+{
+  title: "Agency",
+  icon: Users2,
+  color: "#EC4899",
+},
   ].map((industry) => {
     const Icon = industry.icon;
 
