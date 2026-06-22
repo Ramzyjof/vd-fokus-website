@@ -210,6 +210,13 @@ export default function Footer() {
               >
                 +62 851-2130-5329
               </p>
+              <p
+                style={{
+                  marginTop: "16px",
+                }}
+              >
+                +62 2128671999
+              </p>
 
               <p>
                 admin@vdfokus.co.id

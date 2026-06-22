@@ -1489,7 +1489,7 @@ onMouseLeave={(e) => {
         marginBottom: "14px",
       }}
     >
-      POSITIONS WE SUPPORT
+      TALENT LEVELS WE SUPPORT
     </div>
 
     <h2
