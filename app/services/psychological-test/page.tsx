@@ -347,9 +347,9 @@ Psychological assessment and aptitude
   }}
 >
   {[
-    "Personality Test",
-    "Aptitude Assessment",
-    "Hiring Recommendation",
+    "Psychological Assessment",
+    "Talent & Career Interest",
+    "Job Role Suitability",
   ].map((item) => (
     <div
       key={item}
@@ -565,7 +565,204 @@ width: isMobile
     </div>
   </div>
 </section>
+{/* BENEFITS */}
+      <section
+        style={{
+          padding: "100px 20px",
+          background:
+            "rgba(255,255,255,0.02)",
 
+          borderTop:
+            "1px solid rgba(255,255,255,0.06)",
+
+          borderBottom:
+            "1px solid rgba(255,255,255,0.06)"
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "0 auto"
+          }}
+        >
+          <h2
+  style={{
+    textAlign: "center",
+
+    fontSize: isMobile
+      ? "34px"
+      : "52px",
+
+    lineHeight: 1.05,
+
+    fontWeight: 800,
+
+    color: "#fff",
+
+    marginBottom: "20px",
+  }}
+>
+  Why Us?
+</h2>
+
+          <p
+            style={{
+              textAlign: "center",
+              color: "#94a3b8",
+              maxWidth: "700px",
+              margin:
+                "0 auto 60px",
+              lineHeight: "1.8"
+            }}
+          >
+            Reduce hiring uncertainty and gain
+            deeper insight into candidate capability,
+            personality, and long-term fit.
+          </p>
+
+          <div
+  style={{
+    display: "grid",
+
+    gridTemplateColumns: isMobile
+      ? "1fr"
+      : "repeat(3,minmax(0,1fr))",
+
+    gap: isMobile
+      ? "16px"
+      : "24px",
+  }}
+>
+  {[
+    {
+      icon: "🎯",
+      title: "Better Hiring Decisions",
+      desc: "Reduce guesswork and make more informed recruitment decisions."
+    },
+    {
+      icon: "📉",
+      title: "Lower Turnover Risk",
+      desc: "Identify candidates who are more likely to succeed long-term."
+    },
+    {
+      icon: "🧠",
+      title: "Deeper Candidate Insight",
+      desc: "Understand personality, motivation, and work behavior."
+    },
+    {
+      icon: "🚀",
+      title: "Leadership Potential",
+      desc: "Identify future leaders and high-potential talent."
+    },
+    {
+      icon: "📊",
+      title: "Aptitude Evaluation",
+      desc: "Measure cognitive ability and learning capability."
+    },
+    {
+      icon: "🤝",
+      title: "Team Compatibility",
+      desc: "Improve team fit and workplace collaboration."
+    },
+  ].map((item, i) => (
+    <div
+      key={i}
+      style={{
+        padding: isMobile
+          ? "22px"
+          : "28px",
+
+        borderRadius: "24px",
+
+        background:
+          "rgba(255,255,255,0.04)",
+
+        border:
+          "1px solid rgba(255,255,255,0.08)",
+
+        backdropFilter: "blur(16px)",
+
+        transition: "all .3s ease",
+      }}
+      onMouseEnter={(e) => {
+        if (!isMobile) {
+          e.currentTarget.style.transform =
+            "translateY(-6px)";
+
+          e.currentTarget.style.border =
+            "1px solid rgba(74,222,128,.25)";
+
+          e.currentTarget.style.boxShadow =
+            "0 20px 40px rgba(74,222,128,.08)";
+        }
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform =
+          "translateY(0px)";
+
+        e.currentTarget.style.border =
+          "1px solid rgba(255,255,255,0.08)";
+
+        e.currentTarget.style.boxShadow =
+          "none";
+      }}
+    >
+      <div
+        style={{
+          width: "56px",
+          height: "56px",
+
+          borderRadius: "16px",
+
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+
+          fontSize: "28px",
+
+          background:
+            "rgba(74,222,128,.10)",
+
+          marginBottom: "18px",
+        }}
+      >
+        {item.icon}
+      </div>
+
+      <h3
+        style={{
+          fontSize: isMobile
+            ? "18px"
+            : "20px",
+
+          fontWeight: 700,
+
+          marginBottom: "10px",
+
+          color: "#fff",
+        }}
+      >
+        {item.title}
+      </h3>
+
+      <p
+        style={{
+          color: "#94A3B8",
+
+          lineHeight: 1.7,
+
+          fontSize: isMobile
+            ? "14px"
+            : "15px",
+        }}
+      >
+        {item.desc}
+      </p>
+    </div>
+  ))}
+</div>
+</div>
+      </section>
       {/* SERVICES */}
 <section
   style={{
@@ -976,204 +1173,7 @@ gap: isMobile
   </div>
 </section>
 
-      {/* BENEFITS */}
-      <section
-        style={{
-          padding: "100px 20px",
-          background:
-            "rgba(255,255,255,0.02)",
-
-          borderTop:
-            "1px solid rgba(255,255,255,0.06)",
-
-          borderBottom:
-            "1px solid rgba(255,255,255,0.06)"
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1000px",
-            margin: "0 auto"
-          }}
-        >
-          <h2
-  style={{
-    textAlign: "center",
-
-    fontSize: isMobile
-      ? "34px"
-      : "52px",
-
-    lineHeight: 1.05,
-
-    fontWeight: 800,
-
-    color: "#fff",
-
-    marginBottom: "20px",
-  }}
->
-  Why Us?
-</h2>
-
-          <p
-            style={{
-              textAlign: "center",
-              color: "#94a3b8",
-              maxWidth: "700px",
-              margin:
-                "0 auto 60px",
-              lineHeight: "1.8"
-            }}
-          >
-            Reduce hiring uncertainty and gain
-            deeper insight into candidate capability,
-            personality, and long-term fit.
-          </p>
-
-          <div
-  style={{
-    display: "grid",
-
-    gridTemplateColumns: isMobile
-      ? "1fr"
-      : "repeat(3,minmax(0,1fr))",
-
-    gap: isMobile
-      ? "16px"
-      : "24px",
-  }}
->
-  {[
-    {
-      icon: "🎯",
-      title: "Better Hiring Decisions",
-      desc: "Reduce guesswork and make more informed recruitment decisions."
-    },
-    {
-      icon: "📉",
-      title: "Lower Turnover Risk",
-      desc: "Identify candidates who are more likely to succeed long-term."
-    },
-    {
-      icon: "🧠",
-      title: "Deeper Candidate Insight",
-      desc: "Understand personality, motivation, and work behavior."
-    },
-    {
-      icon: "🚀",
-      title: "Leadership Potential",
-      desc: "Identify future leaders and high-potential talent."
-    },
-    {
-      icon: "📊",
-      title: "Aptitude Evaluation",
-      desc: "Measure cognitive ability and learning capability."
-    },
-    {
-      icon: "🤝",
-      title: "Team Compatibility",
-      desc: "Improve team fit and workplace collaboration."
-    },
-  ].map((item, i) => (
-    <div
-      key={i}
-      style={{
-        padding: isMobile
-          ? "22px"
-          : "28px",
-
-        borderRadius: "24px",
-
-        background:
-          "rgba(255,255,255,0.04)",
-
-        border:
-          "1px solid rgba(255,255,255,0.08)",
-
-        backdropFilter: "blur(16px)",
-
-        transition: "all .3s ease",
-      }}
-      onMouseEnter={(e) => {
-        if (!isMobile) {
-          e.currentTarget.style.transform =
-            "translateY(-6px)";
-
-          e.currentTarget.style.border =
-            "1px solid rgba(74,222,128,.25)";
-
-          e.currentTarget.style.boxShadow =
-            "0 20px 40px rgba(74,222,128,.08)";
-        }
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform =
-          "translateY(0px)";
-
-        e.currentTarget.style.border =
-          "1px solid rgba(255,255,255,0.08)";
-
-        e.currentTarget.style.boxShadow =
-          "none";
-      }}
-    >
-      <div
-        style={{
-          width: "56px",
-          height: "56px",
-
-          borderRadius: "16px",
-
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-
-          fontSize: "28px",
-
-          background:
-            "rgba(74,222,128,.10)",
-
-          marginBottom: "18px",
-        }}
-      >
-        {item.icon}
-      </div>
-
-      <h3
-        style={{
-          fontSize: isMobile
-            ? "18px"
-            : "20px",
-
-          fontWeight: 700,
-
-          marginBottom: "10px",
-
-          color: "#fff",
-        }}
-      >
-        {item.title}
-      </h3>
-
-      <p
-        style={{
-          color: "#94A3B8",
-
-          lineHeight: 1.7,
-
-          fontSize: isMobile
-            ? "14px"
-            : "15px",
-        }}
-      >
-        {item.desc}
-      </p>
-    </div>
-  ))}
-</div>
-</div>
-      </section>
+      
 
       {/* PACKAGE */}
       <section
