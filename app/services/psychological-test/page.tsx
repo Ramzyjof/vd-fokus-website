@@ -737,7 +737,7 @@ gap: isMobile
           marginBottom: "16px"
         }}
       >
-        Psychological Test
+        Psychological Assessment
       </h2>
 
       <p
@@ -750,20 +750,18 @@ gap: isMobile
           marginBottom: "28px"
         }}
       >
-        Structured psychological evaluation to
-        assess personality, emotional stability,
-        leadership potential, work attitude,
-        and behavioral compatibility.
+        A comprehensive assessment of cognitive ability,
+        personality, and work behavior, supported by a
+        professional interview and recommendation.
       </p>
 
       {/* FEATURES */}
       {[
+        "IQ Assessment",
         "Personality Assessment",
-        "Behavioral Evaluation",
-        "Leadership Potential Analysis",
-        "Work Attitude Evaluation",
-        "Professional Assessment Report",
-        "HR Recommendation"
+        "Work Behavior Analysis",
+        "Professional Interview",
+        "Assessment Recommendation"
       ].map((item, i) => (
         <div
           key={i}
@@ -807,7 +805,7 @@ gap: isMobile
             fontWeight: 700
           }}
         >
-          IDR 699K
+          IDR 500K
         </div>
 
         <div
@@ -902,7 +900,7 @@ gap: isMobile
           marginBottom: "16px"
         }}
       >
-        Aptitude & Interest Test
+        Talent & Career Interest Assessment
       </h2>
 
       <p
@@ -912,20 +910,18 @@ gap: isMobile
           marginBottom: "28px"
         }}
       >
-        Identify candidate strengths, cognitive
-        ability, career interests, learning
-        potential, and role compatibility through
-        structured aptitude assessment.
+        Discover talent, career interests, personality,
+        and leadership potential through a structured
+        assessment and professional interview.
       </p>
 
       {/* FEATURES */}
       {[
-        "Cognitive Ability Test",
-        "Aptitude Mapping",
-        "Career Interest Analysis",
-        "Learning Capability Evaluation",
-        "Talent Compatibility Review",
-        "Development Recommendation"
+        "Talent & Interest Test",
+        "Personality Assessment",
+        "Leadership Potential Assessment",
+        "Professional Interview",
+        "Assessment Recommendation"
       ].map((item, i) => (
         <div
           key={i}
@@ -963,7 +959,7 @@ gap: isMobile
             fontWeight: 700
           }}
         >
-          IDR 499K
+          IDR 500K
         </div>
 
         <div
@@ -1222,7 +1218,7 @@ gap: isMobile
               fontSize: "13px"
             }}
           >
-            Corporate Assessment Package
+            Role Fit Assessment
           </div>
 
           <h2
@@ -1231,7 +1227,7 @@ gap: isMobile
               marginBottom: "14px"
             }}
           >
-            Psychological Test Package
+            Job Role Suitability Assessment
           </h2>
 
           <p
@@ -1241,48 +1237,53 @@ gap: isMobile
               marginBottom: "30px"
             }}
           >
-            Professional assessment and consulting
-            designed for recruitment, promotion,
-            talent mapping, and organizational
-            development.
+            Evaluate how well a candidate&apos;s capabilities,
+            personality, and work endurance align with the
+            responsibilities of a specific job level.
           </p>
 
-          {/* PRICE */}
+          {/* PRICING */}
           <div
             style={{
+              display: "grid",
+              gridTemplateColumns: isMobile
+                ? "1fr"
+                : "repeat(3,minmax(0,1fr))",
+              gap: "14px",
               marginBottom: "30px"
             }}
           >
-            <span
-              style={{
-                fontSize: isMobile
-                ? "28px"
-                : "36px",
-                fontWeight: 700
-              }}
-            >
-              Start From IDR 499K
-            </span>
-
-            <div
-              style={{
-                color: "#64748b",
-                marginTop: "10px"
-              }}
-            >
-              Pricing depends on assessment scope
-              and participant quantity.
-            </div>
+            {[
+              ["Staff", "IDR 275K"],
+              ["Supervisor", "IDR 550K"],
+              ["Manager & Above", "IDR 850K"]
+            ].map(([role, price]) => (
+              <div
+                key={role}
+                style={{
+                  padding: isMobile ? "18px" : "22px",
+                  borderRadius: "20px",
+                  background: "rgba(15,23,42,0.55)",
+                  border: "1px solid rgba(255,255,255,0.08)"
+                }}
+              >
+                <div style={{ color: "#94a3b8", marginBottom: "8px" }}>
+                  {role}
+                </div>
+                <div style={{ fontSize: isMobile ? "24px" : "27px", fontWeight: 700 }}>
+                  {price}
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* FEATURES */}
           {[
-            "Psychological test report",
-            "Aptitude & interest analysis",
-            "Candidate personality evaluation",
-            "Recruitment recommendation",
-            "Professional consultation",
-            "Online & offline assessment available"
+            "Professional Interview",
+            "Psychogram Analysis",
+            "Work Endurance Assessment",
+            "Personality Assessment",
+            "Assessment Recommendation"
           ].map((item, i) => (
             <div
               key={i}
@@ -1351,8 +1352,8 @@ gap: isMobile
             }}
           >
             {showDetails
-              ? "Hide Details"
-              : "See Full Details"}
+              ? "Hide Assessment Details"
+              : "See Assessment Details"}
           </button>
 
           <div
@@ -1397,26 +1398,22 @@ gap: isMobile
                   lineHeight: "1.9"
                 }}
               >
-                • Personality assessment
+                • Professional Interview
                 <br />
-                • Cognitive ability testing
+                • Psychogram Analysis
                 <br />
-                • Aptitude & interest mapping
+                • Work Endurance Assessment
                 <br />
-                • Leadership potential analysis
+                • Personality Assessment
                 <br />
-                • Work attitude evaluation
-                <br />
-                • Professional recommendation report
-                <br />
-                • HR consultation session
+                • Assessment Recommendation
               </p>
             </div>
           </div>
 
           {/* CTA */}
           <a
-  href="https://wa.me/6285121305329?text=Hi%20VD%20Fokus,%20I%20am%20interested%20in%20your%20Psychological%20Assessment%20Service."
+  href="https://wa.me/6285121305329"
   target="_blank"
   rel="noopener noreferrer"
   style={{
