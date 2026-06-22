@@ -104,17 +104,15 @@ const t =
             }}
           >
             <img
-              src="/logo.png"
+             src="/logo.png"
               alt="VD Fokus"
+              width={50}
+              height={50}
               style={{
-                height: isMobile
-                ? "30px"
-                : "48px",
-                width: "auto",
-                objectFit: "contain",
-
-                filter:
-                  "drop-shadow(0 0 10px rgba(59,130,246,0.25))",
+                filter: `
+                  drop-shadow(0 0 3px rgba(255,255,255,.9))
+                  drop-shadow(0 0 10px rgba(255,255,255,.4))
+                `,
               }}
             />
 
