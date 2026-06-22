@@ -810,8 +810,8 @@ const body = isMobile
 >
   {[
     {
-      title: "Strategic Talent Matching",
-      desc: "We assess technical fit, communication style, mindset, and long-term alignment.",
+      title: "Candidate Quality Assessment",
+      desc: "We evaluate capability, cultural fit, communication style, and long-term potential to identify candidates who can contribute beyond immediate hiring needs.",
       icon: "🎯",
       color: "#60A5FA",
     },
@@ -845,6 +845,24 @@ const body = isMobile
       icon: "🛡️",
       color: "#818CF8",
     },
+    {
+  title: "Time Efficiency",
+  desc: "Reduce recruitment timelines through targeted sourcing, screening, and candidate shortlisting processes.",
+  icon: "⏱️",
+  color: "#F59E0B",
+},
+{
+  title: "Strategic Talent Acquisition",
+  desc: "Access high-performing passive candidates who may not be actively seeking new opportunities through targeted executive search and market mapping.",
+  icon: "🤝",
+  color: "#22C55E",
+},
+{
+  title: "Referral Verification",
+  desc: "Professional referral and background verification to reduce hiring risks and improve hiring confidence.",
+  icon: "🛡️",
+  color: "#06B6D4",
+},
   ].map((item, i) => (
     <div
       key={i}
