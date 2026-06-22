@@ -68,6 +68,7 @@ export default function ContactPage() {
             <div style={{ marginBottom: "15px" }}>
               <strong>Phone:</strong>
               <p style={{ color: "#94a3b8" }}>+62 816-1387-821</p>
+              <p style={{ color: "#94a3b8" }}>+62 2128671999</p>
             </div>
 
             <div>
