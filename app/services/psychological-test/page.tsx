@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Page() {
   
@@ -442,7 +443,11 @@ width: isMobile
               "0 15px 40px rgba(34,197,94,.25)",
           }}
         >
-          💬 Book Consultation
+          <FaWhatsapp
+  size={22}
+  style={{ marginRight: "8px" }}
+/>
+<span>Consult Your Needs</span>
         </a>
 
         <a
@@ -765,6 +770,272 @@ width: isMobile
 </div>
 </div>
       </section>
+      {/* WHO IS THIS FOR */}
+<section
+  style={{
+    maxWidth: "1200px",
+    margin: isMobile ? "80px auto" : "120px auto",
+    padding: isMobile ? "0 16px" : "0 20px",
+  }}
+>
+  {/* Header */}
+  <div
+    style={{
+      textAlign: "center",
+      marginBottom: isMobile ? "40px" : "70px",
+    }}
+  >
+    <div
+      style={{
+        display: "inline-block",
+        padding: "6px 16px",
+        borderRadius: "999px",
+        background: "rgba(74,222,128,.08)",
+        border: "1px solid rgba(74,222,128,.18)",
+        color: "#4ADE80",
+        fontSize: "12px",
+        fontWeight: 700,
+        letterSpacing: "2px",
+        marginBottom: "18px",
+      }}
+    >
+      WHO WE SERVE
+    </div>
+
+    <h2
+      style={{
+        fontSize: headingL,
+        fontWeight: 800,
+        lineHeight: 1.05,
+        color: "#fff",
+        marginBottom: "20px",
+      }}
+    >
+      Who Is This Assessment For?
+    </h2>
+
+    <p
+      style={{
+        maxWidth: "760px",
+        margin: "0 auto",
+        color: "#94A3B8",
+        fontSize: body,
+        lineHeight: 1.8,
+      }}
+    >
+      Our psychological assessment services are designed for both
+      organizations and individuals seeking objective insights to make
+      better hiring, promotion, career, and talent development decisions.
+    </p>
+  </div>
+
+  {/* Cards */}
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: isMobile
+        ? "1fr"
+        : "repeat(2,minmax(0,1fr))",
+      gap: isMobile ? "18px" : "24px",
+    }}
+  >
+    {[
+      {
+        icon: "👔",
+        title: "HR & Recruitment",
+        desc:
+          "Improve hiring quality through objective psychological assessments that reduce recruitment risks and identify candidates with the highest potential.",
+      },
+      {
+        icon: "🏢",
+        title: "Organizations",
+        desc:
+          "Support promotion decisions, leadership development, succession planning, and internal talent mapping with reliable assessment data.",
+      },
+      {
+        icon: "🎓",
+        title: "Individuals",
+        desc:
+          "Understand your strengths, personality, career interests, and work preferences to make more informed career decisions.",
+      },
+      {
+        icon: "🚀",
+        title: "Leadership Development",
+        desc:
+          "Identify leadership potential, cognitive ability, and behavioral competencies for future management and executive roles.",
+      },
+    ].map((item, index) => (
+      <div
+        key={index}
+        style={{
+          padding: isMobile ? "24px" : "30px",
+
+          borderRadius: "26px",
+
+          background:
+            "linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.02))",
+
+          border:
+            "1px solid rgba(255,255,255,.08)",
+
+          backdropFilter: "blur(18px)",
+
+          transition: "all .35s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(-6px)";
+            e.currentTarget.style.border =
+              "1px solid rgba(74,222,128,.22)";
+            e.currentTarget.style.boxShadow =
+              "0 18px 40px rgba(74,222,128,.08)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform =
+            "translateY(0)";
+          e.currentTarget.style.border =
+            "1px solid rgba(255,255,255,.08)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
+      >
+        <div
+          style={{
+            width: "58px",
+            height: "58px",
+
+            borderRadius: "18px",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+
+            fontSize: "28px",
+
+            background:
+              "rgba(74,222,128,.10)",
+
+            marginBottom: "22px",
+          }}
+        >
+          {item.icon}
+        </div>
+
+        <h3
+          style={{
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: isMobile ? "20px" : "24px",
+            marginBottom: "14px",
+          }}
+        >
+          {item.title}
+        </h3>
+
+        <p
+          style={{
+            color: "#94A3B8",
+            fontSize: bodySmall,
+            lineHeight: 1.8,
+            margin: 0,
+          }}
+        >
+          {item.desc}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  {/* Bottom Highlight */}
+  <div
+    style={{
+      marginTop: isMobile ? "22px" : "36px",
+
+      padding: isMobile ? "24px" : "34px",
+
+      borderRadius: "28px",
+
+      background:
+        "linear-gradient(145deg,rgba(34,197,94,.08),rgba(255,255,255,.03))",
+
+      border:
+        "1px solid rgba(74,222,128,.18)",
+
+      backdropFilter: "blur(20px)",
+
+      display: "flex",
+
+      flexDirection: isMobile
+        ? "column"
+        : "row",
+
+      alignItems: isMobile
+        ? "flex-start"
+        : "center",
+
+      gap: "22px",
+    }}
+  >
+    <div
+      style={{
+        width: "68px",
+        height: "68px",
+
+        borderRadius: "20px",
+
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+
+        fontSize: "34px",
+
+        background:
+          "rgba(74,222,128,.10)",
+
+        flexShrink: 0,
+      }}
+    >
+      🎯
+    </div>
+
+    <div>
+      <h3
+        style={{
+          margin: "0 0 10px",
+
+          color: "#4ADE80",
+
+          fontWeight: 700,
+
+          fontSize: isMobile
+            ? "22px"
+            : "28px",
+        }}
+      >
+        One Assessment. Multiple Business Applications.
+      </h3>
+
+      <p
+        style={{
+          margin: 0,
+
+          color: "#CBD5E1",
+
+          lineHeight: 1.8,
+
+          fontSize: body,
+        }}
+      >
+        Our assessment solutions support recruitment, promotion,
+        succession planning, talent mapping, career development,
+        leadership identification, and organizational growth through
+        structured psychological evaluation and professional
+        recommendations.
+      </p>
+    </div>
+  </div>
+</section>
       {/* SERVICES */}
 <section
   style={{
@@ -1445,6 +1716,335 @@ gap: isMobile
 </a>
         </div>
       </section>
+      <div
+  style={{
+    width: isMobile ? "85%" : "60%",
+    margin: "0 auto",
+    borderTop: "1px solid rgba(255,255,255,.08)",
+  }}
+/>
+      {/* FINAL CTA */}
+<section
+  style={{
+    position: "relative",
+    overflow: "hidden",
+
+    marginTop: isMobile ? "40px" : "80px",
+
+    padding: isMobile
+      ? "80px 16px 90px"
+      : "120px 20px 140px",
+  }}
+>
+  {/* Green Glow */}
+  <div
+    style={{
+      position: "absolute",
+
+      width: isMobile ? "260px" : "520px",
+      height: isMobile ? "260px" : "520px",
+
+      left: "50%",
+      top: "50%",
+
+      transform: "translate(-50%,-50%)",
+
+      borderRadius: "50%",
+
+      background:
+        "radial-gradient(circle, rgba(74,222,128,.15), transparent 70%)",
+
+      filter: "blur(90px)",
+
+      zIndex: 0,
+    }}
+  />
+
+  <div
+    style={{
+      position: "relative",
+      zIndex: 2,
+
+      maxWidth: "980px",
+
+      margin: "0 auto",
+
+      padding: isMobile
+        ? "36px 24px"
+        : "56px",
+
+      borderRadius: "32px",
+
+      background:
+        "linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.025))",
+
+      border:
+        "1px solid rgba(74,222,128,.16)",
+
+      backdropFilter: "blur(24px)",
+
+      textAlign: "center",
+
+      boxShadow:
+        "0 35px 80px rgba(2,6,23,.45)",
+    }}
+  >
+    {/* Badge */}
+    <div
+      style={{
+        display: "inline-flex",
+
+        alignItems: "center",
+
+        gap: "10px",
+
+        padding: "8px 18px",
+
+        borderRadius: "999px",
+
+        background:
+          "rgba(74,222,128,.08)",
+
+        border:
+          "1px solid rgba(74,222,128,.18)",
+
+        marginBottom: "26px",
+      }}
+    >
+      <div
+        style={{
+          width: "8px",
+          height: "8px",
+
+          borderRadius: "50%",
+
+          background: "#4ADE80",
+        }}
+      />
+
+      <span
+        style={{
+          color: "#4ADE80",
+
+          fontWeight: 700,
+
+          letterSpacing: "2px",
+
+          fontSize: "12px",
+        }}
+      >
+        READY TO GET STARTED?
+      </span>
+    </div>
+
+    {/* Heading */}
+    <h2
+      style={{
+        fontSize: headingL,
+
+        fontWeight: 800,
+
+        lineHeight: 1.05,
+
+        color: "#fff",
+
+        marginBottom: "20px",
+      }}
+    >
+      Make Better Hiring Decisions
+      <br />
+      With Professional Assessment
+    </h2>
+
+    {/* Description */}
+    <p
+      style={{
+        maxWidth: "700px",
+
+        margin: "0 auto",
+
+        color: "#CBD5E1",
+
+        fontSize: body,
+
+        lineHeight: 1.8,
+
+        marginBottom: "36px",
+      }}
+    >
+      Whether you're hiring new employees, evaluating internal talent,
+      planning promotions, or identifying future leaders, our structured
+      psychological assessments provide objective insights that support
+      confident, data-driven decisions.
+    </p>
+
+    {/* Buttons */}
+    <div
+      style={{
+        display: "flex",
+
+        flexDirection: isMobile
+          ? "column"
+          : "row",
+
+        justifyContent: "center",
+
+        gap: "16px",
+
+        marginBottom: "34px",
+      }}
+    >
+      <a
+        href="https://wa.me/628161387821?text=Hi%20I'm%20interested%20in%20your%20Psychological%20Assessment%20service."
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          flex: isMobile ? undefined : 1,
+
+          maxWidth: isMobile
+            ? "100%"
+            : "300px",
+
+          height: isMobile
+            ? "58px"
+            : "64px",
+
+          display: "flex",
+
+          alignItems: "center",
+
+          justifyContent: "center",
+
+          textDecoration: "none",
+
+          borderRadius: "999px",
+
+          background:
+            "linear-gradient(135deg,#22C55E,#16A34A)",
+
+          color: "#fff",
+
+          fontWeight: 700,
+
+          fontSize: isMobile
+            ? "16px"
+            : "17px",
+
+          boxShadow:
+            "0 18px 40px rgba(34,197,94,.25)",
+
+          transition: "all .3s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(-3px)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform =
+            "translateY(0)";
+        }}
+      >
+        <div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+  }}
+>
+  <FaWhatsapp size={22} />
+  <span>Consult Your Needs</span>
+</div>
+</a>
+
+      <a
+        href="tel:+628161387821"
+        style={{
+          flex: isMobile ? undefined : 1,
+
+          maxWidth: isMobile
+            ? "100%"
+            : "300px",
+
+          height: isMobile
+            ? "58px"
+            : "64px",
+
+          display: "flex",
+
+          alignItems: "center",
+
+          justifyContent: "center",
+
+          textDecoration: "none",
+
+          borderRadius: "999px",
+
+          border:
+            "1px solid rgba(255,255,255,.15)",
+
+          background:
+            "rgba(255,255,255,.03)",
+
+          color: "#fff",
+
+          fontWeight: 600,
+
+          fontSize: isMobile
+            ? "16px"
+            : "17px",
+
+          transition: "all .3s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.background =
+              "rgba(255,255,255,.06)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background =
+            "rgba(255,255,255,.03)";
+        }}
+      >
+        📞 Contact Consultant
+      </a>
+    </div>
+
+    {/* Bottom Trust */}
+    <div
+      style={{
+        display: "flex",
+
+        flexDirection: isMobile
+          ? "column"
+          : "row",
+
+        justifyContent: "center",
+
+        alignItems: "center",
+
+        gap: isMobile ? "10px" : "24px",
+
+        color: "#94A3B8",
+
+        fontSize: bodySmall,
+
+        borderTop:
+          "1px solid rgba(255,255,255,.08)",
+
+        paddingTop: "28px",
+      }}
+    >
+      <span>✓ Professional Psychologists</span>
+
+      <span>✓ Objective Assessment</span>
+
+      <span>✓ Comprehensive Report</span>
+    </div>
+  </div>
+</section>
     </main>
   );
 }

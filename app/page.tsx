@@ -7,10 +7,12 @@ type Dot = {
 import { useLanguage } from "./context/LanguageContext";
 import { translations } from "./translations";
 import { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   Building2,
   Users,
   Fuel,
+  Globe2,
   Pill,
   Lightbulb,
   Users2,
@@ -55,7 +57,21 @@ export default function Page() {
   const [started, setStarted] = useState(false);
   const [startCounting, setStartCounting] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  
+  const headingL = isMobile ? "36px" : "56px";
+  const headingM = isMobile ? "28px" : "40px";
+
+  const body = isMobile ? "16px" : "18px";
+  const bodySmall = isMobile ? "15px" : "16px";
+
+  const badgeText = "12px";
+  const countries = [
+  { code: "au", name: "Australia" },
+  { code: "sg", name: "Singapore" },
+  { code: "my", name: "Malaysia" },
+  { code: "jp", name: "Japan" },
+  { code: "th", name: "Thailand" },
+  { code: "ca", name: "Canada" },
+];
   const industries = [
   {
     name: "Manufacturing",
@@ -622,9 +638,9 @@ useEffect(() => {
     border: "none",
   }}
 >
-  <MessageCircle size={20} />
+  <FaWhatsapp size={20} />
 
-  <span>WhatsApp Us</span>
+  <span>Consult Your Needs</span>
 </a>
 
   <a
@@ -1224,7 +1240,376 @@ onMouseLeave={(e) => {
   `}</style>
   
 </section>
-      
+{/* =========================================
+    INTERNATIONAL RECRUITMENT EXPERIENCE
+========================================= */}
+<section
+  style={{
+    maxWidth: "1280px",
+    margin: isMobile
+      ? "90px auto 40px"
+      : "140px auto 70px",
+
+    padding: isMobile
+      ? "0 16px"
+      : "0 40px",
+  }}
+>
+  {/* HEADER */}
+  <div
+    style={{
+      textAlign: "center",
+      marginBottom: isMobile ? "45px" : "70px",
+    }}
+  >
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "10px",
+
+        padding: "8px 18px",
+
+        borderRadius: "999px",
+
+        background:
+          "rgba(255,255,255,.05)",
+
+        border:
+          "1px solid rgba(91,140,255,.18)",
+
+        color: "#93C5FD",
+
+        fontSize: "12px",
+
+        fontWeight: 700,
+
+        letterSpacing: "2px",
+
+        marginBottom: "22px",
+      }}
+    >
+      🌏 INTERNATIONAL EXPERIENCE
+    </div>
+
+    <h2
+      style={{
+        fontSize: headingL,
+        fontWeight: 800,
+        lineHeight: 1.05,
+        marginBottom: "20px",
+      }}
+    >
+      International Recruitment
+      <br />
+      Experience
+    </h2>
+
+    <p
+      style={{
+        maxWidth: "760px",
+
+        margin: "0 auto",
+
+        color: "#94A3B8",
+
+        fontSize: body,
+
+        lineHeight: 1.8,
+      }}
+    >
+      Supporting multinational organizations through executive
+      search, expatriate recruitment, and cross-border talent
+      acquisition across the Asia-Pacific region.
+    </p>
+  </div>
+
+  {/* TOP CARDS */}
+  <div
+    style={{
+      display: "grid",
+
+      gridTemplateColumns: isMobile
+        ? "1fr"
+        : "repeat(2,minmax(0,1fr))",
+
+      gap: isMobile ? "18px" : "24px",
+
+      marginBottom: isMobile
+        ? "22px"
+        : "32px",
+    }}
+  >
+    {[
+      {
+        icon: "🌍",
+        title: "International Hiring",
+        desc:
+          "Successfully recruited expatriate professionals for multinational organizations operating throughout Indonesia.",
+      },
+      {
+        icon: "✈️",
+        title: "Expat Talent",
+        desc:
+          "Experience recruiting expatriate candidates for engineering, manufacturing, operations, and executive leadership positions.",
+      },
+      {
+        icon: "🤝",
+        title: "Cross-Border Collaboration",
+        desc:
+          "Worked alongside international clients and regional business partners on recruitment projects across multiple countries.",
+      },
+      {
+        icon: "🏢",
+        title: "Regional Expertise",
+        desc:
+          "Combining international recruitment experience with over 20 years of Indonesian market knowledge.",
+      },
+    ].map((item, i) => (
+      <div
+        key={i}
+        style={{
+          padding: isMobile ? "24px" : "30px",
+
+          borderRadius: "26px",
+
+          background:
+            "linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.025))",
+
+          border:
+            "1px solid rgba(255,255,255,.08)",
+
+          backdropFilter: "blur(18px)",
+
+          transition: ".35s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(-6px)";
+            e.currentTarget.style.border =
+              "1px solid rgba(91,140,255,.25)";
+            e.currentTarget.style.boxShadow =
+              "0 18px 40px rgba(91,140,255,.10)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform =
+            "translateY(0)";
+          e.currentTarget.style.border =
+            "1px solid rgba(255,255,255,.08)";
+          e.currentTarget.style.boxShadow =
+            "none";
+        }}
+      >
+        <div
+          style={{
+            width: "58px",
+            height: "58px",
+
+            borderRadius: "18px",
+
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+
+            fontSize: "28px",
+
+            background:
+              "rgba(91,140,255,.10)",
+
+            marginBottom: "20px",
+          }}
+        >
+          {item.icon}
+        </div>
+
+        <h3
+          style={{
+            fontSize: isMobile ? "20px" : "24px",
+
+            fontWeight: 700,
+
+            marginBottom: "12px",
+          }}
+        >
+          {item.title}
+        </h3>
+
+        <p
+          style={{
+            color: "#94A3B8",
+
+            fontSize: bodySmall,
+
+            lineHeight: 1.8,
+
+            margin: 0,
+          }}
+        >
+          {item.desc}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  {/* HIGHLIGHT CARD */}
+  <div
+    style={{
+      position: "relative",
+
+      overflow: "hidden",
+
+      borderRadius: "32px",
+
+      padding: isMobile ? "30px 24px" : "48px",
+
+      background:
+        "linear-gradient(145deg,rgba(30,41,59,.92),rgba(15,23,42,.88))",
+
+      border:
+        "1px solid rgba(91,140,255,.15)",
+
+      backdropFilter: "blur(20px)",
+    }}
+  >
+    {/* BLUE GLOW */}
+    <div
+      style={{
+        position: "absolute",
+
+        right: "-120px",
+
+        top: "-120px",
+
+        width: "280px",
+
+        height: "280px",
+
+        borderRadius: "50%",
+
+        background:
+          "radial-gradient(circle,rgba(91,140,255,.20),transparent 70%)",
+
+        filter: "blur(60px)",
+      }}
+    />
+
+    <div
+      style={{
+        position: "relative",
+        zIndex: 2,
+      }}
+    >
+      <h3
+        style={{
+          fontSize: isMobile ? "28px" : "40px",
+
+          fontWeight: 800,
+
+          lineHeight: 1.1,
+
+          marginBottom: "18px",
+        }}
+      >
+        Global Reach.
+        <br />
+        Local Expertise.
+      </h3>
+
+      <p
+        style={{
+          maxWidth: "760px",
+
+          color: "#CBD5E1",
+
+          lineHeight: 1.8,
+
+          fontSize: body,
+
+          marginBottom: "34px",
+        }}
+      >
+        VD Fokus has successfully supported recruitment projects
+        involving international clients and expatriate professionals
+        across the Asia-Pacific region while providing deep expertise
+        in the Indonesian talent market.
+      </p>
+
+      {/* COUNTRY TAGS */}
+     <div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "14px",
+    marginTop: "10px",
+  }}
+>
+  {countries.map((country) => (
+    <div
+      key={country.code}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+
+        padding: isMobile
+          ? "12px 18px"
+          : "14px 22px",
+
+        borderRadius: "999px",
+
+        background:
+          "rgba(255,255,255,.05)",
+
+        border:
+          "1px solid rgba(255,255,255,.08)",
+
+        backdropFilter: "blur(18px)",
+
+        transition: ".3s ease",
+      }}
+      onMouseEnter={(e) => {
+        if (!isMobile) {
+          e.currentTarget.style.transform =
+            "translateY(-2px)";
+          e.currentTarget.style.border =
+            "1px solid rgba(96,165,250,.25)";
+        }
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform =
+          "translateY(0)";
+        e.currentTarget.style.border =
+          "1px solid rgba(255,255,255,.08)";
+      }}
+    >
+      <img
+        src={`/flags/${country.code}.svg`}
+        alt={country.name}
+        style={{
+          width: "20px",
+          height: "20px",
+          borderRadius: "50%",
+          flexShrink: 0,
+        }}
+      />
+
+      <span
+        style={{
+          color: "#E2E8F0",
+          fontWeight: 600,
+          fontSize: isMobile ? "14px" : "15px",
+        }}
+      >
+        {country.name}
+      </span>
+    </div>
+  ))}
+</div>
+    </div>
+  </div>
+</section>
 {/* INDUSTRIES WE SERVE */}
 {/* HEADER */}
 
@@ -1844,6 +2229,7 @@ onMouseLeave={(e) => {
 
   </div>
 </section>
+
    {/* CAREER INSIGHTS */}
 <section
   id="career-insights"
