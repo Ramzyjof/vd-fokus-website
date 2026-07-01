@@ -2787,7 +2787,7 @@ onMouseLeave={(e) => {
 
   {/* DIRECTIONS BUTTON */}
   <a
-    href="google.com/maps?q=PT+Vera+Diana+Fokus"
+    href="https://www.google.com/maps?q=PT+Vera+Diana+Fokus"
     target="_blank"
     rel="noopener noreferrer"
     style={{
