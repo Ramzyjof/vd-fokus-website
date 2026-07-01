@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+
 import { LanguageProvider } from "./context/LanguageContext";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vdfokus.co.id"),
@@ -56,7 +59,6 @@ export const metadata: Metadata = {
     title: "VD Fokus | Executive Search & HR Solutions",
     description:
       "Executive Search, Psychological Assessment, Outsourcing, and HR Consulting company established in 2003.",
-
     images: [
       {
         url: "/og-image.png",
@@ -119,8 +121,27 @@ export default function RootLayout({
         />
       </head>
 
-      <body>
-        <LanguageProvider>{children}</LanguageProvider>
+      <body
+        style={{
+          margin: 0,
+          padding: 0,
+          background: "#020617",
+          overflowX: "hidden",
+        }}
+      >
+        <LanguageProvider>
+          <Navbar />
+
+          <main
+            style={{
+              minHeight: "100vh",
+            }}
+          >
+            {children}
+          </main>
+
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
