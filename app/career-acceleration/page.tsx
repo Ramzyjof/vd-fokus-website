@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { FaWhatsapp } from "react-icons/fa";
 import { translations } from "../translations";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import {
@@ -416,7 +417,7 @@ useEffect(() => {
       "0 10px 30px rgba(37,211,102,.35)";
   }}
 >
-  <MessageCircle size={20} />
+  <FaWhatsapp size={20} />
   Book Consultation
 </a>
 
