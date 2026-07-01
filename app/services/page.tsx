@@ -174,7 +174,7 @@ export default function Page() {
   title:
     "Career Acceleration Service",
 
-  link: "/career-acceleration",
+  link: "/services/int-prep",
 
   icon: Rocket,
 

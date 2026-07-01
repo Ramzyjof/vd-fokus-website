@@ -44,7 +44,7 @@ const t =
   { name: t.navbar.insights, href: "/insights" },
   {
     name: t.navbar.careerAcceleration,
-    href: "/career-acceleration",
+    href: "/services/int-prep",
   },
   {
     name: t.navbar.contact,

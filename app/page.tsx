@@ -379,7 +379,7 @@ useEffect(() => {
     desc: "CV optimization, Interview preparation, & Mock Interview",
     icon: Rocket,
     type: "highlight",
-    link: "/career-acceleration",
+    link: "/services/int-prep",
   },
 ];
 
