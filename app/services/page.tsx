@@ -18,7 +18,28 @@ import {
   FileCheck,
   GraduationCap
 } from "lucide-react";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "HR Consulting Services | VD Fokus",
+
+  description:
+    "Explore VD Fokus's HR consulting services including Executive Search, Employee Placement, Outsourcing, Psychological Assessment, Risk Management, SOP Development, and Career Acceleration Services.",
+
+  keywords: [
+    "HR Services Indonesia",
+    "Executive Search",
+    "Recruitment Services",
+    "Psychological Assessment",
+    "Outsourcing",
+    "Risk Management",
+    "SOP Development"
+  ],
+
+  alternates: {
+    canonical: "https://www.vdfokus.co.id/services",
+  },
+};
 export default function Page() {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
   const [isMobile, setIsMobile] = useState(false);

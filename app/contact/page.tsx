@@ -1,7 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Contact VD Fokus | HR Consultant Indonesia",
+
+  description:
+    "Contact VD Fokus for Executive Search, recruitment, psychological assessment, HR consulting, and Career Acceleration Services. Book a consultation with our team today.",
+
+  keywords: [
+    "Contact HR Consultant",
+    "Executive Search Contact",
+    "Recruitment Consultant",
+    "Book Consultation",
+    "VD Fokus"
+  ],
+
+  alternates: {
+    canonical:
+      "https://www.vdfokus.co.id/contact",
+  },
+};
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",

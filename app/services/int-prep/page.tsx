@@ -14,7 +14,35 @@ import {
   Award,
   MessageCircle
 } from "lucide-react";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Career Acceleration Services | CV Review & Interview Coaching",
+
+  description:
+    "Improve your career opportunities with professional CV optimization, interview preparation, mock interviews, salary negotiation guidance, and career coaching from experienced recruiters.",
+
+  keywords: [
+    "Interview Preparation Indonesia",
+    "Latihan Interview",
+    "Tips Interview",
+    "Mock Interview Cibubur",
+    "Latihan Interview Cibubur",
+    "Persiapan Interview Cibubur",
+    "CV Review",
+    "CV Optimization",
+    "Mock Interview",
+    "Career Coaching",
+    "Interview Coaching",
+    "Career Consultant Indonesia",
+    "Salary Negotiation"
+  ],
+
+  alternates: {
+    canonical:
+      "https://www.vdfokus.co.id/career-acceleration",
+  },
+};
 export default function Page() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   

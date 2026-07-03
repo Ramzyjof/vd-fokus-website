@@ -14,7 +14,29 @@ import {
   TrendingUp
 } from "lucide-react";
 import Image from "next/image";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Employee Placement & Executive Search Indonesia | VD Fokus",
+
+  description:
+    "Professional Executive Search and Employee Placement services helping organizations recruit qualified professionals, managers, and executives across multiple industries.",
+
+  keywords: [
+    "Executive Search Indonesia",
+    "Employee Placement",
+    "Recruitment Agency Indonesia",
+    "Headhunter Indonesia",
+    "Talent Acquisition",
+    "Recruitment Consultant Jakarta",
+    "Executive Recruitment"
+  ],
+
+  alternates: {
+    canonical:
+      "https://www.vdfokus.co.id/services/placement",
+  },
+};
 export default function Page() {
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
