@@ -51,38 +51,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "VD Fokus | Executive Search, Recruitment & HR Consulting Indonesia",
-
-  description:
-    "VD Fokus is an Indonesian HR consulting company established in 2003, providing Executive Search, Employee Placement, Psychological Assessment, Outsourcing, Risk Management, SOP Development, and Career Acceleration Services.",
-
-  keywords: [
-    "Executive Search Indonesia",
-    "HR Consultant Indonesia",
-    "Recruitment Consultant Indonesia",
-    "Employee Placement",
-    "Psychological Assessment",
-    "Outsourcing",
-    "Talent Acquisition",
-    "Executive Recruitment",
-    "Headhunter Indonesia",
-    "Career Acceleration"
-  ],
-
-  alternates: {
-    canonical: "https://www.vdfokus.co.id",
-  },
-
-  openGraph: {
-    title: "VD Fokus | Executive Search & HR Solutions",
-    description:
-      "Helping organizations hire the right talent through Executive Search, HR Consulting, and Psychological Assessment since 2003.",
-    url: "https://www.vdfokus.co.id",
-  },
-};
 
 export default function Page() {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
