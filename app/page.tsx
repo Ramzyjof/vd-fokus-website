@@ -6,7 +6,7 @@ type Dot = {
 
 import { useLanguage } from "./context/LanguageContext";
 import { translations } from "./translations";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import {
   Building2,
@@ -51,6 +51,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import Link from "next/link";
 
 
 export default function Page() {
@@ -293,7 +294,7 @@ const [index, setIndex] = useState(0);
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
-useEffect(() => {
+useLayoutEffect(() => {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
   };
@@ -343,46 +344,49 @@ useEffect(() => {
 
   features?: string[];
 
-  link?: string;
+  link: string;
   type?: string;
 };
- const services: Service[] = [
+ 
+const services: Service[] = [
   {
-    title: "Employee Placement",
-    desc: "We source and place high-quality candidates tailored to your business needs.",
-    icon: Briefcase,
-    link: "/services/placement",
-  },
-  {
-    title: "Outsourcing",
-    desc: "Flexible workforce solutions to support your operations efficiently.",
+    title: "HR Solutions",
+    desc: "Recruitment, workforce and talent solutions.",
     icon: Users,
+    features: [
+      "Employee Placement",
+      "Executive Search",
+      "Outsourcing",
+      "Psychological Assessment",
+    ],
+    link: "/services/hr_solution",
   },
   {
-    title: "Psychological Assesment",
-    desc: "Professional psychological consulting, aptitude interest testing, and candidate assessment services.",
-    icon: Brain,
-    type: "highlight",
-    link: "/services/psychological-test",
-  },
-  {
-    title: "Risk Management",
-    desc: "Identify hiring risks and improve decision-making.",
+    title: "Business / Management Consultancy",
+    desc: "Identify risk, strengthen controls and improve business decisions.",
     icon: ShieldCheck,
-  },
-  {
-    title: "SOP Development",
-    desc: "Design clear and scalable standard procedures.",
-    icon: ClipboardList,
+    features: [
+      "Risk Management",
+      "Investigative Audit",
+      "SOP Development",
+      "Data Analytics",
+    ],
+    link: "/services/business_management_consultancy",
   },
   {
     title: "Career Acceleration Service",
-    desc: "CV optimization, Interview preparation, & Mock Interview",
+    desc: "Build a stronger CV, improve interview skills and accelerate your career.",
     icon: Rocket,
+    features: [
+      "CV Optimization",
+      "Interview Preparation",
+      "Mock Interview",
+    ],
     type: "highlight",
     link: "/services/int-prep",
   },
 ];
+
 
   return (
   <main
@@ -432,12 +436,10 @@ useEffect(() => {
     width: "100%",
     height: "100%",
 
-    objectFit: isMobile
-      ? "contain"
-      : "cover",
+    objectFit: "cover",
 
     objectPosition: isMobile
-      ? "center top"
+      ? "center 25%"
       : "center 15%",
 
     background: "#020617",
@@ -456,10 +458,10 @@ useEffect(() => {
       background: isMobile
   ? `
     linear-gradient(
-      180deg,
-      rgba(2,6,23,.55) 0%,
-      rgba(2,6,23,.45) 45%,
-      rgba(2,6,23,.80) 100%
+      90deg,
+      rgba(2,6,23,.72) 0%,
+      rgba(2,6,23,.50) 55%,
+      rgba(2,6,23,.18) 100%
     )
   `
         : `
@@ -551,6 +553,7 @@ useEffect(() => {
     fontSize: isMobile ? "38px" : "65px",
     lineHeight: "0.95",
     fontWeight: 700,
+    marginTop: 0,
     marginBottom: "10px",
   }}
 >
@@ -583,6 +586,7 @@ useEffect(() => {
     color: "#CBD5E1",
     fontSize: isMobile ? "16px" : "20px",
     lineHeight: 1.8,
+    marginTop: 0,
     marginBottom: isMobile ? "22px" : "40px",
   }}
 >
@@ -641,11 +645,12 @@ useEffect(() => {
 >
   <FaWhatsapp size={20} />
 
-  <span>Consult Your Needs</span>
+  <span>{isMobile ? "Consult Your Needs" : "WhatsApp Us"}</span>
 </a>
 
-  <a
-  href="#services"
+  <Link
+  href="/services"
+  prefetch={true}
   style={{
     flex: isMobile ? undefined : 1,
 
@@ -676,7 +681,7 @@ useEffect(() => {
   }}
 >
   Explore Services →
-</a>
+</Link>
 </div>
 
    {/* TRUST METRICS */}
@@ -786,6 +791,8 @@ useEffect(() => {
 </section>
      
  {/* SERVICES */}
+
+{/* SERVICES */}
 <section
   id="services"
   data-animate="services"
@@ -805,7 +812,7 @@ useEffect(() => {
     <div
       style={{
         textAlign: "center",
-        marginBottom: isMobile ? "30px" : "50px"
+        marginBottom: isMobile ? "30px" : "50px",
       }}
     >
       <div
@@ -821,7 +828,6 @@ useEffect(() => {
         }}
       >
         <Building2 size={16} color="#60A5FA" />
-
         <span
           style={{
             color: "#CBD5E1",
@@ -838,13 +844,12 @@ useEffect(() => {
         style={{
           fontSize: isMobile ? "38px" : "64px",
           fontWeight: 700,
-          lineHeight: 1,
+          lineHeight: 1.1,
           marginBottom: "20px",
         }}
       >
         Talent Solutions
         <br />
-
         <span
           style={{
             background:
@@ -873,245 +878,157 @@ useEffect(() => {
       </p>
     </div>
 
-    {/* CARDS */}
+    {/* THREE CATEGORY CARDS */}
     <div
       style={{
         display: "grid",
-        gridTemplateColumns:
-        isMobile
-          ? "repeat(2,minmax(0,1fr))"
-          : "repeat(3,minmax(0,1fr))",
-        gap: isMobile ? "16px" : "24px",
+        gridTemplateColumns: "minmax(0, 1fr)",
+        gap: "12px",
+        width: "100%",
+        maxWidth: "1100px",
+        margin: "0 auto",
       }}
     >
-      {services.map((service, i) => {
+      {services.map((service) => {
         const Icon = service.icon;
-
         const isCAS =
-          service.title ===
-          "Career Acceleration Service";
+          service.title === "Career Acceleration Service";
+
+        const linkText =
+          service.title === "HR Solutions"
+            ? "Explore HR Solutions"
+            : service.title ===
+                "Business / Management Consultancy"
+              ? "Explore Consultancy Services"
+              : "Explore Career Services";
 
         return (
           <div
-            key={i}
-            onClick={() => {
-              if (service.link) {
-                window.location.href =
-                  service.link;
-              }
-            }}
+            key={service.title}
             style={{
-              position: "relative",
-
-             padding:
-              isMobile
-                ? "18px"
-                : "32px",
-
-              borderRadius:
-                isMobile
-                  ? "16px"
-                  : "24px",
-
-              background: isCAS
-                ? `
-                  linear-gradient(
-                  180deg,
-                  rgba(59,130,246,.18),
-                  rgba(167,139,250,.12)
-                  )
-                `
-                : `
-                  linear-gradient(
-                  180deg,
-                  rgba(255,255,255,.05),
-                  rgba(255,255,255,.02)
-                  )
-                `,
-
-              border: isCAS
-                ? "1px solid rgba(96,165,250,.25)"
-                : "1px solid rgba(255,255,255,.08)",
-
-              backdropFilter:
-                "blur(18px)",
-
-              cursor: service.link
-                ? "pointer"
-                : "default",
-
-              transition:
-                "all .3s ease",
-
-              overflow: "hidden",
+              boxSizing: "border-box",
+              width: "100%",
+              padding: "16px",
+              borderRadius: "12px",
+              background: isCAS ? "#203A5F" : "#19263A",
+              border: "1px solid #3B485B",
+              color: "#F8FAFC",
+              transition: "border-color .2s ease",
             }}
             onMouseEnter={(e) => {
-              if (!isMobile) {
-                e.currentTarget.style.transform =
-                  "translateY(-8px)";
-
-                e.currentTarget.style.boxShadow =
-                  "0 25px 50px rgba(0,0,0,.35)";
-              }
+              e.currentTarget.style.borderColor = "#60A5FA";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform =
-                "translateY(0)";
-
-              e.currentTarget.style.boxShadow =
-                "none";
+              e.currentTarget.style.borderColor = "#3B485B";
             }}
           >
-            {isCAS && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "18px",
-                  right: "18px",
-
-                  padding: "6px 12px",
-
-                  borderRadius: "999px",
-
-                  background:
-                    "linear-gradient(135deg,#60A5FA,#A78BFA)",
-
-                  color: "#fff",
-
-                  fontSize: "11px",
-                  fontWeight: 700,
-                }}
-              >
-                FEATURED
-              </div>
-            )}
-
-            {/* ICON */}
-            <div
-              style={{
-               width: isMobile ? "48px" : "64px",
-              height: isMobile ? "48px" : "64px",
-
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-
-                borderRadius: "18px",
-
-                background:
-                  "rgba(96,165,250,.12)",
-
-                marginBottom: "22px",
-              }}
-            >
-              <Icon
-              size={isMobile ? 22 : 30}
-              color="#60A5FA"
-            />
-            </div>
-
-            {/* TITLE */}
-            <h3
-              style={{
-                fontSize: isMobile
-                ? "18px"
-                : "24px",
-                fontWeight: 700,
-                marginBottom: "14px",
-              }}
-            >
-              {service.title}
-            </h3>
-
-            {/* DESC */}
-            <p
-              style={{
-                color: "#94A3B8",
-
-                fontSize: isMobile
-                  ? "13px"
-                  : "16px",
-
-                lineHeight: 1.6,
-
-                marginBottom:
-                  isMobile
-                    ? "16px"
-                    : "24px",
-              }}
->
-              {service.desc}
-            </p>
-
-            {/* FEATURES */}
+            {/* ICON AND TEXT */}
             <div
               style={{
                 display: "flex",
-                flexDirection: "column",
-                gap: "10px",
+                alignItems: "flex-start",
+                gap: "12px",
               }}
             >
-              {service.features?.map(
-                (feature, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      display: "flex",
-                      alignItems:
-                        "center",
-                      gap: isMobile
-                      ? "6px"
-                      : "10px",
-                      color: "#CBD5E1",
-                      fontSize: isMobile
-                      ? "12px"
-                      : "14px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "6px",
-                        height: "6px",
-                        borderRadius:
-                          "999px",
-                        background:
-                          "#60A5FA",
-                      }}
-                    />
-
-                    {feature}
-                  </div>
-                )
-              )}
-            </div>
-
-            {service.link && (
               <div
                 style={{
-                  marginTop: "24px",
-
+                  width: "52px",
+                  height: "52px",
+                  minWidth: "52px",
+                  borderRadius: "9px",
+                  background: "#2B3E5A",
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
-
-                  color: "#60A5FA",
-
-                  fontWeight: 600,
+                  justifyContent: "center",
                 }}
               >
-                Learn More
-
-                <ArrowRight
-                  size={16}
-                />
+                <Icon size={23} color="#60A5FA" />
               </div>
-            )}
+
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                    gap: "8px",
+                    margin: "3px 0 4px",
+                  }}
+                >
+                  <h3
+                    style={{
+                      margin: 0,
+                      color: "#F8FAFC",
+                      fontSize: "16px",
+                      fontWeight: 700,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {service.title}
+                  </h3>
+
+                  {isCAS && (
+                    <span
+                      style={{
+                        color: "#60A5FA",
+                        fontSize: "12px",
+                        fontWeight: 700,
+                      }}
+                    >
+                      Featured
+                    </span>
+                  )}
+                </div>
+
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#CBD5E1",
+                    fontSize: "15px",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {service.desc}
+                </p>
+              </div>
+            </div>
+
+            {/* SUB-SERVICES */}
+            <p
+              style={{
+                margin: "12px 0",
+                color: "#F1F5F9",
+                fontSize: "14px",
+                lineHeight: 1.7,
+                overflowWrap: "anywhere",
+              }}
+            >
+              {service.features?.join(" · ")}
+            </p>
+
+            {/* CATEGORY LINK */}
+            <Link
+              href={service.link} prefetch={true} 
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "5px",
+                color: "#60A5FA",
+                fontSize: "14px",
+                fontWeight: 700,
+                textDecoration: "none",
+              }}
+            >
+              {linkText}
+              <ArrowRight size={16} />
+            </Link>
           </div>
         );
       })}
     </div>
   </div>
 </section>
+
       {/* CLIENT LOGOS */}
 <section
   style={{

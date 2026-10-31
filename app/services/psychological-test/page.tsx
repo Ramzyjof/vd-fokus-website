@@ -1,13 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function Page() {
   
-  const [visible, setVisible] = useState(false);
   const [openDetails, setOpenDetails] = useState<
     "psychological" | "talent" | "role" | null
   >(null);
@@ -21,11 +19,6 @@ export default function Page() {
   const bodySmall = isMobile ? "13px" : "15px";
  
 
-  useEffect(() => {
-    setTimeout(() => {
-      setVisible(true);
-    }, 200);
-  }, []);
 useEffect(() => {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
@@ -66,19 +59,11 @@ useEffect(() => {
     overflow: "hidden",
   }}
 >
-  {/* BACKGROUND IMAGE */}
-  {!isMobile && (
-  <Image
-    src="/hero-psy.png"
-    alt="Psychological Assessment"
-    fill
-    priority
-    style={{
-      objectFit: "cover",
-      objectPosition: "center center",
-    }}
-  />
-)}
+  {/* The browser selects the right hero image before React hydrates. */}
+  <picture className="psy-hero-picture">
+    <source media="(max-width: 767px)" srcSet="/psy-hero-mobile.png" />
+    <img src="/hero-psy.png" alt="Psychological Assessment" />
+  </picture>
   {/* OVERLAY */}
 <div
   style={{
@@ -129,52 +114,6 @@ useEffect(() => {
       zIndex: 2,
     }}
   />
-{isMobile && (
-  <div
-    style={{
-      position: "absolute",
-      top: "100px",
-      left: 0,
-
-      width: "100%",
-      height: "auto",
-
-      zIndex: 1,
-    }}
-  >
-    <img
-      src="/psy-hero-mobile.png"
-      alt="Psychological Assessment"
-      style={{
-        width: "100%",
-        height: "auto",
-        display: "block",
-      }}
-    />
-
-    {/* Fade Bottom */}
-    <div
-      style={{
-        position: "absolute",
-        left: 0,
-        right: 0,
-        bottom: 0,
-
-        height: "180px",
-
-        background: `
-          linear-gradient(
-            to bottom,
-            rgba(2,6,23,0) 0%,
-            rgba(2,6,23,.6) 40%,
-            rgba(2,6,23,.95) 80%,
-            rgba(2,6,23,1) 100%
-          )
-        `,
-      }}
-    />
-  </div>
-)}
   {/* CONTENT */}
   <div
   style={{
@@ -1226,39 +1165,6 @@ gap: isMobile
         professional interview and recommendation.
       </p>
 
-      {/* PRICE */}
-      <div
-        style={{
-          marginTop: "30px",
-          paddingTop: "24px",
-
-          borderTop:
-            "1px solid rgba(255,255,255,0.08)"
-        }}
-      >
-        <div
-          style={{
-            fontSize: isMobile
-            ? "28px"
-            : "42px",
-            fontWeight: 800,
-            letterSpacing: "-1px",
-            color: "#f8fafc"
-          }}
-        >
-          IDR 500K
-        </div>
-
-        <div
-          style={{
-            color: "#64748b",
-            marginTop: "6px"
-          }}
-        >
-          Per assessment package
-        </div>
-      </div>
-
       <button
         type="button"
         aria-expanded={openDetails === "psychological"}
@@ -1408,39 +1314,6 @@ gap: isMobile
         assessment and professional interview.
       </p>
 
-      {/* PRICE */}
-      <div
-        style={{
-          marginTop: "30px",
-          paddingTop: "24px",
-
-          borderTop:
-            "1px solid rgba(255,255,255,0.08)"
-        }}
-      >
-        <div
-          style={{
-            fontSize: isMobile
-            ? "28px"
-            : "32px",
-            fontWeight: 800,
-            letterSpacing: "-1px",
-            color: "#f8fafc"
-          }}
-        >
-          IDR 500K
-        </div>
-
-        <div
-          style={{
-            color: "#64748b",
-            marginTop: "6px"
-          }}
-        >
-          Per assessment package
-        </div>
-      </div>
-
       <button
         type="button"
         aria-expanded={openDetails === "talent"}
@@ -1542,42 +1415,6 @@ gap: isMobile
             personality, and work endurance align with the
             responsibilities of a specific job level.
           </p>
-
-          {/* PRICING */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: isMobile
-                ? "1fr"
-                : "repeat(3,minmax(0,1fr))",
-              gap: "14px",
-              marginBottom: "30px"
-            }}
-          >
-            {[
-              ["Staff", "IDR 275K"],
-              ["Supervisor", "IDR 550K"],
-              ["Manager & Above", "IDR 850K"]
-            ].map(([role, price]) => (
-              <div
-                key={role}
-                style={{
-                  padding: isMobile ? "18px" : "22px",
-                  borderRadius: "20px",
-                  background: "linear-gradient(145deg,rgba(15,23,42,0.72),rgba(15,23,42,0.45))",
-                  border: "1px solid rgba(134,239,172,0.12)",
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)"
-                }}
-              >
-                <div style={{ color: "#94a3b8", marginBottom: "8px" }}>
-                  {role}
-                </div>
-                <div style={{ fontSize: isMobile ? "24px" : "27px", fontWeight: 800, letterSpacing: "-0.7px" }}>
-                  {price}
-                </div>
-              </div>
-            ))}
-          </div>
 
           {/* DETAILS */}
           <button
@@ -2045,6 +1882,37 @@ gap: isMobile
     </div>
   </div>
 </section>
+      <style jsx>{`
+        .psy-hero-picture {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          overflow: hidden;
+        }
+
+        .psy-hero-picture img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center center;
+        }
+
+        @media (max-width: 767px) {
+          .psy-hero-picture {
+            top: 100px;
+            right: 0;
+            bottom: auto;
+            left: 0;
+            height: auto;
+          }
+
+          .psy-hero-picture img {
+            height: auto;
+            object-fit: contain;
+          }
+        }
+      `}</style>
     </main>
   );
 }

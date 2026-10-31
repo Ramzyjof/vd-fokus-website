@@ -14,6 +14,7 @@ import {
   TrendingUp
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
   const [visible, setVisible] = useState(false);
@@ -113,9 +114,9 @@ const body = isMobile
     minHeight: isMobile ? "700px" : "800px",
 
     display: "flex",
-    alignItems: "center",
+    alignItems: isMobile ? "flex-start" : "center",
 
-    paddingTop: isMobile ? "20px" : "90px",
+    paddingTop: isMobile ? "120px" : "90px",
     paddingBottom: isMobile ? "30px" : "50px",
 
     overflow: "hidden",
@@ -354,8 +355,8 @@ const body = isMobile
   </a>
 
   {/* SECONDARY CTA */}
-  <a
-    href="#services"
+  <Link
+    href="/services/hr_solution"
     style={{
       flex: 1,
 
@@ -402,8 +403,8 @@ const body = isMobile
   >
     {isMobile
       ? "Learn More"
-      : "Explore Services →"}
-  </a>
+      : "Explore Other HR Solutions →"}
+  </Link>
 </div>
 
     {/* HIRING PROCESS */}

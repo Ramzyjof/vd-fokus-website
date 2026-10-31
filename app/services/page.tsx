@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   Users,
@@ -16,10 +17,12 @@ import {
   UserCheck,
   Building2,
   FileCheck,
+  BarChart3,
   GraduationCap
 } from "lucide-react";
 
 export default function Page() {
+  const router = useRouter();
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -104,7 +107,7 @@ export default function Page() {
   const services = [
     {
   title: "Employee Placement",
-  link: "/services/placement",
+  link: "/services/hr_solution/placement_recruitment",
   icon: Users,
   desc:
     "We identify and place high-quality candidates tailored to your operational and strategic business needs.",
@@ -118,6 +121,7 @@ export default function Page() {
 
     {
       title: "Outsourcing",
+      link: "/contact",
       icon: Briefcase,
       desc:
         "Flexible workforce solutions designed to improve efficiency while reducing operational complexity.",
@@ -146,6 +150,7 @@ export default function Page() {
 
     {
       title: "Risk Management",
+      link: "/services/business_management_consultancy/risk-management",
       icon: ShieldCheck,
       desc:
         "Reduce hiring and operational risks through structured evaluation and strategic workforce planning.",
@@ -158,8 +163,37 @@ export default function Page() {
     },
 
     {
+      title: "Investigative Audit",
+      link: "/services/business_management_consultancy/investigative-audit",
+      icon: Search,
+      desc:
+        "Conduct focused investigations to assess concerns, review evidence, and identify control gaps.",
+      features: [
+        "Fraud and irregularity review",
+        "Evidence-based investigation",
+        "Control gap assessment",
+        "Findings and recommendations"
+      ]
+    },
+
+    {
+      title: "Data Analytics",
+      link: "/services/business_management_consultancy/data-analytics",
+      icon: BarChart3,
+      desc:
+        "Turn workforce and business data into clear insights that support informed decisions.",
+      features: [
+        "Data collection and validation",
+        "Trend and pattern analysis",
+        "Performance insights",
+        "Decision-support reporting"
+      ]
+    },
+
+    {
       title: "SOP Development",
       icon: ClipboardList,
+      link: "/services/business_management_consultancy/sop-development",
       desc:
         "Build clear, scalable, and structured operational procedures to improve consistency and efficiency.",
       features: [
@@ -243,32 +277,47 @@ export default function Page() {
         >
           <div
             style={{
-              display: "inline-flex",
+              display: "flex",
+              justifyContent: "center",
               alignItems: "center",
-              gap: "10px",
-              padding: "10px 18px",
-              borderRadius: "999px",
-              background:
-                "rgba(255,255,255,0.05)",
-              border:
-                "1px solid rgba(127,29,29,0.2)",
+              flexWrap: "wrap",
+              gap: "12px",
               marginBottom: "26px"
             }}
           >
-            <Building2
-              size={16}
-              color="#3B82F6"
-            />
-
-            <span
+            <div
               style={{
-                fontSize: "13px",
-                color: "#cbd5e1"
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "10px 18px",
+                borderRadius: "999px",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(127,29,29,0.2)"
               }}
             >
-              Professional HR &
-              Talent Solutions
-            </span>
+              <Building2 size={16} color="#3B82F6" />
+              <span style={{ fontSize: "13px", color: "#cbd5e1" }}>
+                Professional HR &amp; Talent Solutions
+              </span>
+            </div>
+
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "10px 18px",
+                borderRadius: "999px",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(127,29,29,0.2)"
+              }}
+            >
+              <Briefcase size={16} color="#A78BFA" />
+              <span style={{ fontSize: "13px", color: "#cbd5e1" }}>
+                Business &amp; Management Consultancy
+              </span>
+            </div>
           </div>
 
           <h1
@@ -330,8 +379,7 @@ export default function Page() {
           key={i}
           onClick={() => {
             if (service.link) {
-              window.location.href =
-                service.link;
+              router.push(service.link);
             }
           }}
           style={{
@@ -361,6 +409,10 @@ export default function Page() {
               "all 0.3s ease"
           }}
           onMouseEnter={(e) => {
+            if (service.link) {
+              router.prefetch(service.link);
+            }
+
             e.currentTarget.style.transform =
               "translateY(-8px)";
 

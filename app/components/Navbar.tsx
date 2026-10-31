@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { translations } from "../translations";
@@ -10,7 +10,7 @@ export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
 const [menuOpen, setMenuOpen] = useState(false);
 
-useEffect(() => {
+useLayoutEffect(() => {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
   };
@@ -172,7 +172,9 @@ const t =
             
             {links.map((link, i) => {
               const active =
-                pathname === link.href;
+                link.href === "/insights"
+                  ? pathname.startsWith("/insights")
+                  : pathname === link.href;
 
               return (
                 <a

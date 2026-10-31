@@ -104,8 +104,12 @@ export default function Page() {
         desc:
           "Simple improvements in preparation and communication can significantly improve hiring outcomes.",
       },
-    ].map((article, i) => (
-      <div
+    ].map((article, i) => {
+      const Card = i < 3 ? "a" : "div";
+      return (
+      <Card
+        {...(i === 0 ? { href: "/insights/why-candidates-fail-interviews" } : i === 1 ? { href: "/insights/what-recruiters-actually-look-for" } : i === 2 ? { href: "/insights/how-to-stand-out-during-hiring" } : {})}
+        aria-label={i < 3 ? `Read more: ${article.title}` : undefined}
         key={i}
         style={{
           padding: isMobile ? "16px" : "22px",
@@ -114,6 +118,8 @@ export default function Page() {
           border: "1px solid rgba(127,29,29,0.2)",
           transition: "all 0.3s ease",
           cursor: "pointer",
+          color: "inherit",
+          textDecoration: "none",
         }}
         onMouseEnter={(e) => {
           if (!isMobile) {
@@ -257,8 +263,8 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </div>
-    ))}
+      </Card>
+    );})}
   </div>
 </section>
     </main>

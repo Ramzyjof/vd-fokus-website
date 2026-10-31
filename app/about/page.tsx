@@ -268,7 +268,7 @@ export default function Page() {
       zIndex: 2,
       maxWidth: "650px",
       padding: isMobile
-        ? "40px 28px"
+        ? "110px 28px 40px"
         : "60px",
     }}
   >
