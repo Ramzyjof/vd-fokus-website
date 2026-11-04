@@ -1,23 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import {
   Users,
   Briefcase,
-  Brain,
   ShieldCheck,
-  ClipboardList,
   Rocket,
   ArrowRight,
-  Factory,
   Search,
   UserCheck,
   Building2,
-  FileCheck,
-  BarChart3,
   GraduationCap
 } from "lucide-react";
 
@@ -106,122 +100,44 @@ export default function Page() {
 
   const services = [
     {
-  title: "Employee Placement",
-  link: "/services/hr_solution/placement_recruitment",
-  icon: Users,
-  desc:
-    "We identify and place high-quality candidates tailored to your operational and strategic business needs.",
-  features: [
-    "Talent sourcing",
-    "Candidate screening",
-    "Interview coordination",
-    "Executive search support"
-  ]
-},
-
-    {
-      title: "Outsourcing",
-      link: "/contact",
-      icon: Briefcase,
-      desc:
-        "Flexible workforce solutions designed to improve efficiency while reducing operational complexity.",
+      title: "HR Solutions",
+      link: "/services/hr_solution",
+      icon: Users,
+      desc: "Recruitment, workforce and talent solutions.",
       features: [
-        "Operational staffing",
-        "Administrative support",
-        "Contract workforce",
-        "Scalable manpower solutions"
-      ]
+        "Employee Placement",
+        "Executive Search",
+        "Outsourcing",
+        "Psychological Assessment",
+      ],
+      linkText: "Explore HR Solutions",
     },
-
     {
-      title: "Psychological Assessment",
-      link: "/services/psychological-test",
-      icon: Brain,
-      desc:
-         "Professional psychological consulting, aptitude interest testing, and candidate assessment services.",
-      type : "highlight",
-         features: [
-        "Personality testing",
-        "Cognitive assessment",
-        "Behavior analysis",
-        "Job fit evaluation"
-      ]
-    },
-
-    {
-      title: "Risk Management",
-      link: "/services/business_management_consultancy/risk-management",
+      title: "Business / Management Consultancy",
+      link: "/services/business_management_consultancy",
       icon: ShieldCheck,
-      desc:
-        "Reduce hiring and operational risks through structured evaluation and strategic workforce planning.",
+      desc: "Identify risk, strengthen controls and improve business decisions.",
       features: [
-        "Hiring risk analysis",
-        "Workforce evaluation",
-        "Compliance support",
-        "Decision support"
-      ]
+        "Risk Management",
+        "Investigative Audit",
+        "SOP Development",
+        "Data Analytics",
+      ],
+      linkText: "Explore Consultancy Services",
     },
-
     {
-      title: "Investigative Audit",
-      link: "/services/business_management_consultancy/investigative-audit",
-      icon: Search,
-      desc:
-        "Conduct focused investigations to assess concerns, review evidence, and identify control gaps.",
+      title: "Career Acceleration Service",
+      link: "/services/int-prep",
+      icon: Rocket,
+      desc: "Build a stronger CV, improve interview skills and accelerate your career.",
       features: [
-        "Fraud and irregularity review",
-        "Evidence-based investigation",
-        "Control gap assessment",
-        "Findings and recommendations"
-      ]
+        "CV Optimization",
+        "Interview Preparation",
+        "Mock Interview",
+      ],
+      linkText: "Explore Career Services",
+      type: "highlight",
     },
-
-    {
-      title: "Data Analytics",
-      link: "/services/business_management_consultancy/data-analytics",
-      icon: BarChart3,
-      desc:
-        "Turn workforce and business data into clear insights that support informed decisions.",
-      features: [
-        "Data collection and validation",
-        "Trend and pattern analysis",
-        "Performance insights",
-        "Decision-support reporting"
-      ]
-    },
-
-    {
-      title: "SOP Development",
-      icon: ClipboardList,
-      link: "/services/business_management_consultancy/sop-development",
-      desc:
-        "Build clear, scalable, and structured operational procedures to improve consistency and efficiency.",
-      features: [
-        "Workflow mapping",
-        "Process standardization",
-        "Operational structure",
-        "Documentation support"
-      ]
-    },
-
-    {
-  title:
-    "Career Acceleration Service",
-
-  link: "/int-prep",
-
-  icon: Rocket,
-
-  desc:
-    "Professional CV optimization, interview preparation, and coaching to help candidates get selected faster.",
-
-  features: [
-    "CV optimization",
-    "Mock interview",
-    "Interview coaching",
-    "Career consultation"
-  ]
-},
   ];
 
   return (
@@ -363,190 +279,140 @@ export default function Page() {
 >
   <div
     style={{
-      maxWidth: "1150px",
-      margin: "auto",
       display: "grid",
-      gridTemplateColumns:
-        "repeat(auto-fit,minmax(320px,1fr))",
-      gap: "28px"
+      gridTemplateColumns: "minmax(0, 1fr)",
+      gap: "12px",
+      width: "100%",
+      maxWidth: "1100px",
+      margin: "0 auto",
     }}
   >
-    {services.map((service, i) => {
+    {services.map((service) => {
       const Icon = service.icon;
+      const isFeatured = service.type === "highlight";
 
       return (
         <div
-          key={i}
-          onClick={() => {
-            if (service.link) {
-              router.push(service.link);
-            }
-          }}
+          key={service.title}
           style={{
-            position: "relative",
-            padding: "34px",
-            borderRadius: "24px",
-
-            display: "flex",
-            flexDirection: "column",
-            justifyContent:
-              "space-between",
-
-            background:
-              "rgba(255,255,255,0.04)",
-
-            border:
-              "1px solid rgba(127,29,29,0.2)",
-
-            backdropFilter:
-              "blur(12px)",
-
-            cursor: service.link
-              ? "pointer"
-              : "default",
-
-            transition:
-              "all 0.3s ease"
+            boxSizing: "border-box",
+            width: "100%",
+            padding: "16px",
+            borderRadius: "12px",
+            background: isFeatured ? "#203A5F" : "#19263A",
+            border: "1px solid #3B485B",
+            color: "#F8FAFC",
+            transition: "border-color .2s ease",
           }}
           onMouseEnter={(e) => {
-            if (service.link) {
-              router.prefetch(service.link);
-            }
-
-            e.currentTarget.style.transform =
-              "translateY(-8px)";
-
-            e.currentTarget.style.boxShadow =
-              "0 20px 50px rgba(0,0,0,0.4)";
+            e.currentTarget.style.borderColor = "#60A5FA";
+            router.prefetch(service.link);
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.transform =
-              "translateY(0)";
-
-            e.currentTarget.style.boxShadow =
-              "none";
+            e.currentTarget.style.borderColor = "#3B485B";
           }}
         >
-          {/* TOP CONTENT */}
-          <div>
-
-            {/* ICON */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "12px",
+            }}
+          >
             <div
               style={{
-                width: "70px",
-                height: "70px",
-                borderRadius: "18px",
-                background:
-                  "rgba(255,255,255,0.06)",
-
+                width: "52px",
+                height: "52px",
+                minWidth: "52px",
+                borderRadius: "9px",
+                background: "#2B3E5A",
                 display: "flex",
                 alignItems: "center",
-                justifyContent:
-                  "center",
-
-                marginBottom: "24px"
+                justifyContent: "center",
               }}
             >
-              <Icon
-                size={34}
-                color="#3B82F6"
-              />
+              <Icon size={23} color="#60A5FA" />
             </div>
 
-            {/* TITLE */}
-            <h2
-              style={{
-                fontSize: "28px",
-                marginBottom: "18px",
-                lineHeight: "1.3"
-              }}
-            >
-              {service.title}
-            </h2>
-
-            {/* DESC */}
-            <p
-              style={{
-                color: "#94a3b8",
-                lineHeight: "1.8",
-                marginBottom: "24px"
-              }}
-            >
-              {service.desc}
-            </p>
-
-            {/* FEATURES */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "12px"
-              }}
-            >
-              {service.features.map(
-                (feature, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      display: "flex",
-                      alignItems:
-                        "center",
-                      gap: "10px",
-                      color: "#e2e8f0"
-                    }}
-                  >
-                    <FileCheck
-                      size={16}
-                      color="#22c55e"
-                    />
-
-                    <span>
-                      {feature}
-                    </span>
-                  </div>
-                )
-              )}
-            </div>
-
-          </div>
-
-          {/* BOTTOM RIGHT ARROW */}
-          {service.link && (
-            <div
-              style={{
-                marginTop: "32px",
-                display: "flex",
-                justifyContent:
-                  "flex-end"
-              }}
-            >
+            <div style={{ flex: 1, minWidth: 0 }}>
               <div
                 style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius:
-                    "999px",
-
-                  background:
-                    "rgba(59,130,246,0.15)",
-
                   display: "flex",
-                  alignItems:
-                    "center",
-
-                  justifyContent:
-                    "center",
-
-                  color: "#3B82F6",
-
-                  transition:
-                    "all 0.3s ease"
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  gap: "8px",
+                  margin: "3px 0 4px",
                 }}
               >
-                <ArrowRight size={18} />
+                <h2
+                  style={{
+                    margin: 0,
+                    color: "#F8FAFC",
+                    fontSize: "16px",
+                    fontWeight: 700,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {service.title}
+                </h2>
+                {isFeatured && (
+                  <span
+                    style={{
+                      color: "#60A5FA",
+                      fontSize: "12px",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Featured
+                  </span>
+                )}
               </div>
+
+              <p
+                style={{
+                  margin: 0,
+                  color: "#CBD5E1",
+                  fontSize: "15px",
+                  lineHeight: 1.55,
+                }}
+              >
+                {service.desc}
+              </p>
             </div>
-          )}
+          </div>
+
+          <p
+            style={{
+              margin: "12px 0",
+              color: "#F1F5F9",
+              fontSize: "14px",
+              lineHeight: 1.7,
+              overflowWrap: "anywhere",
+            }}
+          >
+            {service.features.join(" · ")}
+          </p>
+
+          <button
+            type="button"
+            onClick={() => router.push(service.link)}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
+              padding: 0,
+              border: 0,
+              background: "transparent",
+              color: "#60A5FA",
+              fontSize: "14px",
+              fontWeight: 700,
+              fontFamily: "inherit",
+              cursor: "pointer",
+            }}
+          >
+            {service.linkText}
+            <ArrowRight size={16} />
+          </button>
         </div>
       );
     })}
