@@ -2489,10 +2489,9 @@ export default function Page() {
             }}
           >
 
-            VD Fokus membantu perusahaan membangun
-            Risk Management yang praktis, terukur,
-            dan dapat digunakan manajemen dalam
-            pengambilan keputusan.
+            VD Fokus helps organizations build practical,
+            measurable Risk Management programs that support
+            better management decision-making.
 
           </p>
 
@@ -2536,7 +2535,7 @@ export default function Page() {
               title: "Enterprise Risk Management",
               short: "ERM",
               description:
-                "Membangun kerangka Risk Management yang terintegrasi dengan tujuan dan proses bisnis perusahaan.",
+                "Build a Risk Management framework aligned with the organization’s objectives and business processes.",
               points: [
                 "Risk Governance",
                 "Risk Framework",
@@ -2549,7 +2548,7 @@ export default function Page() {
               title: "Risk Assessment",
               short: "ASSESS",
               description:
-                "Mengidentifikasi dan menilai risiko berdasarkan likelihood dan impact untuk menentukan tingkat risiko.",
+                "Identify and assess risks based on likelihood and impact to determine their risk levels.",
               points: [
                 "Likelihood",
                 "Impact",
@@ -2562,7 +2561,7 @@ export default function Page() {
               title: "Risk Register Development",
               short: "REGISTER",
               description:
-                "Menyusun Risk Register yang terstruktur untuk mendokumentasikan risiko, penyebab, dampak, dan respons.",
+                "Develop a structured Risk Register documenting risks, causes, impacts, and responses.",
               points: [
                 "Risk Identification",
                 "Risk Owner",
@@ -2575,7 +2574,7 @@ export default function Page() {
               title: "Risk Appetite & Risk Tolerance",
               short: "APPETITE",
               description:
-                "Membantu perusahaan menentukan batas risiko yang dapat diterima dalam mencapai tujuan bisnis.",
+                "Help organizations define acceptable risk boundaries while pursuing their business objectives.",
               points: [
                 "Risk Appetite",
                 "Risk Tolerance",
@@ -2588,7 +2587,7 @@ export default function Page() {
               title: "Risk Monitoring",
               short: "MONITOR",
               description:
-                "Membangun mekanisme monitoring agar perubahan dan perkembangan risiko dapat dipantau secara berkala.",
+                "Establish monitoring mechanisms to track risk changes and developments regularly.",
               points: [
                 "Risk Review",
                 "Risk Reporting",
@@ -2601,7 +2600,7 @@ export default function Page() {
               title: "Key Risk Indicator",
               short: "KRI",
               description:
-                "Mengembangkan indikator yang membantu management mendeteksi peningkatan exposure risiko lebih awal.",
+                "Develop indicators that help management detect rising risk exposure early.",
               points: [
                 "Risk Indicators",
                 "Threshold",
@@ -2614,7 +2613,7 @@ export default function Page() {
               title: "Risk Workshop",
               short: "WORKSHOP",
               description:
-                "Workshop bersama management, key person, dan process owner untuk memahami serta mengidentifikasi risiko.",
+                "Conduct workshops with management, key stakeholders, and process owners to understand and identify risks.",
               points: [
                 "Risk Identification",
                 "Risk Discussion",
@@ -2627,7 +2626,7 @@ export default function Page() {
               title: "Risk Awareness Training",
               short: "AWARENESS",
               description:
-                "Meningkatkan pemahaman dan kesadaran karyawan terhadap risiko dalam aktivitas sehari-hari.",
+                "Improve employees’ understanding of and awareness of risk in their day-to-day activities.",
               points: [
                 "Risk Awareness",
                 "Risk Culture",
@@ -2640,7 +2639,7 @@ export default function Page() {
               title: "ISO 31000 Implementation",
               short: "ISO 31000",
               description:
-                "Mendukung penerapan prinsip dan kerangka Risk Management dengan mengacu pada ISO 31000.",
+                "Support the adoption of Risk Management principles and frameworks in line with ISO 31000.",
               points: [
                 "Framework",
                 "Risk Process",
@@ -2653,7 +2652,7 @@ export default function Page() {
               title: "Risk Maturity Assessment",
               short: "MATURITY",
               description:
-                "Menilai tingkat kematangan Risk Management perusahaan dan mengidentifikasi area yang perlu diperbaiki.",
+                "Assess the organization’s Risk Management maturity and identify areas for improvement.",
               points: [
                 "Maturity Assessment",
                 "Gap Analysis",
@@ -3401,10 +3400,9 @@ export default function Page() {
             }}
           >
 
-            Kami menggunakan pendekatan yang terstruktur
-            untuk memahami bisnis, mengidentifikasi risiko,
-            menentukan prioritas, membangun treatment,
-            dan memastikan risiko terus dimonitor.
+            We use a structured approach to understand the business,
+            identify risks, set priorities, develop treatment plans,
+            and ensure risks are monitored continuously.
 
           </p>
 
@@ -3492,7 +3490,7 @@ export default function Page() {
                 number: "01",
                 title: "Business Understanding",
                 description:
-                  "Memahami tujuan bisnis, proses, organisasi, dan konteks perusahaan sebelum melakukan risk assessment.",
+                  "Understand business objectives, processes, the organization, and its context before conducting a risk assessment.",
                 output:
                   "Business Context",
               },
@@ -3501,7 +3499,7 @@ export default function Page() {
                 number: "02",
                 title: "Risk Identification",
                 description:
-                  "Mengidentifikasi risiko bersama key person dan process owner berdasarkan aktivitas dan tujuan bisnis.",
+                  "Identify risks with key stakeholders and process owners based on business activities and objectives.",
                 output:
                   "Risk Universe",
               },
@@ -3510,7 +3508,7 @@ export default function Page() {
                 number: "03",
                 title: "Risk Assessment",
                 description:
-                  "Menganalisis likelihood dan impact untuk menentukan risk score, rating, dan tingkat exposure.",
+                  "Analyze likelihood and impact to determine risk scores, ratings, and exposure levels.",
                 output:
                   "Risk Score & Matrix",
               },
@@ -3519,7 +3517,7 @@ export default function Page() {
                 number: "04",
                 title: "Risk Evaluation",
                 description:
-                  "Membandingkan hasil assessment dengan risk criteria untuk menentukan prioritas risiko.",
+                  "Compare assessment results with risk criteria to prioritize risks.",
                 output:
                   "Risk Priority",
               },
@@ -3528,7 +3526,7 @@ export default function Page() {
                 number: "05",
                 title: "Risk Treatment",
                 description:
-                  "Menentukan respons risiko seperti avoid, reduce, transfer, atau accept serta menyusun mitigation plan.",
+                  "Select a risk response—avoid, reduce, transfer, or accept—and develop a mitigation plan.",
                 output:
                   "Treatment Plan",
               },
@@ -3537,7 +3535,7 @@ export default function Page() {
                 number: "06",
                 title: "Monitoring",
                 description:
-                  "Memantau perkembangan risiko melalui KRI, risk review, dashboard, dan reporting mechanism.",
+                  "Monitor risk developments through KRIs, risk reviews, dashboards, and reporting mechanisms.",
                 output:
                   "Risk Monitoring",
               },
@@ -3546,7 +3544,7 @@ export default function Page() {
                 number: "07",
                 title: "Continuous Improvement",
                 description:
-                  "Melakukan evaluasi dan penyempurnaan Risk Management agar tetap relevan dengan perubahan bisnis.",
+                  "Review and improve Risk Management to keep it relevant as the business changes.",
                 output:
                   "Improvement Roadmap",
               },
@@ -4366,10 +4364,9 @@ export default function Page() {
             }}
           >
 
-            Setiap engagement menghasilkan output yang
-            dapat digunakan management untuk memahami
-            exposure risiko, menentukan prioritas,
-            dan mengambil tindakan yang tepat.
+            Each engagement produces practical outputs that help
+            management understand risk exposure, set priorities,
+            and take appropriate action.
 
           </p>
 
@@ -4414,7 +4411,7 @@ export default function Page() {
               number: "01",
               title: "Risk Register",
               description:
-                "Dokumen terstruktur yang memuat risiko, penyebab, dampak, risk owner, dan treatment.",
+                "A structured document recording risks, causes, impacts, risk owners, and treatments.",
               category:
                 "IDENTIFICATION",
               icon:
@@ -4425,7 +4422,7 @@ export default function Page() {
               number: "02",
               title: "Risk Matrix",
               description:
-                "Matriks likelihood dan impact untuk membantu menentukan risk score dan risk rating.",
+                "A likelihood and impact matrix for determining risk scores and ratings.",
               category:
                 "ASSESSMENT",
               icon:
@@ -4436,7 +4433,7 @@ export default function Page() {
               number: "03",
               title: "Risk Profile",
               description:
-                "Gambaran exposure risiko perusahaan berdasarkan hasil assessment dan prioritas risiko.",
+                "An overview of the organization’s risk exposure based on assessment results and risk priorities.",
               category:
                 "RISK PROFILE",
               icon:
@@ -4447,7 +4444,7 @@ export default function Page() {
               number: "04",
               title: "Risk Heat Map",
               description:
-                "Visualisasi tingkat risiko untuk memudahkan management melihat konsentrasi dan prioritas risiko.",
+                "A visual representation of risk levels that helps management see concentrations and priorities.",
               category:
                 "VISUALIZATION",
               icon:
@@ -4458,7 +4455,7 @@ export default function Page() {
               number: "05",
               title: "Risk Dashboard",
               description:
-                "Dashboard untuk menyajikan informasi risiko secara ringkas dan membantu proses monitoring.",
+                "A dashboard that presents concise risk information and supports ongoing monitoring.",
               category:
                 "MONITORING",
               icon:
@@ -4469,7 +4466,7 @@ export default function Page() {
               number: "06",
               title: "Mitigation Plan",
               description:
-                "Rencana tindakan untuk mengurangi, mengendalikan, mentransfer, atau menerima risiko.",
+                "An action plan to reduce, control, transfer, or accept risks.",
               category:
                 "TREATMENT",
               icon:
@@ -4480,7 +4477,7 @@ export default function Page() {
               number: "07",
               title: "Risk Report",
               description:
-                "Laporan yang merangkum kondisi, perkembangan, exposure, dan rekomendasi terkait risiko.",
+                "A report summarizing risk conditions, developments, exposure, and recommendations.",
               category:
                 "REPORTING",
               icon:
@@ -4491,7 +4488,7 @@ export default function Page() {
               number: "08",
               title: "Risk Policy",
               description:
-                "Pedoman dan kebijakan sebagai dasar penerapan Risk Management dalam perusahaan.",
+                "Guidelines and policies that provide a foundation for Risk Management across the organization.",
               category:
                 "GOVERNANCE",
               icon:
@@ -5283,11 +5280,10 @@ export default function Page() {
             }}
           >
 
-            Risk Management bukan hanya tentang
-            membuat dokumen. Tujuannya adalah membantu
-            perusahaan mengurangi exposure, memperkuat
-            governance, dan mendukung management dalam
-            mengambil keputusan.
+            Risk Management is about more than creating
+            documents. It helps organizations reduce exposure,
+            strengthen governance, and support better
+            management decisions.
 
           </p>
 
@@ -5331,9 +5327,9 @@ export default function Page() {
             {
               number: "01",
               icon: "↓",
-              title: "Mengurangi Kerugian",
+              title: "Reduce Business Losses",
               description:
-                "Membantu perusahaan mengenali dan menangani risiko sebelum berkembang menjadi kerugian bisnis.",
+                "Help organizations identify and address risks before they develop into business losses.",
               highlight:
                 "Reduce Loss Exposure",
             },
@@ -5341,9 +5337,9 @@ export default function Page() {
             {
               number: "02",
               icon: "↗",
-              title: "Meningkatkan Pengambilan Keputusan",
+              title: "Improve Decision-Making",
               description:
-                "Memberikan management informasi risiko yang lebih jelas sebagai dasar dalam menentukan keputusan bisnis.",
+                "Give management clearer risk information to support business decisions.",
               highlight:
                 "Better Decisions",
             },
@@ -5351,9 +5347,9 @@ export default function Page() {
             {
               number: "03",
               icon: "✓",
-              title: "Memenuhi Regulasi",
+              title: "Meet Regulatory Requirements",
               description:
-                "Mendukung perusahaan dalam memenuhi kebutuhan regulatory, policy, dan compliance yang relevan.",
+                "Help organizations meet relevant regulatory, policy, and compliance requirements.",
               highlight:
                 "Regulatory Readiness",
             },
@@ -5361,9 +5357,9 @@ export default function Page() {
             {
               number: "04",
               icon: "⌕",
-              title: "Mendukung Audit",
+              title: "Support Audits",
               description:
-                "Menyediakan dokumentasi, risk assessment, dan monitoring yang dapat mendukung proses audit.",
+                "Provide documentation, risk assessments, and monitoring to support audit processes.",
               highlight:
                 "Audit Support",
             },
@@ -5371,9 +5367,9 @@ export default function Page() {
             {
               number: "05",
               icon: "◇",
-              title: "Meningkatkan Tata Kelola Perusahaan",
+              title: "Strengthen Corporate Governance",
               description:
-                "Membantu memperkuat governance melalui risk ownership, accountability, monitoring, dan reporting.",
+                "Strengthen governance through risk ownership, accountability, monitoring, and reporting.",
               highlight:
                 "Stronger Governance",
             },
@@ -6234,11 +6230,10 @@ export default function Page() {
             }}
           >
 
-            Setiap industri memiliki karakteristik,
-            proses, regulatory environment, dan
-            risk exposure yang berbeda. Pendekatan
-            Risk Management disesuaikan dengan konteks
-            bisnis masing-masing perusahaan.
+            Every industry has distinct characteristics,
+            processes, regulatory environments, and risk
+            exposures. Risk Management is tailored to each
+            organization’s business context.
 
           </p>
 
@@ -6821,9 +6816,8 @@ export default function Page() {
             }}
           >
 
-            Kami tidak menggunakan satu pendekatan untuk
-            semua perusahaan. Risk Management disesuaikan
-            dengan{" "}
+            We do not use a one-size-fits-all approach.
+            Risk Management is tailored to{" "}
 
             <span
               style={{
@@ -6835,10 +6829,10 @@ export default function Page() {
               }}
             >
               industry, size, business model,
-              organization structure,
+              and organizational structure,
             </span>{" "}
 
-            dan kondisi proses yang ada.
+            as well as existing operating conditions.
 
           </p>
 
@@ -7105,10 +7099,9 @@ export default function Page() {
             }}
           >
 
-            Kami tidak berhenti pada assessment dan
-            dokumentasi. Pendekatan VD Fokus dirancang
-            agar Risk Management dapat dipahami,
-            digunakan, dan mendukung kebutuhan management.
+            Our work goes beyond assessment and documentation.
+            VD Fokus designs Risk Management programs to be
+            understood, used, and aligned with management needs.
 
           </p>
 
@@ -7153,7 +7146,7 @@ export default function Page() {
               number: "01",
               title: "Business-Oriented",
               description:
-                "Risk Management dirancang dengan mempertimbangkan tujuan, proses, dan kebutuhan bisnis perusahaan.",
+                "Risk Management is designed around the organization’s objectives, processes, and business needs.",
               tag:
                 "Aligned with Business",
               icon:
@@ -7164,7 +7157,7 @@ export default function Page() {
               number: "02",
               title: "Practical",
               description:
-                "Kami mengutamakan solusi yang dapat diterapkan dan digunakan dalam aktivitas operasional sehari-hari.",
+                "We prioritize solutions that can be implemented and used in day-to-day operations.",
               tag:
                 "Practical Solutions",
               icon:
@@ -7175,7 +7168,7 @@ export default function Page() {
               number: "03",
               title: "Customized Solution",
               description:
-                "Pendekatan disesuaikan dengan industry, size, business model, organization structure, dan kondisi perusahaan.",
+                "Our approach is tailored to the organization’s industry, size, business model, structure, and operating conditions.",
               tag:
                 "Tailored Approach",
               icon:
@@ -7186,7 +7179,7 @@ export default function Page() {
               number: "04",
               title: "Integrated Approach",
               description:
-                "Risk Management dihubungkan dengan proses bisnis, governance, internal control, dan kebutuhan management.",
+                "Risk Management is connected to business processes, governance, internal controls, and management needs.",
               tag:
                 "Integrated Risk View",
               icon:
@@ -7197,7 +7190,7 @@ export default function Page() {
               number: "05",
               title: "From Assessment to Implementation",
               description:
-                "Pendampingan tidak berhenti pada identifikasi risiko, tetapi berlanjut ke treatment, monitoring, dan improvement.",
+                "Our support continues beyond risk identification to treatment, monitoring, and improvement.",
               tag:
                 "End-to-End Support",
               icon:
@@ -7208,7 +7201,7 @@ export default function Page() {
               number: "06",
               title: "Management-Friendly",
               description:
-                "Output dibuat ringkas, jelas, dan mudah dipahami oleh Board of Directors, Management, Risk Manager, Finance, Operations, HR dan Internal Audit sehingga dapat membantu management dalam mengambil keputusan.",
+                "Outputs are concise, clear, and easy for the Board of Directors, management, risk managers, Finance, Operations, HR, and Internal Audit to use in decision-making.",
               tag:
                 "Management Ready",
               icon:
@@ -7752,10 +7745,9 @@ export default function Page() {
                 }}
               >
 
-                Kami membantu perusahaan membangun
-                Risk Management yang dapat digunakan
-                dalam proses bisnis dan pengambilan
-                keputusan management.
+                We help organizations build Risk Management
+                programs that support business processes
+                and management decision-making.
 
               </p>
 
@@ -8235,10 +8227,9 @@ export default function Page() {
             }}
           >
 
-            Kami dapat membantu Anda melakukan initial
-            discussion untuk memahami risiko utama,
-            kebutuhan Risk Management, dan area yang
-            perlu mendapatkan perhatian.
+            We can start with an initial discussion to understand
+            your key risks, Risk Management needs, and areas
+            that require attention.
 
           </p>
 
@@ -8628,8 +8619,8 @@ export default function Page() {
               ✓
             </span>
 
-            Initial discussion untuk memahami
-            kebutuhan bisnis Anda
+            An initial discussion to understand
+            your business needs
 
           </div>
 
