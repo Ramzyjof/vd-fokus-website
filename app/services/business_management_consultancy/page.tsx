@@ -329,7 +329,7 @@ export default function BusinessConsultancyPage() {
               }}
             >
               <a
-                href="https://wa.me/628161387821"
+                href="https://wa.me/628129334994"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bc-primary-button"
@@ -890,7 +890,7 @@ export default function BusinessConsultancyPage() {
           </p>
 
           <a
-            href="https://wa.me/628161387821"
+            href="https://wa.me/628129334994"
             target="_blank"
             rel="noopener noreferrer"
             className="bc-primary-button"
