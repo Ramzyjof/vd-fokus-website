@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "./context/LanguageContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vdfokus.co.id"),
@@ -95,6 +96,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const googleAnalyticsId = "G-PXGEQKJJ7T";
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -142,6 +145,10 @@ export default function RootLayout({
 
           <Footer />
         </LanguageProvider>
+
+        {googleAnalyticsId?.startsWith("G-") ? (
+          <GoogleAnalytics gaId={googleAnalyticsId} />
+        ) : null}
       </body>
     </html>
   );
