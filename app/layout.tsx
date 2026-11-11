@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "./context/LanguageContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import LeadTracking from "./components/LeadTracking";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
@@ -134,6 +135,7 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <Navbar />
+          <LeadTracking />
 
           <main
             style={{

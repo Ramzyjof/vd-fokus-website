@@ -1,20 +1,59 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
+
+const WHATSAPP_NUMBER = "628129334994";
+
+const serviceOptions = [
+  "Employee Placement",
+  "Outsourcing",
+  "Psychological Assessment",
+  "Risk Management",
+  "Investigative Audit",
+  "SOP Development",
+  "Data Analytics",
+  "Career Acceleration Service",
+  "Other / General Inquiry",
+];
 
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    service: "",
     message: "",
   });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
 
-    // later: connect to webhook / email API
-    alert("Message sent successfully!");
+    const serviceCategory =
+      ["Risk Management", "Investigative Audit", "SOP Development", "Data Analytics"].includes(form.service)
+        ? "Business & Management Consultancy"
+        : ["Employee Placement", "Outsourcing", "Psychological Assessment"].includes(form.service)
+          ? "HR Solutions"
+          : form.service === "Career Acceleration Service"
+            ? "Career Acceleration"
+            : "General";
+
+    // Do not send personal details to Analytics; only the selected service is tracked.
+    sendGAEvent("event", "generate_lead", {
+      service_name: form.service,
+      service_category: serviceCategory,
+      lead_channel: "Contact form to WhatsApp",
+      page_path: window.location.pathname,
+    });
+
+    const message = [
+      "Hello VD Fokus, I would like to discuss your services.",
+      `Service: ${form.service}`,
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Message: ${form.message}`,
+    ].join("\n");
+
+    window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   };
 
   return (
@@ -67,7 +106,7 @@ export default function ContactPage() {
 
             <div style={{ marginBottom: "15px" }}>
               <strong>Phone:</strong>
-              <p style={{ color: "#94a3b8" }}>+62 816-1387-821</p>
+              <p style={{ color: "#94a3b8" }}>+62 812-9334-994</p>
               <p style={{ color: "#94a3b8" }}>+62 2128671999</p>
             </div>
 
@@ -90,8 +129,25 @@ export default function ContactPage() {
             }}
           >
             <div style={{ marginBottom: "15px" }}>
-              <label>Name</label>
+              <label htmlFor="service">Service</label>
+              <select
+                id="service"
+                required
+                value={form.service}
+                onChange={(e) => setForm({ ...form, service: e.target.value })}
+                style={inputStyle}
+              >
+                <option value="" disabled>Select a service</option>
+                {serviceOptions.map((service) => (
+                  <option key={service} value={service}>{service}</option>
+                ))}
+              </select>
+            </div>
+
+            <div style={{ marginBottom: "15px" }}>
+              <label htmlFor="name">Name</label>
               <input
+                id="name"
                 type="text"
                 required
                 value={form.name}
@@ -103,8 +159,9 @@ export default function ContactPage() {
             </div>
 
             <div style={{ marginBottom: "15px" }}>
-              <label>Email</label>
+              <label htmlFor="email">Email</label>
               <input
+                id="email"
                 type="email"
                 required
                 value={form.email}
@@ -116,8 +173,9 @@ export default function ContactPage() {
             </div>
 
             <div style={{ marginBottom: "20px" }}>
-              <label>Message</label>
+              <label htmlFor="message">Message</label>
               <textarea
+                id="message"
                 required
                 rows={5}
                 value={form.message}
@@ -147,7 +205,7 @@ export default function ContactPage() {
                 (e.currentTarget.style.background = "#3b82f6")
               }
             >
-              Send Message
+              Continue to WhatsApp
             </button>
           </form>
         </div>
@@ -164,4 +222,5 @@ const inputStyle = {
   border: "1px solid #334155",
   background: "#0f172a",
   color: "white",
+  boxSizing: "border-box" as const,
 };
